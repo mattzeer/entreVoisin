@@ -1,3 +1,15 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["TYPE"] == "U")
+    {
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+    else if (Session["TYPE"] == "A")
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+    }
+
 }

@@ -1,0 +1,17 @@
+﻿.privateForm {
+    width: 250px;
+    position: absolute;
+}
+
+    .privateForm .messageArea {
+        height: 200px;
+        overflow-y: scroll;
+    }
+
+    .privateForm .textSub {
+        margin-bottom: 10px;
+    }
+
+    .privateForm .btnSub {
+        margin-bottom: 10px;
+    }
