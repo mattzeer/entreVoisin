@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntreVoisin", "EntreVoisin\EntreVoisin.csproj", "{1AE1490F-053D-40FB-B96E-4ADC41B738DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntreVoisin.Tests", "EntreVoisin.Tests\EntreVoisin.Tests.csproj", "{B1BE2C40-8BC7-40D4-B9ED-13DA34C155BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AE1490F-053D-40FB-B96E-4ADC41B738DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE1490F-053D-40FB-B96E-4ADC41B738DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE1490F-053D-40FB-B96E-4ADC41B738DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE1490F-053D-40FB-B96E-4ADC41B738DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BE2C40-8BC7-40D4-B9ED-13DA34C155BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BE2C40-8BC7-40D4-B9ED-13DA34C155BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BE2C40-8BC7-40D4-B9ED-13DA34C155BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BE2C40-8BC7-40D4-B9ED-13DA34C155BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
