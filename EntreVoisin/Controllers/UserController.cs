@@ -3,25 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EntreVoisin.Models;
 
 namespace EntreVoisin.Controllers
 {
-    public class AdminController : Controller
+    public class UserController : Controller
     {
         //
-        // GET: /Admin/
+        // GET: /User/
 
-
-        public AdminController ()
-        {
-        }
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Types()
         {
             return View();
         }

@@ -28,6 +28,43 @@ namespace EntreVoisin.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Connexion(LoginModelView model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.email == "0" && model.mdp == "0")
+                {
+                    Session["TYPE"] = "A";
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    //CLIENT
+                    UTILISATEUR u = (from i in db.UTILISATEUR.ToList()
+                              where i.EMAIL.Equals(model.email)
+                              & i.PASSWORD.Equals(model.mdp)
+                              select i).FirstOrDefault();
+                    if (u != null)
+                    {
+                        Session["TYPE_USER"] = "U";
+                        Session["USER"] = u;
+                        return RedirectToAction("Index", "User");
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError("", "Utilisateur non Valide, Vérifiez votre mot de passe et Identifiant");
+                        return View(model);
+                    }
+                }
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
         public ActionResult Deconnexion()
         {
             Session["TYPE_USER"] = null;
@@ -43,15 +80,6 @@ namespace EntreVoisin.Controllers
         {
             return DateTime.Now.ToString();
         }
-
-        [HttpPost]
-        public JsonResult ValidateUser(string mail, string password)
-        {
-            var data = from c in db.UTILISATEUR where c.EMAIL == mail && c.PASSWORD == password select c;
-            if (data.Count() > 0)
-                return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
-            else
-                return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
-        }
+       
     }
 }

@@ -1,0 +1,377 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="well col-lg-5">
+
+        <ul class="nav nav-tabs" id="tabs">
+            <li class="active"><a href="#tabActus" data-toggle="tab">Actualité</a></li>
+            <li><a href="#tabBonPlan" data-toggle="tab">Bon Plan</a></li>
+            <li><a href="#tabCovoiturage" data-toggle="tab">Covoiturage</a></li>
+            <li><a href="#tabEvenement" data-toggle="tab">Evenement</a></li>
+            <li><a href="#tabObjetPerdu" data-toggle="tab">Objet Perdu</a></li>
+            <li><a href="#tabService" data-toggle="tab">Service</a></li>
+            <li><a href="#tabObjet" data-toggle="tab">Objet</a></li>
+            <li><a href="#tabSondage" data-toggle="tab">Sondage</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tabActus">
+                <br />
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label>Message de l'actualité</label>
+                        <textarea class="form-control" rows="4" placeholder="Tapez votre actualité ici"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label>Type d'actualité</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabBonPlan">
+                <br />
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label>Description du bon plan</label>
+                        <textarea class="form-control" rows="4" placeholder="Entrez la description de votre bon plan ainsi que d'autre informations complémentaires"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label>Site ou lieu du bon plan</label>
+                        <input type="text" class="form-control" placeholder="Tapez le nom du site ou le lieu du bon plan" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabCovoiturage">
+                <br />
+                <div class="row">
+                    <div class=" form-group col-lg-12">
+                        <label>Description</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Date de départ</label>
+                            <input type="datetime-local" class="form-control" />
+                            <label>Lieu de départ</label>
+                            <input type="text" class="form-control" />
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Date d'arrivée</label>
+                            <input type="datetime-local" class="form-control" />
+                            <label>Lieu d'arrivé</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group">
+
+                        <div class="col-lg-2">
+                            <label>Participation</label>
+                            <input type="number" class="form-control" />
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Véhicule utilisé</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabEvenement">
+                <br />
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label>Description de l'évènement</label>
+                        <textarea class="form-control" rows="4" placeholder="Tapez la description de votre évènement"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-5">
+                        <label>Titre de l'évènement</label>
+                        <input type="text" class="form-control" placeholder="Tapez le nom de l'évenement" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label>Date de l'évènement</label>
+                        <input type="datetime-local" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-5">
+                        <label>Lieu de l'évènement</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="tab-pane fade" id="tabObjetPerdu">
+                <br />
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label>Description de l'objet perdu</label>
+                        <textarea class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label>Lieu de l'objet perdu</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabObjet">
+                <br />
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label>Description de la proposition de l'objet</label>
+                        <textarea class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label>Type de proposition d'objet</label>
+                        <select class="form-control"></select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>Type d'objet</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-5">
+                        <label>Titre de la proposition de l'objet</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label>Prix</label>
+                        <input type="number" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="tabService">
+                <br />
+                <div class="row">
+                    <div class=" form-group col-lg-12">
+                        <label>Description de la proposition du service</label>
+                        <textarea class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label>Type de proposition de service</label>
+                        <select class="form-control"></select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>Type de service</label>
+                        <select class="form-control"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-5">
+                        <label>Titre du service</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label>Prix du service</label>
+                        <input type="number" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+            <div class="tab-pane fade" id="tabSondage">
+                <br />
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label>Description du sondage</label>
+                        <textarea class="form-control" rows="4"></textarea>
+
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <label>Date de la fin du sondage</label>
+                        <input type="datetime-local" class="form-control" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <button class="btn btn-primary form-control">Valider</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title pull-left"><span class="glyphicon glyphicon-user"></span> Proposition d'objet</div>
+                        <div class="pull-right">Créée le 12 mai 2016</div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-10">
+                                    <div class="row">
+                                        <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
+                                    </div>
+                                    <div class="row">
+                                        <p><span class="glyphicon glyphicon-comment"></span> 34 commentaires</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="row">
+                                        <a href=#>Posté par Zeer</a>
+
+                                    </div>
+                                    <div class="row">
+                                        <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <center><a href="#">Voir plus d'information</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title pull-left"><span class="glyphicon glyphicon-user"></span> Proposition de service</div>
+                        <div class="panel-title pull-right">Créée le 12 mai 2016</div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-10">
+                                    <div class="row">
+                                        <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
+                                    </div>
+                                    <div class="row">
+                                        <p><span class="glyphicon glyphicon-comment"></span> 12 commentaires</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="row">
+                                        <a href="test2.html">Posté par Zeer</a>
+
+                                    </div>
+                                    <div class="row">
+                                        <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <center><a href="#">Voir plus d'information</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <div class="panel-title pull-left"><span class="glyphicon glyphicon-comment"></span> Proposition d'objet</div>
+                        <div class="panel-title pull-right">Créée le 12 mai 2016</div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-10">
+                                    <div class="row">
+                                        <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
+                                    </div>
+                                    <div class="row">
+                                        <p><span class="glyphicon glyphicon-comment"></span> 34 commentaires</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="row">
+                                        <a href=#>Posté par Zeer</a>
+
+                                    </div>
+                                    <div class="row">
+                                        <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <center><a href="#">Voir plus d'information</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

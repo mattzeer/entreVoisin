@@ -1,90 +1,162 @@
 ﻿@using EntreVoisin.Models;
 @{
-    entrevoisinEntities db = ViewData.Model;
     ViewBag.Title = "Types";
 }
 
 <h2>Types</h2>
 
-<div class="row well col-lg-10 col-lg-offset-1">
+<div class="row well col-lg-12">
 
     <ul class="nav nav-tabs" id="tabs">
         <li class="active"><a href="#tabConfirmation" data-toggle="tab">Type confirmation</a></li>
-        <li><a href="#tabBonPlan" data-toggle="tab">Bon Plan</a></li>
-        <li><a href="#tabCovoiturage" data-toggle="tab">Covoiturage</a></li>
-        <li><a href="#tabEvenement" data-toggle="tab">Evenement</a></li>
-        <li><a href="#tabObjetPerdu" data-toggle="tab">Objet Perdu</a></li>
-        <li><a href="#tabService" data-toggle="tab">Service</a></li>
-        <li><a href="#tabObjet" data-toggle="tab">Objet</a></li>
-        <li><a href="#tabSondage" data-toggle="tab">Sondage</a></li>
+        <li><a href="#tabObjet" data-toggle="tab">Type d'Objet</a></li>
+        <li><a href="#tabService" data-toggle="tab">Type de service</a></li>
+        <li><a href="#tabActus" data-toggle="tab">Type d'actualité</a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="tabConfirmation">
-            <div class="panel panel-default panel-primary">
-                <div class="panel-body">
-                    <div class="row">
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Code du type</th>
-                                <th>Libellé</th>
-                                <th></th>
-                            </tr>
-                            @foreach (TYPECONFIRMATION m in db.TYPECONFIRMATION.ToList())
-                            {
-                                <tr>
-                                    <td><p>@m.CDCONFIRMATION</p></td>
-                                    <td><p>@m.LIBELLE</p></td>
-                                    <td>@Html.ActionLink("Supprimer", "SupprTypeConfirmation", "AdminAjoutType", new { cd = m.CDCONFIRMATION })</td>
-                                </tr>
-                            }
-
-                        </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            @using (Html.BeginForm("AjoutTypeConfirmation", "AdminAjoutType", FormMethod.Post, new { @class = "navbar-form" }))
-                            {
-                                <div class="form-group">
-                                    @Html.TextBox("test", new { @class = "form-control", placeholder = "Code du type" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.TextBox("test", new { @class = "form-control", placeholder = "Libellé du type" })
-                                </div>
-                                <button type="submit" class="btn btn-primary">Ajouter</button>
-                            }
+        <div class="tab-pane fade in active" id="tabConfirmation">
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <td>Libelle</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>l</th>
+                        <td>l</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "navbar-form" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Code du type" })
                         </div>
-                    </div>
+                        <div class="form-group col-lg-offset-1">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Libellé du type" })
+                        </div>
+                        <div class="form-group col-lg-offset-1">
+                            <button type="submit" class="btn btn-primary">Ajouter le Type</button>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="tabService">
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <td>Libelle</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>l</th>
+                        <td>l</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "navbar-form" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Code du type" })
+                        </div>
+                        <div class="form-group col-lg-offset-1">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Libellé du type" })
+                        </div>
+                        <div class="form-group col-lg-offset-1">
+                            <button type="submit" class="btn btn-primary">Ajouter le Type</button>
+                        </div>
+
+                    }
                 </div>
             </div>
 
         </div>
 
-        <div class="tab-pane" id="tabBonPlan">
+        <div class="tab-pane fade" id="tabObjet">
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <td>Libelle</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>l</th>
+                        <td>l</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "navbar-form" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Code du type" })
+                        </div>
+                        <div class="form-group col-lg-offset-1">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Libellé du type" })
+                        </div>
+                        <div class="form-group col-lg-offset-1">
+                            <button type="submit" class="btn btn-primary">Ajouter le Type</button>
+                        </div>
 
+                    }
+                </div>
+            </div>
         </div>
 
-        <div class="tab-pane" id="tabCovoiturage">
+        <div class="tab-pane fade" id="tabActus">
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <td>Libelle</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>l</th>
+                        <td>l</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "navbar-form" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Code du type" })
+                        </div>
+                        <div class="form-group col-lg-offset-1">
+                            @Html.TextBox("test", "", new { @class = "form-control", placeholder = "Libellé du type" })
+                        </div>
+                        <div class="form-group col-lg-offset-1">
+                            <button type="submit" class="btn btn-primary">Ajouter le Type</button>
+                        </div>
 
-        </div>
-
-        <div class="tab-pane" id="tabEvenement">
-
-        </div>
-
-        <div class="tab-pane" id="tabObjetPerdu">
-
-        </div>
-
-        <div class="tab-pane" id="tabObjet">
-
-        </div>
-
-        <div class="tab-pane" id="tabService">
-
-        </div>
-
-        <div class="tab-pane" id="tabSondage">
-
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
