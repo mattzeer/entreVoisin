@@ -50,6 +50,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,9 +131,100 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTIVITE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTUS.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BONPLAN.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CENTREINTERET.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COMMENTAIREACTIVITE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COMMUNAUTE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONFIRMATION.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COVOITURAGE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\entrevoisinModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entrevoisinModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\entrevoisinModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\entrevoisinModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entrevoisinModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVENEMENT.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FICHIERCOMPLEMENTAIRE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MESSAGEPRIVE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OBJET.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OBJETPERDU.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SERVICE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SONDAGE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPEACTUS.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPECENTREINTERET.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPECONFIRMATION.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPEOBJET.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPEPROPOSITIONOBJET.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPEPROPOSITIONSERVICE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPESERVICE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USEROBJET.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERSERVICE.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UTILISATEUR.cs">
+      <DependentUpon>entrevoisinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -151,6 +244,23 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <EntityDeploy Include="Models\entrevoisinModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>entrevoisinModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\entrevoisinModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>entrevoisinModel.edmx</DependentUpon>
+      <LastGenOutput>entrevoisinModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\entrevoisinModel.edmx.diagram">
+      <DependentUpon>entrevoisinModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\entrevoisinModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>entrevoisinModel.edmx</DependentUpon>
+      <LastGenOutput>entrevoisinModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -184,13 +294,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Admin\Types.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

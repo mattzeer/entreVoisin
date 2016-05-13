@@ -1,0 +1,2268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="entrevoisinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVITE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="IDUSER" Type="smallint" Nullable="false" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ACTUS">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="CDTYPEACTUS" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BONPLAN">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="SITE" Type="varchar" MaxLength="128" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CENTREINTERET">
+          <Key>
+            <PropertyRef Name="IDCENTREINTERET" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDCENTREINTERET" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="IDUSER_ADMIN" Type="smallint" Nullable="false" />
+          <Property Name="NOM" Type="varchar" MaxLength="128" />
+          <Property Name="DATECREATION" Type="datetime" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CENTRETYPEINTERETS">
+          <Key>
+            <PropertyRef Name="IDCOMMUNAUTE" />
+            <PropertyRef Name="IDCENTREINTERET" />
+            <PropertyRef Name="CDTYPEINTERET" />
+          </Key>
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="IDCENTREINTERET" Type="smallint" Nullable="false" />
+          <Property Name="CDTYPEINTERET" Type="char" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMMENTAIREACTIVITE">
+          <Key>
+            <PropertyRef Name="NOCOMMENTAIRE" />
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="NOCOMMENTAIRE" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="IDUSER" Type="smallint" Nullable="false" />
+          <Property Name="CONTENU" Type="varchar" MaxLength="255" />
+          <Property Name="DATEENVOIE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="COMMUNAUTE">
+          <Key>
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDCOMMUNAUTE" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUSER_ADMIN" Type="smallint" Nullable="false" />
+          <Property Name="NOM" Type="varchar" MaxLength="128" />
+          <Property Name="ADDRESSLATITUDE" Type="real" />
+          <Property Name="ADDRESSLONGITUDE" Type="real" />
+        </EntityType>
+        <EntityType Name="CONFIRMATION">
+          <Key>
+            <PropertyRef Name="IDCONFIRMATION" />
+          </Key>
+          <Property Name="IDCONFIRMATION" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CDCONFIRMATION" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="IDUSER_CONFIRME" Type="smallint" />
+          <Property Name="CONFIRME" Type="bit" />
+        </EntityType>
+        <EntityType Name="COVOITURAGE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="LIEUDEPART" Type="char" MaxLength="32" />
+          <Property Name="DATEDEPART" Type="datetime" />
+          <Property Name="LIEUARRIVE" Type="char" MaxLength="32" />
+          <Property Name="DATEARRIVE" Type="datetime" />
+          <Property Name="VEHICULE" Type="varchar" MaxLength="128" />
+          <Property Name="PARTICIPATION" Type="smallint" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EVENEMENT">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="TITRE" Type="char" MaxLength="32" />
+          <Property Name="DATEEVENT" Type="datetime" />
+          <Property Name="LIEU" Type="char" MaxLength="32" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FICHIERCOMPLEMENTAIRE">
+          <Key>
+            <PropertyRef Name="NOFICHIER" />
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="NOFICHIER" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MESSAGEPRIVE">
+          <Key>
+            <PropertyRef Name="IDUSER_2" />
+            <PropertyRef Name="IDUSER_1" />
+            <PropertyRef Name="IDMESSAGE" />
+          </Key>
+          <Property Name="IDUSER_2" Type="smallint" Nullable="false" />
+          <Property Name="IDUSER_1" Type="smallint" Nullable="false" />
+          <Property Name="IDMESSAGE" Type="smallint" Nullable="false" />
+          <Property Name="IDUSER_SEND" Type="smallint" Nullable="false" />
+          <Property Name="DATEENVOI" Type="datetime" />
+          <Property Name="CONTENU" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OBJET">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="CDPROPOSITIONOBJET" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="CDOBJET" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="TITRE" Type="char" MaxLength="32" />
+          <Property Name="PRIX" Type="smallint" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OBJETPERDU">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="LIEU" Type="char" MaxLength="32" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="CDPROPOSITIONSERVICE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="CDSERVICE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="TITRE" Type="char" MaxLength="32" />
+          <Property Name="PRIX" Type="smallint" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SONDAGE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="NBOUI" Type="smallint" />
+          <Property Name="NBNON" Type="smallint" />
+          <Property Name="DATEFIN" Type="datetime" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="DATECREATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TYPEACTUS">
+          <Key>
+            <PropertyRef Name="CDTYPEACTUS" />
+          </Key>
+          <Property Name="CDTYPEACTUS" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="LIBELLE" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="TYPECENTREINTERET">
+          <Key>
+            <PropertyRef Name="CDTYPEINTERET" />
+          </Key>
+          <Property Name="CDTYPEINTERET" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="LIBELLE" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="TYPECONFIRMATION">
+          <Key>
+            <PropertyRef Name="CDCONFIRMATION" />
+          </Key>
+          <Property Name="CDCONFIRMATION" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="LIBELLE" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="TYPEOBJET">
+          <Key>
+            <PropertyRef Name="CDOBJET" />
+          </Key>
+          <Property Name="CDOBJET" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="LIBELLEOBJET" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="TYPEPROPOSITIONOBJET">
+          <Key>
+            <PropertyRef Name="CDPROPOSITIONOBJET" />
+          </Key>
+          <Property Name="CDPROPOSITIONOBJET" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="LIBELLE" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="TYPEPROPOSITIONSERVICE">
+          <Key>
+            <PropertyRef Name="CDPROPOSITIONSERVICE" />
+          </Key>
+          <Property Name="CDPROPOSITIONSERVICE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="LIBELLE" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="TYPESERVICE">
+          <Key>
+            <PropertyRef Name="CDSERVICE" />
+          </Key>
+          <Property Name="CDSERVICE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="LIBELLESERVICE" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="USERCENTREINTERET">
+          <Key>
+            <PropertyRef Name="IDUSER" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+            <PropertyRef Name="IDCENTREINTERET" />
+          </Key>
+          <Property Name="IDUSER" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+          <Property Name="IDCENTREINTERET" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERCOMMUNAUTE">
+          <Key>
+            <PropertyRef Name="IDUSER" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDUSER" Type="smallint" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERCONFIANCE">
+          <Key>
+            <PropertyRef Name="IDUSER_1" />
+            <PropertyRef Name="IDUSER_2" />
+          </Key>
+          <Property Name="IDUSER_1" Type="smallint" Nullable="false" />
+          <Property Name="IDUSER_2" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USEROBJET">
+          <Key>
+            <PropertyRef Name="NOOBJET" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="NOOBJET" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUSER" Type="smallint" Nullable="false" />
+          <Property Name="CDOBJET" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="CONFIDENTIEL" Type="bit" />
+          <Property Name="NOM" Type="char" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="USERSERVICE">
+          <Key>
+            <PropertyRef Name="NOSERVICE" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="NOSERVICE" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUSER" Type="smallint" Nullable="false" />
+          <Property Name="CDSERVICE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="CONFIDENTIEL" Type="bit" />
+          <Property Name="NOM" Type="char" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="UTILISATEUR">
+          <Key>
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDUSER" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCONFIRMATION" Type="smallint" Nullable="false" />
+          <Property Name="PSEUDO" Type="char" MaxLength="32" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="128" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="128" />
+          <Property Name="NOM" Type="varchar" MaxLength="128" />
+          <Property Name="PRENOM" Type="varchar" MaxLength="128" />
+          <Property Name="DATENAISSANCE" Type="datetime" />
+          <Property Name="ADDRESSLATITUDE" Type="real" />
+          <Property Name="ADDRESSLONGITUDE" Type="real" />
+          <Property Name="ADDRESSNO" Type="smallint" />
+          <Property Name="ADDRESSROUTE" Type="varchar" MaxLength="128" />
+          <Property Name="ADDRESSLOCALITY" Type="varchar" MaxLength="128" />
+          <Property Name="ADDRESSPOSTALCODE" Type="varchar" MaxLength="128" />
+          <Property Name="ADDRESSCOMPLEMENT" Type="varchar" MaxLength="255" />
+          <Property Name="PHOTO" Type="char" MaxLength="32" />
+          <Property Name="CONFIDENTIEL" Type="bit" />
+          <Property Name="CONNECTE" Type="bit" />
+        </EntityType>
+        <Association Name="FK_ACTIVITE_COMMUNAUTE">
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="1" />
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMUNAUTE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="ACTIVITE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTIVITE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="ACTIVITE">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTUS_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="ACTUS" Type="Self.ACTUS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="ACTUS">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTUS_TYPEACTUS">
+          <End Role="TYPEACTUS" Type="Self.TYPEACTUS" Multiplicity="1" />
+          <End Role="ACTUS" Type="Self.ACTUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEACTUS">
+              <PropertyRef Name="CDTYPEACTUS" />
+            </Principal>
+            <Dependent Role="ACTUS">
+              <PropertyRef Name="CDTYPEACTUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BONPLAN_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="BONPLAN" Type="Self.BONPLAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="BONPLAN">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTREINTERET_COMMUNAUTE">
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="1" />
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMUNAUTE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="CENTREINTERET">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTREINTERET_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="CENTREINTERET">
+              <PropertyRef Name="IDUSER_ADMIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTRETYPEINTERETS_CENTREINTERET">
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="1" />
+          <End Role="CENTRETYPEINTERETS" Type="Self.CENTRETYPEINTERETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CENTREINTERET">
+              <PropertyRef Name="IDCENTREINTERET" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="CENTRETYPEINTERETS">
+              <PropertyRef Name="IDCENTREINTERET" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTRETYPEINTERETS_TYPECENTREINTERET">
+          <End Role="TYPECENTREINTERET" Type="Self.TYPECENTREINTERET" Multiplicity="1" />
+          <End Role="CENTRETYPEINTERETS" Type="Self.CENTRETYPEINTERETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPECENTREINTERET">
+              <PropertyRef Name="CDTYPEINTERET" />
+            </Principal>
+            <Dependent Role="CENTRETYPEINTERETS">
+              <PropertyRef Name="CDTYPEINTERET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENTAIREACTIVITE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="COMMENTAIREACTIVITE" Type="Self.COMMENTAIREACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="COMMENTAIREACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENTAIREACTIVITE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="COMMENTAIREACTIVITE" Type="Self.COMMENTAIREACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="COMMENTAIREACTIVITE">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMUNAUTE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="COMMUNAUTE">
+              <PropertyRef Name="IDUSER_ADMIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONFIRMATION_TYPECONFIRMATION">
+          <End Role="TYPECONFIRMATION" Type="Self.TYPECONFIRMATION" Multiplicity="1" />
+          <End Role="CONFIRMATION" Type="Self.CONFIRMATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPECONFIRMATION">
+              <PropertyRef Name="CDCONFIRMATION" />
+            </Principal>
+            <Dependent Role="CONFIRMATION">
+              <PropertyRef Name="CDCONFIRMATION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONFIRMATION_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="0..1" />
+          <End Role="CONFIRMATION" Type="Self.CONFIRMATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="CONFIRMATION">
+              <PropertyRef Name="IDUSER_CONFIRME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COVOITURAGE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="COVOITURAGE" Type="Self.COVOITURAGE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="COVOITURAGE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENEMENT_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="EVENEMENT" Type="Self.EVENEMENT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="EVENEMENT">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FICHIERCOMPLEMENTAIRE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="FICHIERCOMPLEMENTAIRE" Type="Self.FICHIERCOMPLEMENTAIRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="FICHIERCOMPLEMENTAIRE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGEPRIVE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="MESSAGEPRIVE" Type="Self.MESSAGEPRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="MESSAGEPRIVE">
+              <PropertyRef Name="IDUSER_SEND" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGEPRIVE_UTILISATEUR1">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="MESSAGEPRIVE" Type="Self.MESSAGEPRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="MESSAGEPRIVE">
+              <PropertyRef Name="IDUSER_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGEPRIVE_UTILISATEUR2">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="MESSAGEPRIVE" Type="Self.MESSAGEPRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="MESSAGEPRIVE">
+              <PropertyRef Name="IDUSER_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJET_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="OBJET" Type="Self.OBJET" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="OBJET">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJET_TYPEOBJET">
+          <End Role="TYPEOBJET" Type="Self.TYPEOBJET" Multiplicity="1" />
+          <End Role="OBJET" Type="Self.OBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEOBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Principal>
+            <Dependent Role="OBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJET_TYPEPROPOSITIONOBJET">
+          <End Role="TYPEPROPOSITIONOBJET" Type="Self.TYPEPROPOSITIONOBJET" Multiplicity="1" />
+          <End Role="OBJET" Type="Self.OBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEPROPOSITIONOBJET">
+              <PropertyRef Name="CDPROPOSITIONOBJET" />
+            </Principal>
+            <Dependent Role="OBJET">
+              <PropertyRef Name="CDPROPOSITIONOBJET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJETPERDU_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="OBJETPERDU" Type="Self.OBJETPERDU" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="OBJETPERDU">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_TYPEPROPOSITIONSERVICE">
+          <End Role="TYPEPROPOSITIONSERVICE" Type="Self.TYPEPROPOSITIONSERVICE" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEPROPOSITIONSERVICE">
+              <PropertyRef Name="CDPROPOSITIONSERVICE" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="CDPROPOSITIONSERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_TYPESERVICE">
+          <End Role="TYPESERVICE" Type="Self.TYPESERVICE" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPESERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SONDAGE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="SONDAGE" Type="Self.SONDAGE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="SONDAGE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERCENTREINTERET_CENTREINTERET">
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="1" />
+          <End Role="USERCENTREINTERET" Type="Self.USERCENTREINTERET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CENTREINTERET">
+              <PropertyRef Name="IDCENTREINTERET" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="USERCENTREINTERET">
+              <PropertyRef Name="IDCENTREINTERET" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERCENTREINTERET_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USERCENTREINTERET" Type="Self.USERCENTREINTERET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USERCENTREINTERET">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERCOMMUNAUTE_COMMUNAUTE">
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="1" />
+          <End Role="USERCOMMUNAUTE" Type="Self.USERCOMMUNAUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMUNAUTE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="USERCOMMUNAUTE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERCOMMUNAUTE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USERCOMMUNAUTE" Type="Self.USERCOMMUNAUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USERCOMMUNAUTE">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERCONFIANCE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USERCONFIANCE" Type="Self.USERCONFIANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USERCONFIANCE">
+              <PropertyRef Name="IDUSER_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERCONFIANCE_UTILISATEUR1">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USERCONFIANCE" Type="Self.USERCONFIANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USERCONFIANCE">
+              <PropertyRef Name="IDUSER_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USEROBJET_TYPEOBJET">
+          <End Role="TYPEOBJET" Type="Self.TYPEOBJET" Multiplicity="1" />
+          <End Role="USEROBJET" Type="Self.USEROBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEOBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Principal>
+            <Dependent Role="USEROBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USEROBJET_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USEROBJET" Type="Self.USEROBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USEROBJET">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERSERVICE_TYPESERVICE">
+          <End Role="TYPESERVICE" Type="Self.TYPESERVICE" Multiplicity="1" />
+          <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPESERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Principal>
+            <Dependent Role="USERSERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERSERVICE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USERSERVICE">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UTILISATEUR_CONFIRMATION">
+          <End Role="CONFIRMATION" Type="Self.CONFIRMATION" Multiplicity="1" />
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIRMATION">
+              <PropertyRef Name="IDCONFIRMATION" />
+            </Principal>
+            <Dependent Role="UTILISATEUR">
+              <PropertyRef Name="IDCONFIRMATION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="entrevoisinModelStoreContainer">
+          <EntitySet Name="ACTIVITE" EntityType="Self.ACTIVITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ACTUS" EntityType="Self.ACTUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BONPLAN" EntityType="Self.BONPLAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CENTREINTERET" EntityType="Self.CENTREINTERET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CENTRETYPEINTERETS" EntityType="Self.CENTRETYPEINTERETS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMMENTAIREACTIVITE" EntityType="Self.COMMENTAIREACTIVITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMMUNAUTE" EntityType="Self.COMMUNAUTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIRMATION" EntityType="Self.CONFIRMATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVOITURAGE" EntityType="Self.COVOITURAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EVENEMENT" EntityType="Self.EVENEMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FICHIERCOMPLEMENTAIRE" EntityType="Self.FICHIERCOMPLEMENTAIRE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MESSAGEPRIVE" EntityType="Self.MESSAGEPRIVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OBJET" EntityType="Self.OBJET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OBJETPERDU" EntityType="Self.OBJETPERDU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICE" EntityType="Self.SERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SONDAGE" EntityType="Self.SONDAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPEACTUS" EntityType="Self.TYPEACTUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPECENTREINTERET" EntityType="Self.TYPECENTREINTERET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPECONFIRMATION" EntityType="Self.TYPECONFIRMATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPEOBJET" EntityType="Self.TYPEOBJET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPEPROPOSITIONOBJET" EntityType="Self.TYPEPROPOSITIONOBJET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPEPROPOSITIONSERVICE" EntityType="Self.TYPEPROPOSITIONSERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPESERVICE" EntityType="Self.TYPESERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERCENTREINTERET" EntityType="Self.USERCENTREINTERET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERCOMMUNAUTE" EntityType="Self.USERCOMMUNAUTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERCONFIANCE" EntityType="Self.USERCONFIANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USEROBJET" EntityType="Self.USEROBJET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERSERVICE" EntityType="Self.USERSERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UTILISATEUR" EntityType="Self.UTILISATEUR" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ACTIVITE_COMMUNAUTE" Association="Self.FK_ACTIVITE_COMMUNAUTE">
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTIVITE_UTILISATEUR" Association="Self.FK_ACTIVITE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTUS_ACTIVITE" Association="Self.FK_ACTUS_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="ACTUS" EntitySet="ACTUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTUS_TYPEACTUS" Association="Self.FK_ACTUS_TYPEACTUS">
+            <End Role="TYPEACTUS" EntitySet="TYPEACTUS" />
+            <End Role="ACTUS" EntitySet="ACTUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BONPLAN_ACTIVITE" Association="Self.FK_BONPLAN_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="BONPLAN" EntitySet="BONPLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTREINTERET_COMMUNAUTE" Association="Self.FK_CENTREINTERET_COMMUNAUTE">
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTREINTERET_UTILISATEUR" Association="Self.FK_CENTREINTERET_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTRETYPEINTERETS_CENTREINTERET" Association="Self.FK_CENTRETYPEINTERETS_CENTREINTERET">
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+            <End Role="CENTRETYPEINTERETS" EntitySet="CENTRETYPEINTERETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTRETYPEINTERETS_TYPECENTREINTERET" Association="Self.FK_CENTRETYPEINTERETS_TYPECENTREINTERET">
+            <End Role="TYPECENTREINTERET" EntitySet="TYPECENTREINTERET" />
+            <End Role="CENTRETYPEINTERETS" EntitySet="CENTRETYPEINTERETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENTAIREACTIVITE_ACTIVITE" Association="Self.FK_COMMENTAIREACTIVITE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="COMMENTAIREACTIVITE" EntitySet="COMMENTAIREACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENTAIREACTIVITE_UTILISATEUR" Association="Self.FK_COMMENTAIREACTIVITE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="COMMENTAIREACTIVITE" EntitySet="COMMENTAIREACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMUNAUTE_UTILISATEUR" Association="Self.FK_COMMUNAUTE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONFIRMATION_TYPECONFIRMATION" Association="Self.FK_CONFIRMATION_TYPECONFIRMATION">
+            <End Role="TYPECONFIRMATION" EntitySet="TYPECONFIRMATION" />
+            <End Role="CONFIRMATION" EntitySet="CONFIRMATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONFIRMATION_UTILISATEUR" Association="Self.FK_CONFIRMATION_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="CONFIRMATION" EntitySet="CONFIRMATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COVOITURAGE_ACTIVITE" Association="Self.FK_COVOITURAGE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="COVOITURAGE" EntitySet="COVOITURAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENEMENT_ACTIVITE" Association="Self.FK_EVENEMENT_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="EVENEMENT" EntitySet="EVENEMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FICHIERCOMPLEMENTAIRE_ACTIVITE" Association="Self.FK_FICHIERCOMPLEMENTAIRE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="FICHIERCOMPLEMENTAIRE" EntitySet="FICHIERCOMPLEMENTAIRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGEPRIVE_UTILISATEUR" Association="Self.FK_MESSAGEPRIVE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="MESSAGEPRIVE" EntitySet="MESSAGEPRIVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGEPRIVE_UTILISATEUR1" Association="Self.FK_MESSAGEPRIVE_UTILISATEUR1">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="MESSAGEPRIVE" EntitySet="MESSAGEPRIVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGEPRIVE_UTILISATEUR2" Association="Self.FK_MESSAGEPRIVE_UTILISATEUR2">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="MESSAGEPRIVE" EntitySet="MESSAGEPRIVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJET_ACTIVITE" Association="Self.FK_OBJET_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="OBJET" EntitySet="OBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJET_TYPEOBJET" Association="Self.FK_OBJET_TYPEOBJET">
+            <End Role="TYPEOBJET" EntitySet="TYPEOBJET" />
+            <End Role="OBJET" EntitySet="OBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJET_TYPEPROPOSITIONOBJET" Association="Self.FK_OBJET_TYPEPROPOSITIONOBJET">
+            <End Role="TYPEPROPOSITIONOBJET" EntitySet="TYPEPROPOSITIONOBJET" />
+            <End Role="OBJET" EntitySet="OBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJETPERDU_ACTIVITE" Association="Self.FK_OBJETPERDU_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="OBJETPERDU" EntitySet="OBJETPERDU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_ACTIVITE" Association="Self.FK_SERVICE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="SERVICE" EntitySet="SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_TYPEPROPOSITIONSERVICE" Association="Self.FK_SERVICE_TYPEPROPOSITIONSERVICE">
+            <End Role="TYPEPROPOSITIONSERVICE" EntitySet="TYPEPROPOSITIONSERVICE" />
+            <End Role="SERVICE" EntitySet="SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_TYPESERVICE" Association="Self.FK_SERVICE_TYPESERVICE">
+            <End Role="TYPESERVICE" EntitySet="TYPESERVICE" />
+            <End Role="SERVICE" EntitySet="SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SONDAGE_ACTIVITE" Association="Self.FK_SONDAGE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="SONDAGE" EntitySet="SONDAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERCENTREINTERET_CENTREINTERET" Association="Self.FK_USERCENTREINTERET_CENTREINTERET">
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+            <End Role="USERCENTREINTERET" EntitySet="USERCENTREINTERET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERCENTREINTERET_UTILISATEUR" Association="Self.FK_USERCENTREINTERET_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USERCENTREINTERET" EntitySet="USERCENTREINTERET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERCOMMUNAUTE_COMMUNAUTE" Association="Self.FK_USERCOMMUNAUTE_COMMUNAUTE">
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+            <End Role="USERCOMMUNAUTE" EntitySet="USERCOMMUNAUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERCOMMUNAUTE_UTILISATEUR" Association="Self.FK_USERCOMMUNAUTE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USERCOMMUNAUTE" EntitySet="USERCOMMUNAUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERCONFIANCE_UTILISATEUR" Association="Self.FK_USERCONFIANCE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USERCONFIANCE" EntitySet="USERCONFIANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERCONFIANCE_UTILISATEUR1" Association="Self.FK_USERCONFIANCE_UTILISATEUR1">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USERCONFIANCE" EntitySet="USERCONFIANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USEROBJET_TYPEOBJET" Association="Self.FK_USEROBJET_TYPEOBJET">
+            <End Role="TYPEOBJET" EntitySet="TYPEOBJET" />
+            <End Role="USEROBJET" EntitySet="USEROBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USEROBJET_UTILISATEUR" Association="Self.FK_USEROBJET_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USEROBJET" EntitySet="USEROBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERSERVICE_TYPESERVICE" Association="Self.FK_USERSERVICE_TYPESERVICE">
+            <End Role="TYPESERVICE" EntitySet="TYPESERVICE" />
+            <End Role="USERSERVICE" EntitySet="USERSERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERSERVICE_UTILISATEUR" Association="Self.FK_USERSERVICE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USERSERVICE" EntitySet="USERSERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UTILISATEUR_CONFIRMATION" Association="Self.FK_UTILISATEUR_CONFIRMATION">
+            <End Role="CONFIRMATION" EntitySet="CONFIRMATION" />
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="entrevoisinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTIVITE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="IDUSER" Type="Int16" Nullable="false" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="COMMUNAUTE" Relationship="Self.FK_ACTIVITE_COMMUNAUTE" FromRole="ACTIVITE" ToRole="COMMUNAUTE" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_ACTIVITE_UTILISATEUR" FromRole="ACTIVITE" ToRole="UTILISATEUR" />
+          <NavigationProperty Name="ACTUS" Relationship="Self.FK_ACTUS_ACTIVITE" FromRole="ACTIVITE" ToRole="ACTUS" />
+          <NavigationProperty Name="BONPLAN" Relationship="Self.FK_BONPLAN_ACTIVITE" FromRole="ACTIVITE" ToRole="BONPLAN" />
+          <NavigationProperty Name="COMMENTAIREACTIVITE" Relationship="Self.FK_COMMENTAIREACTIVITE_ACTIVITE" FromRole="ACTIVITE" ToRole="COMMENTAIREACTIVITE" />
+          <NavigationProperty Name="COVOITURAGE" Relationship="Self.FK_COVOITURAGE_ACTIVITE" FromRole="ACTIVITE" ToRole="COVOITURAGE" />
+          <NavigationProperty Name="EVENEMENT" Relationship="Self.FK_EVENEMENT_ACTIVITE" FromRole="ACTIVITE" ToRole="EVENEMENT" />
+          <NavigationProperty Name="FICHIERCOMPLEMENTAIRE" Relationship="Self.FK_FICHIERCOMPLEMENTAIRE_ACTIVITE" FromRole="ACTIVITE" ToRole="FICHIERCOMPLEMENTAIRE" />
+          <NavigationProperty Name="OBJET" Relationship="Self.FK_OBJET_ACTIVITE" FromRole="ACTIVITE" ToRole="OBJET" />
+          <NavigationProperty Name="OBJETPERDU" Relationship="Self.FK_OBJETPERDU_ACTIVITE" FromRole="ACTIVITE" ToRole="OBJETPERDU" />
+          <NavigationProperty Name="SERVICE" Relationship="Self.FK_SERVICE_ACTIVITE" FromRole="ACTIVITE" ToRole="SERVICE" />
+          <NavigationProperty Name="SONDAGE" Relationship="Self.FK_SONDAGE_ACTIVITE" FromRole="ACTIVITE" ToRole="SONDAGE" />
+        </EntityType>
+        <EntityType Name="ACTUS">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="CDTYPEACTUS" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_ACTUS_ACTIVITE" FromRole="ACTUS" ToRole="ACTIVITE" />
+          <NavigationProperty Name="TYPEACTUS" Relationship="Self.FK_ACTUS_TYPEACTUS" FromRole="ACTUS" ToRole="TYPEACTUS" />
+        </EntityType>
+        <EntityType Name="BONPLAN">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="SITE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_BONPLAN_ACTIVITE" FromRole="BONPLAN" ToRole="ACTIVITE" />
+        </EntityType>
+        <EntityType Name="CENTREINTERET">
+          <Key>
+            <PropertyRef Name="IDCENTREINTERET" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDCENTREINTERET" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="IDUSER_ADMIN" Type="Int16" Nullable="false" />
+          <Property Name="NOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COMMUNAUTE" Relationship="Self.FK_CENTREINTERET_COMMUNAUTE" FromRole="CENTREINTERET" ToRole="COMMUNAUTE" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_CENTREINTERET_UTILISATEUR" FromRole="CENTREINTERET" ToRole="UTILISATEUR" />
+          <NavigationProperty Name="TYPECENTREINTERET" Relationship="Self.CENTRETYPEINTERETS" FromRole="CENTREINTERET" ToRole="TYPECENTREINTERET" />
+          <NavigationProperty Name="UTILISATEUR1" Relationship="Self.USERCENTREINTERET" FromRole="CENTREINTERET" ToRole="UTILISATEUR" />
+        </EntityType>
+        <EntityType Name="COMMENTAIREACTIVITE">
+          <Key>
+            <PropertyRef Name="NOCOMMENTAIRE" />
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="NOCOMMENTAIRE" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="IDUSER" Type="Int16" Nullable="false" />
+          <Property Name="CONTENU" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATEENVOIE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_COMMENTAIREACTIVITE_ACTIVITE" FromRole="COMMENTAIREACTIVITE" ToRole="ACTIVITE" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_COMMENTAIREACTIVITE_UTILISATEUR" FromRole="COMMENTAIREACTIVITE" ToRole="UTILISATEUR" />
+        </EntityType>
+        <EntityType Name="COMMUNAUTE">
+          <Key>
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUSER_ADMIN" Type="Int16" Nullable="false" />
+          <Property Name="NOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESSLATITUDE" Type="Single" />
+          <Property Name="ADDRESSLONGITUDE" Type="Single" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_ACTIVITE_COMMUNAUTE" FromRole="COMMUNAUTE" ToRole="ACTIVITE" />
+          <NavigationProperty Name="CENTREINTERET" Relationship="Self.FK_CENTREINTERET_COMMUNAUTE" FromRole="COMMUNAUTE" ToRole="CENTREINTERET" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_COMMUNAUTE_UTILISATEUR" FromRole="COMMUNAUTE" ToRole="UTILISATEUR" />
+          <NavigationProperty Name="UTILISATEUR1" Relationship="Self.USERCOMMUNAUTE" FromRole="COMMUNAUTE" ToRole="UTILISATEUR" />
+        </EntityType>
+        <EntityType Name="CONFIRMATION">
+          <Key>
+            <PropertyRef Name="IDCONFIRMATION" />
+          </Key>
+          <Property Name="IDCONFIRMATION" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CDCONFIRMATION" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IDUSER_CONFIRME" Type="Int16" />
+          <Property Name="CONFIRME" Type="Boolean" />
+          <NavigationProperty Name="TYPECONFIRMATION" Relationship="Self.FK_CONFIRMATION_TYPECONFIRMATION" FromRole="CONFIRMATION" ToRole="TYPECONFIRMATION" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_CONFIRMATION_UTILISATEUR" FromRole="CONFIRMATION" ToRole="UTILISATEUR" />
+          <NavigationProperty Name="UTILISATEUR1" Relationship="Self.FK_UTILISATEUR_CONFIRMATION" FromRole="CONFIRMATION" ToRole="UTILISATEUR" />
+        </EntityType>
+        <EntityType Name="COVOITURAGE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="LIEUDEPART" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="DATEDEPART" Type="DateTime" Precision="3" />
+          <Property Name="LIEUARRIVE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="DATEARRIVE" Type="DateTime" Precision="3" />
+          <Property Name="VEHICULE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PARTICIPATION" Type="Int16" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_COVOITURAGE_ACTIVITE" FromRole="COVOITURAGE" ToRole="ACTIVITE" />
+        </EntityType>
+        <EntityType Name="EVENEMENT">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="TITRE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="DATEEVENT" Type="DateTime" Precision="3" />
+          <Property Name="LIEU" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_EVENEMENT_ACTIVITE" FromRole="EVENEMENT" ToRole="ACTIVITE" />
+        </EntityType>
+        <EntityType Name="FICHIERCOMPLEMENTAIRE">
+          <Key>
+            <PropertyRef Name="NOFICHIER" />
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="NOFICHIER" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_FICHIERCOMPLEMENTAIRE_ACTIVITE" FromRole="FICHIERCOMPLEMENTAIRE" ToRole="ACTIVITE" />
+        </EntityType>
+        <EntityType Name="MESSAGEPRIVE">
+          <Key>
+            <PropertyRef Name="IDUSER_2" />
+            <PropertyRef Name="IDUSER_1" />
+            <PropertyRef Name="IDMESSAGE" />
+          </Key>
+          <Property Name="IDUSER_2" Type="Int16" Nullable="false" />
+          <Property Name="IDUSER_1" Type="Int16" Nullable="false" />
+          <Property Name="IDMESSAGE" Type="Int16" Nullable="false" />
+          <Property Name="IDUSER_SEND" Type="Int16" Nullable="false" />
+          <Property Name="DATEENVOI" Type="DateTime" Precision="3" />
+          <Property Name="CONTENU" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_MESSAGEPRIVE_UTILISATEUR" FromRole="MESSAGEPRIVE" ToRole="UTILISATEUR" />
+          <NavigationProperty Name="UTILISATEUR1" Relationship="Self.FK_MESSAGEPRIVE_UTILISATEUR1" FromRole="MESSAGEPRIVE" ToRole="UTILISATEUR" />
+          <NavigationProperty Name="UTILISATEUR2" Relationship="Self.FK_MESSAGEPRIVE_UTILISATEUR2" FromRole="MESSAGEPRIVE" ToRole="UTILISATEUR" />
+        </EntityType>
+        <EntityType Name="OBJET">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="CDPROPOSITIONOBJET" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CDOBJET" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TITRE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="PRIX" Type="Int16" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_OBJET_ACTIVITE" FromRole="OBJET" ToRole="ACTIVITE" />
+          <NavigationProperty Name="TYPEOBJET" Relationship="Self.FK_OBJET_TYPEOBJET" FromRole="OBJET" ToRole="TYPEOBJET" />
+          <NavigationProperty Name="TYPEPROPOSITIONOBJET" Relationship="Self.FK_OBJET_TYPEPROPOSITIONOBJET" FromRole="OBJET" ToRole="TYPEPROPOSITIONOBJET" />
+        </EntityType>
+        <EntityType Name="OBJETPERDU">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="LIEU" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_OBJETPERDU_ACTIVITE" FromRole="OBJETPERDU" ToRole="ACTIVITE" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="CDPROPOSITIONSERVICE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CDSERVICE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TITRE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="PRIX" Type="Int16" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_SERVICE_ACTIVITE" FromRole="SERVICE" ToRole="ACTIVITE" />
+          <NavigationProperty Name="TYPEPROPOSITIONSERVICE" Relationship="Self.FK_SERVICE_TYPEPROPOSITIONSERVICE" FromRole="SERVICE" ToRole="TYPEPROPOSITIONSERVICE" />
+          <NavigationProperty Name="TYPESERVICE" Relationship="Self.FK_SERVICE_TYPESERVICE" FromRole="SERVICE" ToRole="TYPESERVICE" />
+        </EntityType>
+        <EntityType Name="SONDAGE">
+          <Key>
+            <PropertyRef Name="IDACTIVITE" />
+            <PropertyRef Name="IDCOMMUNAUTE" />
+          </Key>
+          <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
+          <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
+          <Property Name="NBOUI" Type="Int16" />
+          <Property Name="NBNON" Type="Int16" />
+          <Property Name="DATEFIN" Type="DateTime" Precision="3" />
+          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_SONDAGE_ACTIVITE" FromRole="SONDAGE" ToRole="ACTIVITE" />
+        </EntityType>
+        <EntityType Name="TYPEACTUS">
+          <Key>
+            <PropertyRef Name="CDTYPEACTUS" />
+          </Key>
+          <Property Name="CDTYPEACTUS" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTUS" Relationship="Self.FK_ACTUS_TYPEACTUS" FromRole="TYPEACTUS" ToRole="ACTUS" />
+        </EntityType>
+        <EntityType Name="TYPECENTREINTERET">
+          <Key>
+            <PropertyRef Name="CDTYPEINTERET" />
+          </Key>
+          <Property Name="CDTYPEINTERET" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CENTREINTERET" Relationship="Self.CENTRETYPEINTERETS" FromRole="TYPECENTREINTERET" ToRole="CENTREINTERET" />
+        </EntityType>
+        <EntityType Name="TYPECONFIRMATION">
+          <Key>
+            <PropertyRef Name="CDCONFIRMATION" />
+          </Key>
+          <Property Name="CDCONFIRMATION" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CONFIRMATION" Relationship="Self.FK_CONFIRMATION_TYPECONFIRMATION" FromRole="TYPECONFIRMATION" ToRole="CONFIRMATION" />
+        </EntityType>
+        <EntityType Name="TYPEOBJET">
+          <Key>
+            <PropertyRef Name="CDOBJET" />
+          </Key>
+          <Property Name="CDOBJET" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLEOBJET" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OBJET" Relationship="Self.FK_OBJET_TYPEOBJET" FromRole="TYPEOBJET" ToRole="OBJET" />
+          <NavigationProperty Name="USEROBJET" Relationship="Self.FK_USEROBJET_TYPEOBJET" FromRole="TYPEOBJET" ToRole="USEROBJET" />
+        </EntityType>
+        <EntityType Name="TYPEPROPOSITIONOBJET">
+          <Key>
+            <PropertyRef Name="CDPROPOSITIONOBJET" />
+          </Key>
+          <Property Name="CDPROPOSITIONOBJET" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OBJET" Relationship="Self.FK_OBJET_TYPEPROPOSITIONOBJET" FromRole="TYPEPROPOSITIONOBJET" ToRole="OBJET" />
+        </EntityType>
+        <EntityType Name="TYPEPROPOSITIONSERVICE">
+          <Key>
+            <PropertyRef Name="CDPROPOSITIONSERVICE" />
+          </Key>
+          <Property Name="CDPROPOSITIONSERVICE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SERVICE" Relationship="Self.FK_SERVICE_TYPEPROPOSITIONSERVICE" FromRole="TYPEPROPOSITIONSERVICE" ToRole="SERVICE" />
+        </EntityType>
+        <EntityType Name="TYPESERVICE">
+          <Key>
+            <PropertyRef Name="CDSERVICE" />
+          </Key>
+          <Property Name="CDSERVICE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLESERVICE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SERVICE" Relationship="Self.FK_SERVICE_TYPESERVICE" FromRole="TYPESERVICE" ToRole="SERVICE" />
+          <NavigationProperty Name="USERSERVICE" Relationship="Self.FK_USERSERVICE_TYPESERVICE" FromRole="TYPESERVICE" ToRole="USERSERVICE" />
+        </EntityType>
+        <EntityType Name="USEROBJET">
+          <Key>
+            <PropertyRef Name="NOOBJET" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="NOOBJET" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUSER" Type="Int16" Nullable="false" />
+          <Property Name="CDOBJET" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CONFIDENTIEL" Type="Boolean" />
+          <Property Name="NOM" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TYPEOBJET" Relationship="Self.FK_USEROBJET_TYPEOBJET" FromRole="USEROBJET" ToRole="TYPEOBJET" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_USEROBJET_UTILISATEUR" FromRole="USEROBJET" ToRole="UTILISATEUR" />
+        </EntityType>
+        <EntityType Name="USERSERVICE">
+          <Key>
+            <PropertyRef Name="NOSERVICE" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="NOSERVICE" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUSER" Type="Int16" Nullable="false" />
+          <Property Name="CDSERVICE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CONFIDENTIEL" Type="Boolean" />
+          <Property Name="NOM" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TYPESERVICE" Relationship="Self.FK_USERSERVICE_TYPESERVICE" FromRole="USERSERVICE" ToRole="TYPESERVICE" />
+          <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_USERSERVICE_UTILISATEUR" FromRole="USERSERVICE" ToRole="UTILISATEUR" />
+        </EntityType>
+        <EntityType Name="UTILISATEUR">
+          <Key>
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDUSER" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCONFIRMATION" Type="Int16" Nullable="false" />
+          <Property Name="PSEUDO" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="NOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PRENOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DATENAISSANCE" Type="DateTime" Precision="3" />
+          <Property Name="ADDRESSLATITUDE" Type="Single" />
+          <Property Name="ADDRESSLONGITUDE" Type="Single" />
+          <Property Name="ADDRESSNO" Type="Int16" />
+          <Property Name="ADDRESSROUTE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESSLOCALITY" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESSPOSTALCODE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESSCOMPLEMENT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PHOTO" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="CONFIDENTIEL" Type="Boolean" />
+          <Property Name="CONNECTE" Type="Boolean" />
+          <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_ACTIVITE_UTILISATEUR" FromRole="UTILISATEUR" ToRole="ACTIVITE" />
+          <NavigationProperty Name="CENTREINTERET" Relationship="Self.FK_CENTREINTERET_UTILISATEUR" FromRole="UTILISATEUR" ToRole="CENTREINTERET" />
+          <NavigationProperty Name="COMMENTAIREACTIVITE" Relationship="Self.FK_COMMENTAIREACTIVITE_UTILISATEUR" FromRole="UTILISATEUR" ToRole="COMMENTAIREACTIVITE" />
+          <NavigationProperty Name="COMMUNAUTE" Relationship="Self.FK_COMMUNAUTE_UTILISATEUR" FromRole="UTILISATEUR" ToRole="COMMUNAUTE" />
+          <NavigationProperty Name="CONFIRMATION" Relationship="Self.FK_CONFIRMATION_UTILISATEUR" FromRole="UTILISATEUR" ToRole="CONFIRMATION" />
+          <NavigationProperty Name="CONFIRMATION1" Relationship="Self.FK_UTILISATEUR_CONFIRMATION" FromRole="UTILISATEUR" ToRole="CONFIRMATION" />
+          <NavigationProperty Name="MESSAGEPRIVE" Relationship="Self.FK_MESSAGEPRIVE_UTILISATEUR" FromRole="UTILISATEUR" ToRole="MESSAGEPRIVE" />
+          <NavigationProperty Name="MESSAGEPRIVE1" Relationship="Self.FK_MESSAGEPRIVE_UTILISATEUR1" FromRole="UTILISATEUR" ToRole="MESSAGEPRIVE" />
+          <NavigationProperty Name="MESSAGEPRIVE2" Relationship="Self.FK_MESSAGEPRIVE_UTILISATEUR2" FromRole="UTILISATEUR" ToRole="MESSAGEPRIVE" />
+          <NavigationProperty Name="USEROBJET" Relationship="Self.FK_USEROBJET_UTILISATEUR" FromRole="UTILISATEUR" ToRole="USEROBJET" />
+          <NavigationProperty Name="USERSERVICE" Relationship="Self.FK_USERSERVICE_UTILISATEUR" FromRole="UTILISATEUR" ToRole="USERSERVICE" />
+          <NavigationProperty Name="CENTREINTERET1" Relationship="Self.USERCENTREINTERET" FromRole="UTILISATEUR" ToRole="CENTREINTERET" />
+          <NavigationProperty Name="COMMUNAUTE1" Relationship="Self.USERCOMMUNAUTE" FromRole="UTILISATEUR" ToRole="COMMUNAUTE" />
+          <NavigationProperty Name="UTILISATEUR1" Relationship="Self.USERCONFIANCE" FromRole="UTILISATEUR" ToRole="UTILISATEUR1" />
+          <NavigationProperty Name="UTILISATEUR2" Relationship="Self.USERCONFIANCE" FromRole="UTILISATEUR1" ToRole="UTILISATEUR" />
+        </EntityType>
+        <Association Name="FK_ACTIVITE_COMMUNAUTE">
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="1" />
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMUNAUTE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="ACTIVITE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTIVITE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="ACTIVITE">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTUS_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="ACTUS" Type="Self.ACTUS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="ACTUS">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BONPLAN_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="BONPLAN" Type="Self.BONPLAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="BONPLAN">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENTAIREACTIVITE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="COMMENTAIREACTIVITE" Type="Self.COMMENTAIREACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="COMMENTAIREACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COVOITURAGE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="COVOITURAGE" Type="Self.COVOITURAGE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="COVOITURAGE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENEMENT_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="EVENEMENT" Type="Self.EVENEMENT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="EVENEMENT">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FICHIERCOMPLEMENTAIRE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="FICHIERCOMPLEMENTAIRE" Type="Self.FICHIERCOMPLEMENTAIRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="FICHIERCOMPLEMENTAIRE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJET_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="OBJET" Type="Self.OBJET" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="OBJET">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJETPERDU_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="OBJETPERDU" Type="Self.OBJETPERDU" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="OBJETPERDU">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SONDAGE_ACTIVITE">
+          <End Role="ACTIVITE" Type="Self.ACTIVITE" Multiplicity="1" />
+          <End Role="SONDAGE" Type="Self.SONDAGE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVITE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="SONDAGE">
+              <PropertyRef Name="IDACTIVITE" />
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTUS_TYPEACTUS">
+          <End Role="TYPEACTUS" Type="Self.TYPEACTUS" Multiplicity="1" />
+          <End Role="ACTUS" Type="Self.ACTUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEACTUS">
+              <PropertyRef Name="CDTYPEACTUS" />
+            </Principal>
+            <Dependent Role="ACTUS">
+              <PropertyRef Name="CDTYPEACTUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTREINTERET_COMMUNAUTE">
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="1" />
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMUNAUTE">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Principal>
+            <Dependent Role="CENTREINTERET">
+              <PropertyRef Name="IDCOMMUNAUTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTREINTERET_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="CENTREINTERET">
+              <PropertyRef Name="IDUSER_ADMIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENTAIREACTIVITE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="COMMENTAIREACTIVITE" Type="Self.COMMENTAIREACTIVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="COMMENTAIREACTIVITE">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMUNAUTE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="COMMUNAUTE">
+              <PropertyRef Name="IDUSER_ADMIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONFIRMATION_TYPECONFIRMATION">
+          <End Role="TYPECONFIRMATION" Type="Self.TYPECONFIRMATION" Multiplicity="1" />
+          <End Role="CONFIRMATION" Type="Self.CONFIRMATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPECONFIRMATION">
+              <PropertyRef Name="CDCONFIRMATION" />
+            </Principal>
+            <Dependent Role="CONFIRMATION">
+              <PropertyRef Name="CDCONFIRMATION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONFIRMATION_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="0..1" />
+          <End Role="CONFIRMATION" Type="Self.CONFIRMATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="CONFIRMATION">
+              <PropertyRef Name="IDUSER_CONFIRME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UTILISATEUR_CONFIRMATION">
+          <End Role="CONFIRMATION" Type="Self.CONFIRMATION" Multiplicity="1" />
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONFIRMATION">
+              <PropertyRef Name="IDCONFIRMATION" />
+            </Principal>
+            <Dependent Role="UTILISATEUR">
+              <PropertyRef Name="IDCONFIRMATION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGEPRIVE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="MESSAGEPRIVE" Type="Self.MESSAGEPRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="MESSAGEPRIVE">
+              <PropertyRef Name="IDUSER_SEND" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGEPRIVE_UTILISATEUR1">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="MESSAGEPRIVE" Type="Self.MESSAGEPRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="MESSAGEPRIVE">
+              <PropertyRef Name="IDUSER_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MESSAGEPRIVE_UTILISATEUR2">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="MESSAGEPRIVE" Type="Self.MESSAGEPRIVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="MESSAGEPRIVE">
+              <PropertyRef Name="IDUSER_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJET_TYPEOBJET">
+          <End Role="TYPEOBJET" Type="Self.TYPEOBJET" Multiplicity="1" />
+          <End Role="OBJET" Type="Self.OBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEOBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Principal>
+            <Dependent Role="OBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OBJET_TYPEPROPOSITIONOBJET">
+          <End Role="TYPEPROPOSITIONOBJET" Type="Self.TYPEPROPOSITIONOBJET" Multiplicity="1" />
+          <End Role="OBJET" Type="Self.OBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEPROPOSITIONOBJET">
+              <PropertyRef Name="CDPROPOSITIONOBJET" />
+            </Principal>
+            <Dependent Role="OBJET">
+              <PropertyRef Name="CDPROPOSITIONOBJET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_TYPEPROPOSITIONSERVICE">
+          <End Role="TYPEPROPOSITIONSERVICE" Type="Self.TYPEPROPOSITIONSERVICE" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEPROPOSITIONSERVICE">
+              <PropertyRef Name="CDPROPOSITIONSERVICE" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="CDPROPOSITIONSERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE_TYPESERVICE">
+          <End Role="TYPESERVICE" Type="Self.TYPESERVICE" Multiplicity="1" />
+          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPESERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Principal>
+            <Dependent Role="SERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USEROBJET_TYPEOBJET">
+          <End Role="TYPEOBJET" Type="Self.TYPEOBJET" Multiplicity="1" />
+          <End Role="USEROBJET" Type="Self.USEROBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEOBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Principal>
+            <Dependent Role="USEROBJET">
+              <PropertyRef Name="CDOBJET" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERSERVICE_TYPESERVICE">
+          <End Role="TYPESERVICE" Type="Self.TYPESERVICE" Multiplicity="1" />
+          <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPESERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Principal>
+            <Dependent Role="USERSERVICE">
+              <PropertyRef Name="CDSERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USEROBJET_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USEROBJET" Type="Self.USEROBJET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USEROBJET">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERSERVICE_UTILISATEUR">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="1" />
+          <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILISATEUR">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="USERSERVICE">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CENTRETYPEINTERETS">
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="*" />
+          <End Role="TYPECENTREINTERET" Type="Self.TYPECENTREINTERET" Multiplicity="*" />
+        </Association>
+        <Association Name="USERCENTREINTERET">
+          <End Role="CENTREINTERET" Type="Self.CENTREINTERET" Multiplicity="*" />
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="*" />
+        </Association>
+        <Association Name="USERCOMMUNAUTE">
+          <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="*" />
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="*" />
+        </Association>
+        <Association Name="USERCONFIANCE">
+          <End Role="UTILISATEUR" Type="Self.UTILISATEUR" Multiplicity="*" />
+          <End Role="UTILISATEUR1" Type="Self.UTILISATEUR" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="entrevoisinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTIVITE" EntityType="Self.ACTIVITE" />
+          <EntitySet Name="ACTUS" EntityType="Self.ACTUS" />
+          <EntitySet Name="BONPLAN" EntityType="Self.BONPLAN" />
+          <EntitySet Name="CENTREINTERET" EntityType="Self.CENTREINTERET" />
+          <EntitySet Name="COMMENTAIREACTIVITE" EntityType="Self.COMMENTAIREACTIVITE" />
+          <EntitySet Name="COMMUNAUTE" EntityType="Self.COMMUNAUTE" />
+          <EntitySet Name="CONFIRMATION" EntityType="Self.CONFIRMATION" />
+          <EntitySet Name="COVOITURAGE" EntityType="Self.COVOITURAGE" />
+          <EntitySet Name="EVENEMENT" EntityType="Self.EVENEMENT" />
+          <EntitySet Name="FICHIERCOMPLEMENTAIRE" EntityType="Self.FICHIERCOMPLEMENTAIRE" />
+          <EntitySet Name="MESSAGEPRIVE" EntityType="Self.MESSAGEPRIVE" />
+          <EntitySet Name="OBJET" EntityType="Self.OBJET" />
+          <EntitySet Name="OBJETPERDU" EntityType="Self.OBJETPERDU" />
+          <EntitySet Name="SERVICE" EntityType="Self.SERVICE" />
+          <EntitySet Name="SONDAGE" EntityType="Self.SONDAGE" />
+          <EntitySet Name="TYPEACTUS" EntityType="Self.TYPEACTUS" />
+          <EntitySet Name="TYPECENTREINTERET" EntityType="Self.TYPECENTREINTERET" />
+          <EntitySet Name="TYPECONFIRMATION" EntityType="Self.TYPECONFIRMATION" />
+          <EntitySet Name="TYPEOBJET" EntityType="Self.TYPEOBJET" />
+          <EntitySet Name="TYPEPROPOSITIONOBJET" EntityType="Self.TYPEPROPOSITIONOBJET" />
+          <EntitySet Name="TYPEPROPOSITIONSERVICE" EntityType="Self.TYPEPROPOSITIONSERVICE" />
+          <EntitySet Name="TYPESERVICE" EntityType="Self.TYPESERVICE" />
+          <EntitySet Name="USEROBJET" EntityType="Self.USEROBJET" />
+          <EntitySet Name="USERSERVICE" EntityType="Self.USERSERVICE" />
+          <EntitySet Name="UTILISATEUR" EntityType="Self.UTILISATEUR" />
+          <AssociationSet Name="FK_ACTIVITE_COMMUNAUTE" Association="Self.FK_ACTIVITE_COMMUNAUTE">
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTIVITE_UTILISATEUR" Association="Self.FK_ACTIVITE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTUS_ACTIVITE" Association="Self.FK_ACTUS_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="ACTUS" EntitySet="ACTUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BONPLAN_ACTIVITE" Association="Self.FK_BONPLAN_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="BONPLAN" EntitySet="BONPLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENTAIREACTIVITE_ACTIVITE" Association="Self.FK_COMMENTAIREACTIVITE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="COMMENTAIREACTIVITE" EntitySet="COMMENTAIREACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COVOITURAGE_ACTIVITE" Association="Self.FK_COVOITURAGE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="COVOITURAGE" EntitySet="COVOITURAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENEMENT_ACTIVITE" Association="Self.FK_EVENEMENT_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="EVENEMENT" EntitySet="EVENEMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FICHIERCOMPLEMENTAIRE_ACTIVITE" Association="Self.FK_FICHIERCOMPLEMENTAIRE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="FICHIERCOMPLEMENTAIRE" EntitySet="FICHIERCOMPLEMENTAIRE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJET_ACTIVITE" Association="Self.FK_OBJET_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="OBJET" EntitySet="OBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJETPERDU_ACTIVITE" Association="Self.FK_OBJETPERDU_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="OBJETPERDU" EntitySet="OBJETPERDU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_ACTIVITE" Association="Self.FK_SERVICE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="SERVICE" EntitySet="SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SONDAGE_ACTIVITE" Association="Self.FK_SONDAGE_ACTIVITE">
+            <End Role="ACTIVITE" EntitySet="ACTIVITE" />
+            <End Role="SONDAGE" EntitySet="SONDAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTUS_TYPEACTUS" Association="Self.FK_ACTUS_TYPEACTUS">
+            <End Role="TYPEACTUS" EntitySet="TYPEACTUS" />
+            <End Role="ACTUS" EntitySet="ACTUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTREINTERET_COMMUNAUTE" Association="Self.FK_CENTREINTERET_COMMUNAUTE">
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTREINTERET_UTILISATEUR" Association="Self.FK_CENTREINTERET_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENTAIREACTIVITE_UTILISATEUR" Association="Self.FK_COMMENTAIREACTIVITE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="COMMENTAIREACTIVITE" EntitySet="COMMENTAIREACTIVITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMUNAUTE_UTILISATEUR" Association="Self.FK_COMMUNAUTE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONFIRMATION_TYPECONFIRMATION" Association="Self.FK_CONFIRMATION_TYPECONFIRMATION">
+            <End Role="TYPECONFIRMATION" EntitySet="TYPECONFIRMATION" />
+            <End Role="CONFIRMATION" EntitySet="CONFIRMATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONFIRMATION_UTILISATEUR" Association="Self.FK_CONFIRMATION_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="CONFIRMATION" EntitySet="CONFIRMATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UTILISATEUR_CONFIRMATION" Association="Self.FK_UTILISATEUR_CONFIRMATION">
+            <End Role="CONFIRMATION" EntitySet="CONFIRMATION" />
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGEPRIVE_UTILISATEUR" Association="Self.FK_MESSAGEPRIVE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="MESSAGEPRIVE" EntitySet="MESSAGEPRIVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGEPRIVE_UTILISATEUR1" Association="Self.FK_MESSAGEPRIVE_UTILISATEUR1">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="MESSAGEPRIVE" EntitySet="MESSAGEPRIVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MESSAGEPRIVE_UTILISATEUR2" Association="Self.FK_MESSAGEPRIVE_UTILISATEUR2">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="MESSAGEPRIVE" EntitySet="MESSAGEPRIVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJET_TYPEOBJET" Association="Self.FK_OBJET_TYPEOBJET">
+            <End Role="TYPEOBJET" EntitySet="TYPEOBJET" />
+            <End Role="OBJET" EntitySet="OBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OBJET_TYPEPROPOSITIONOBJET" Association="Self.FK_OBJET_TYPEPROPOSITIONOBJET">
+            <End Role="TYPEPROPOSITIONOBJET" EntitySet="TYPEPROPOSITIONOBJET" />
+            <End Role="OBJET" EntitySet="OBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_TYPEPROPOSITIONSERVICE" Association="Self.FK_SERVICE_TYPEPROPOSITIONSERVICE">
+            <End Role="TYPEPROPOSITIONSERVICE" EntitySet="TYPEPROPOSITIONSERVICE" />
+            <End Role="SERVICE" EntitySet="SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE_TYPESERVICE" Association="Self.FK_SERVICE_TYPESERVICE">
+            <End Role="TYPESERVICE" EntitySet="TYPESERVICE" />
+            <End Role="SERVICE" EntitySet="SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USEROBJET_TYPEOBJET" Association="Self.FK_USEROBJET_TYPEOBJET">
+            <End Role="TYPEOBJET" EntitySet="TYPEOBJET" />
+            <End Role="USEROBJET" EntitySet="USEROBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERSERVICE_TYPESERVICE" Association="Self.FK_USERSERVICE_TYPESERVICE">
+            <End Role="TYPESERVICE" EntitySet="TYPESERVICE" />
+            <End Role="USERSERVICE" EntitySet="USERSERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USEROBJET_UTILISATEUR" Association="Self.FK_USEROBJET_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USEROBJET" EntitySet="USEROBJET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERSERVICE_UTILISATEUR" Association="Self.FK_USERSERVICE_UTILISATEUR">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="USERSERVICE" EntitySet="USERSERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="CENTRETYPEINTERETS" Association="Self.CENTRETYPEINTERETS">
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+            <End Role="TYPECENTREINTERET" EntitySet="TYPECENTREINTERET" />
+          </AssociationSet>
+          <AssociationSet Name="USERCENTREINTERET" Association="Self.USERCENTREINTERET">
+            <End Role="CENTREINTERET" EntitySet="CENTREINTERET" />
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+          </AssociationSet>
+          <AssociationSet Name="USERCOMMUNAUTE" Association="Self.USERCOMMUNAUTE">
+            <End Role="COMMUNAUTE" EntitySet="COMMUNAUTE" />
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+          </AssociationSet>
+          <AssociationSet Name="USERCONFIANCE" Association="Self.USERCONFIANCE">
+            <End Role="UTILISATEUR" EntitySet="UTILISATEUR" />
+            <End Role="UTILISATEUR1" EntitySet="UTILISATEUR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="entrevoisinModelStoreContainer" CdmEntityContainer="entrevoisinEntities">
+          <EntitySetMapping Name="ACTIVITE">
+            <EntityTypeMapping TypeName="entrevoisinModel.ACTIVITE">
+              <MappingFragment StoreEntitySet="ACTIVITE">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACTUS">
+            <EntityTypeMapping TypeName="entrevoisinModel.ACTUS">
+              <MappingFragment StoreEntitySet="ACTUS">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="CDTYPEACTUS" ColumnName="CDTYPEACTUS" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BONPLAN">
+            <EntityTypeMapping TypeName="entrevoisinModel.BONPLAN">
+              <MappingFragment StoreEntitySet="BONPLAN">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="SITE" ColumnName="SITE" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CENTREINTERET">
+            <EntityTypeMapping TypeName="entrevoisinModel.CENTREINTERET">
+              <MappingFragment StoreEntitySet="CENTREINTERET">
+                <ScalarProperty Name="IDCENTREINTERET" ColumnName="IDCENTREINTERET" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="IDUSER_ADMIN" ColumnName="IDUSER_ADMIN" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMENTAIREACTIVITE">
+            <EntityTypeMapping TypeName="entrevoisinModel.COMMENTAIREACTIVITE">
+              <MappingFragment StoreEntitySet="COMMENTAIREACTIVITE">
+                <ScalarProperty Name="NOCOMMENTAIRE" ColumnName="NOCOMMENTAIRE" />
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="CONTENU" ColumnName="CONTENU" />
+                <ScalarProperty Name="DATEENVOIE" ColumnName="DATEENVOIE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMUNAUTE">
+            <EntityTypeMapping TypeName="entrevoisinModel.COMMUNAUTE">
+              <MappingFragment StoreEntitySet="COMMUNAUTE">
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="IDUSER_ADMIN" ColumnName="IDUSER_ADMIN" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="ADDRESSLATITUDE" ColumnName="ADDRESSLATITUDE" />
+                <ScalarProperty Name="ADDRESSLONGITUDE" ColumnName="ADDRESSLONGITUDE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIRMATION">
+            <EntityTypeMapping TypeName="entrevoisinModel.CONFIRMATION">
+              <MappingFragment StoreEntitySet="CONFIRMATION">
+                <ScalarProperty Name="IDCONFIRMATION" ColumnName="IDCONFIRMATION" />
+                <ScalarProperty Name="CDCONFIRMATION" ColumnName="CDCONFIRMATION" />
+                <ScalarProperty Name="IDUSER_CONFIRME" ColumnName="IDUSER_CONFIRME" />
+                <ScalarProperty Name="CONFIRME" ColumnName="CONFIRME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVOITURAGE">
+            <EntityTypeMapping TypeName="entrevoisinModel.COVOITURAGE">
+              <MappingFragment StoreEntitySet="COVOITURAGE">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="LIEUDEPART" ColumnName="LIEUDEPART" />
+                <ScalarProperty Name="DATEDEPART" ColumnName="DATEDEPART" />
+                <ScalarProperty Name="LIEUARRIVE" ColumnName="LIEUARRIVE" />
+                <ScalarProperty Name="DATEARRIVE" ColumnName="DATEARRIVE" />
+                <ScalarProperty Name="VEHICULE" ColumnName="VEHICULE" />
+                <ScalarProperty Name="PARTICIPATION" ColumnName="PARTICIPATION" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVENEMENT">
+            <EntityTypeMapping TypeName="entrevoisinModel.EVENEMENT">
+              <MappingFragment StoreEntitySet="EVENEMENT">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="TITRE" ColumnName="TITRE" />
+                <ScalarProperty Name="DATEEVENT" ColumnName="DATEEVENT" />
+                <ScalarProperty Name="LIEU" ColumnName="LIEU" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FICHIERCOMPLEMENTAIRE">
+            <EntityTypeMapping TypeName="entrevoisinModel.FICHIERCOMPLEMENTAIRE">
+              <MappingFragment StoreEntitySet="FICHIERCOMPLEMENTAIRE">
+                <ScalarProperty Name="NOFICHIER" ColumnName="NOFICHIER" />
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGEPRIVE">
+            <EntityTypeMapping TypeName="entrevoisinModel.MESSAGEPRIVE">
+              <MappingFragment StoreEntitySet="MESSAGEPRIVE">
+                <ScalarProperty Name="IDUSER_2" ColumnName="IDUSER_2" />
+                <ScalarProperty Name="IDUSER_1" ColumnName="IDUSER_1" />
+                <ScalarProperty Name="IDMESSAGE" ColumnName="IDMESSAGE" />
+                <ScalarProperty Name="IDUSER_SEND" ColumnName="IDUSER_SEND" />
+                <ScalarProperty Name="DATEENVOI" ColumnName="DATEENVOI" />
+                <ScalarProperty Name="CONTENU" ColumnName="CONTENU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBJET">
+            <EntityTypeMapping TypeName="entrevoisinModel.OBJET">
+              <MappingFragment StoreEntitySet="OBJET">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="CDPROPOSITIONOBJET" ColumnName="CDPROPOSITIONOBJET" />
+                <ScalarProperty Name="CDOBJET" ColumnName="CDOBJET" />
+                <ScalarProperty Name="TITRE" ColumnName="TITRE" />
+                <ScalarProperty Name="PRIX" ColumnName="PRIX" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBJETPERDU">
+            <EntityTypeMapping TypeName="entrevoisinModel.OBJETPERDU">
+              <MappingFragment StoreEntitySet="OBJETPERDU">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="LIEU" ColumnName="LIEU" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE">
+            <EntityTypeMapping TypeName="entrevoisinModel.SERVICE">
+              <MappingFragment StoreEntitySet="SERVICE">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="CDPROPOSITIONSERVICE" ColumnName="CDPROPOSITIONSERVICE" />
+                <ScalarProperty Name="CDSERVICE" ColumnName="CDSERVICE" />
+                <ScalarProperty Name="TITRE" ColumnName="TITRE" />
+                <ScalarProperty Name="PRIX" ColumnName="PRIX" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SONDAGE">
+            <EntityTypeMapping TypeName="entrevoisinModel.SONDAGE">
+              <MappingFragment StoreEntitySet="SONDAGE">
+                <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
+                <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+                <ScalarProperty Name="NBOUI" ColumnName="NBOUI" />
+                <ScalarProperty Name="NBNON" ColumnName="NBNON" />
+                <ScalarProperty Name="DATEFIN" ColumnName="DATEFIN" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEACTUS">
+            <EntityTypeMapping TypeName="entrevoisinModel.TYPEACTUS">
+              <MappingFragment StoreEntitySet="TYPEACTUS">
+                <ScalarProperty Name="CDTYPEACTUS" ColumnName="CDTYPEACTUS" />
+                <ScalarProperty Name="LIBELLE" ColumnName="LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPECENTREINTERET">
+            <EntityTypeMapping TypeName="entrevoisinModel.TYPECENTREINTERET">
+              <MappingFragment StoreEntitySet="TYPECENTREINTERET">
+                <ScalarProperty Name="CDTYPEINTERET" ColumnName="CDTYPEINTERET" />
+                <ScalarProperty Name="LIBELLE" ColumnName="LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPECONFIRMATION">
+            <EntityTypeMapping TypeName="entrevoisinModel.TYPECONFIRMATION">
+              <MappingFragment StoreEntitySet="TYPECONFIRMATION">
+                <ScalarProperty Name="CDCONFIRMATION" ColumnName="CDCONFIRMATION" />
+                <ScalarProperty Name="LIBELLE" ColumnName="LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEOBJET">
+            <EntityTypeMapping TypeName="entrevoisinModel.TYPEOBJET">
+              <MappingFragment StoreEntitySet="TYPEOBJET">
+                <ScalarProperty Name="CDOBJET" ColumnName="CDOBJET" />
+                <ScalarProperty Name="LIBELLEOBJET" ColumnName="LIBELLEOBJET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEPROPOSITIONOBJET">
+            <EntityTypeMapping TypeName="entrevoisinModel.TYPEPROPOSITIONOBJET">
+              <MappingFragment StoreEntitySet="TYPEPROPOSITIONOBJET">
+                <ScalarProperty Name="CDPROPOSITIONOBJET" ColumnName="CDPROPOSITIONOBJET" />
+                <ScalarProperty Name="LIBELLE" ColumnName="LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEPROPOSITIONSERVICE">
+            <EntityTypeMapping TypeName="entrevoisinModel.TYPEPROPOSITIONSERVICE">
+              <MappingFragment StoreEntitySet="TYPEPROPOSITIONSERVICE">
+                <ScalarProperty Name="CDPROPOSITIONSERVICE" ColumnName="CDPROPOSITIONSERVICE" />
+                <ScalarProperty Name="LIBELLE" ColumnName="LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPESERVICE">
+            <EntityTypeMapping TypeName="entrevoisinModel.TYPESERVICE">
+              <MappingFragment StoreEntitySet="TYPESERVICE">
+                <ScalarProperty Name="CDSERVICE" ColumnName="CDSERVICE" />
+                <ScalarProperty Name="LIBELLESERVICE" ColumnName="LIBELLESERVICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USEROBJET">
+            <EntityTypeMapping TypeName="entrevoisinModel.USEROBJET">
+              <MappingFragment StoreEntitySet="USEROBJET">
+                <ScalarProperty Name="NOOBJET" ColumnName="NOOBJET" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="CDOBJET" ColumnName="CDOBJET" />
+                <ScalarProperty Name="CONFIDENTIEL" ColumnName="CONFIDENTIEL" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERSERVICE">
+            <EntityTypeMapping TypeName="entrevoisinModel.USERSERVICE">
+              <MappingFragment StoreEntitySet="USERSERVICE">
+                <ScalarProperty Name="NOSERVICE" ColumnName="NOSERVICE" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="CDSERVICE" ColumnName="CDSERVICE" />
+                <ScalarProperty Name="CONFIDENTIEL" ColumnName="CONFIDENTIEL" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UTILISATEUR">
+            <EntityTypeMapping TypeName="entrevoisinModel.UTILISATEUR">
+              <MappingFragment StoreEntitySet="UTILISATEUR">
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="IDCONFIRMATION" ColumnName="IDCONFIRMATION" />
+                <ScalarProperty Name="PSEUDO" ColumnName="PSEUDO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="PRENOM" ColumnName="PRENOM" />
+                <ScalarProperty Name="DATENAISSANCE" ColumnName="DATENAISSANCE" />
+                <ScalarProperty Name="ADDRESSLATITUDE" ColumnName="ADDRESSLATITUDE" />
+                <ScalarProperty Name="ADDRESSLONGITUDE" ColumnName="ADDRESSLONGITUDE" />
+                <ScalarProperty Name="ADDRESSNO" ColumnName="ADDRESSNO" />
+                <ScalarProperty Name="ADDRESSROUTE" ColumnName="ADDRESSROUTE" />
+                <ScalarProperty Name="ADDRESSLOCALITY" ColumnName="ADDRESSLOCALITY" />
+                <ScalarProperty Name="ADDRESSPOSTALCODE" ColumnName="ADDRESSPOSTALCODE" />
+                <ScalarProperty Name="ADDRESSCOMPLEMENT" ColumnName="ADDRESSCOMPLEMENT" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+                <ScalarProperty Name="CONFIDENTIEL" ColumnName="CONFIDENTIEL" />
+                <ScalarProperty Name="CONNECTE" ColumnName="CONNECTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CENTRETYPEINTERETS" TypeName="entrevoisinModel.CENTRETYPEINTERETS" StoreEntitySet="CENTRETYPEINTERETS">
+            <EndProperty Name="CENTREINTERET">
+              <ScalarProperty Name="IDCENTREINTERET" ColumnName="IDCENTREINTERET" />
+              <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+            </EndProperty>
+            <EndProperty Name="TYPECENTREINTERET">
+              <ScalarProperty Name="CDTYPEINTERET" ColumnName="CDTYPEINTERET" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="USERCENTREINTERET" TypeName="entrevoisinModel.USERCENTREINTERET" StoreEntitySet="USERCENTREINTERET">
+            <EndProperty Name="CENTREINTERET">
+              <ScalarProperty Name="IDCENTREINTERET" ColumnName="IDCENTREINTERET" />
+              <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+            </EndProperty>
+            <EndProperty Name="UTILISATEUR">
+              <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="USERCOMMUNAUTE" TypeName="entrevoisinModel.USERCOMMUNAUTE" StoreEntitySet="USERCOMMUNAUTE">
+            <EndProperty Name="COMMUNAUTE">
+              <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
+            </EndProperty>
+            <EndProperty Name="UTILISATEUR">
+              <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="USERCONFIANCE" TypeName="entrevoisinModel.USERCONFIANCE" StoreEntitySet="USERCONFIANCE">
+            <EndProperty Name="UTILISATEUR">
+              <ScalarProperty Name="IDUSER" ColumnName="IDUSER_1" />
+            </EndProperty>
+            <EndProperty Name="UTILISATEUR1">
+              <ScalarProperty Name="IDUSER" ColumnName="IDUSER_2" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,9 +1,9 @@
 ﻿@{
-    if (Session["TYPE"] == "U")
+    if (Session["TYPE_USER"] == "U")
     {
         Layout = "~/Views/Shared/_LayoutUser.cshtml";
     }
-    else if (Session["TYPE"] == "A")
+    else if (Session["TYPE_USER"] == "A")
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     }

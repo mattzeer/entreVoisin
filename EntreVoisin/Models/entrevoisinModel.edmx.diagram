@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68a74470a608410ebe3c9da49a0d27dd" Name="Diagram1">
+        <EntityTypeShape EntityType="entrevoisinModel.ACTIVITE" Width="1.5" PointX="9.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.ACTUS" Width="1.5" PointX="15" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.BONPLAN" Width="1.5" PointX="12" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.CENTREINTERET" Width="1.5" PointX="12.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.COMMENTAIREACTIVITE" Width="1.5" PointX="13" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.COMMUNAUTE" Width="1.5" PointX="7.5" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.CONFIRMATION" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.COVOITURAGE" Width="1.5" PointX="12" PointY="40.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.EVENEMENT" Width="1.5" PointX="12" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.FICHIERCOMPLEMENTAIRE" Width="1.5" PointX="12" PointY="47.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.MESSAGEPRIVE" Width="1.5" PointX="7.5" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.OBJET" Width="1.5" PointX="15" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.OBJETPERDU" Width="1.5" PointX="12" PointY="51" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.SERVICE" Width="1.5" PointX="18" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.SONDAGE" Width="1.5" PointX="12" PointY="57.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.TYPEACTUS" Width="1.5" PointX="12.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.TYPECENTREINTERET" Width="1.5" PointX="15" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.TYPECONFIRMATION" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.TYPEOBJET" Width="1.5" PointX="5.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.TYPEPROPOSITIONOBJET" Width="1.5" PointX="12.75" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.TYPEPROPOSITIONSERVICE" Width="1.5" PointX="15.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.TYPESERVICE" Width="1.5" PointX="8.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.USEROBJET" Width="1.5" PointX="7.625" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.USERSERVICE" Width="1.5" PointX="10.25" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.UTILISATEUR" Width="1.5" PointX="5.25" PointY="24.25" IsExpanded="true" />
+        <AssociationConnector Association="entrevoisinModel.FK_ACTIVITE_COMMUNAUTE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_ACTIVITE_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_ACTUS_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_BONPLAN_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_COMMENTAIREACTIVITE_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_COVOITURAGE_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_EVENEMENT_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_FICHIERCOMPLEMENTAIRE_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_OBJET_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_OBJETPERDU_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_SERVICE_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_SONDAGE_ACTIVITE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_ACTUS_TYPEACTUS" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_CENTREINTERET_COMMUNAUTE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_CENTREINTERET_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_COMMENTAIREACTIVITE_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_COMMUNAUTE_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_CONFIRMATION_TYPECONFIRMATION" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_CONFIRMATION_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_UTILISATEUR_CONFIRMATION" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_MESSAGEPRIVE_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_MESSAGEPRIVE_UTILISATEUR1" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_MESSAGEPRIVE_UTILISATEUR2" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_OBJET_TYPEOBJET" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_OBJET_TYPEPROPOSITIONOBJET" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_SERVICE_TYPEPROPOSITIONSERVICE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_SERVICE_TYPESERVICE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_USEROBJET_TYPEOBJET" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_USERSERVICE_TYPESERVICE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_USEROBJET_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.FK_USERSERVICE_UTILISATEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.CENTRETYPEINTERETS" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.USERCENTREINTERET" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.USERCOMMUNAUTE" ManuallyRouted="false" />
+        <AssociationConnector Association="entrevoisinModel.USERCONFIANCE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

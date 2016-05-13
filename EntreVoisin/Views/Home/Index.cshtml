@@ -1,5 +1,85 @@
-﻿@{
+﻿@using EntreVoisin.Models;
+@{
     ViewBag.Title = "Index";
 }
-<br />
+
+
 <h2>Index</h2>
+
+<p id="rData">
+</p>
+<button id="ButtonID">LOl</button>
+<script type="text/jscript">
+    $('#ButtonID').click(function () {
+        var url = "/Home/TellMeDate";
+        $.get(url, null, function (data) {
+            $("#rData").html(data);
+        });
+    })
+</script>
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 alert alert-warning">
+        <h2 class="text-center">Login</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" id="userid" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <button class="btn btn-warning form-control" type="submit" id="savedata"><i class="glyphicon glyphicon-log-in"></i>&nbsp;Connexion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#savedata').click(function () {
+            var data = {
+                "mail": $("#userid").val(),
+                "password": $("#password").val()
+            };
+            $.ajax({
+                url: "/Home/validateuser",
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: "application/json",
+                success: function (response) {
+                    if (response.Success) {
+                        $.get("@Url.Action("Index", "Home")", function (data) {
+                            $('.container').html(data);
+                        });
+
+                    }
+                    else
+                        window.location.href = "@Url.Action("Login", "Account")";
+                },
+                error: function () {
+                    console.log('Login Fail!!!');
+                }
+            });
+        });
+    });
+</script>
