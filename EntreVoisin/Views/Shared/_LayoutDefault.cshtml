@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Entre Voisin</title>
+    <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-wdth, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-with, initial-scale=1.0" />
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -15,9 +15,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainVisiteur"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainVisiteur"><span style="background-color:#b2dbfb;" class="icon-bar"></span><span style="background-color:#b2dbfb;" class="icon-bar"></span><span style="background-color:#b2dbfb;" class="icon-bar"></span></button>
+                
+                @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="visible-xs" href="#" data-toggle="modal" data-target="#modalConnexion"><span class="glyphicon glyphicon-log-in navbar-brand pull-right"></span></a>
             </div>
             <div class="collapse navbar-collapse" id="mainVisiteur">
                 <ul class="nav navbar-nav">
@@ -28,7 +30,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("S’inscrire", "Inscription", "Home")</li>
                     <li><a href="#" data-toggle="modal" data-target="#modalConnexion">Connexion</a></li>
-
                 </ul>
             </div>
         </div>

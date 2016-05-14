@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace EntreVoisin.Controllers
 {
-    public class UserController : Controller
+    public class InscriptionController : Controller
     {
         //
-        // GET: /User/
+        // GET: /Inscription/
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Message()
-        {
-            return View();
-        }
     }
 }

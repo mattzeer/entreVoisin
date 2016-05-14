@@ -7,37 +7,48 @@
 <head>
     <title>Entre Voisin</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-wdth, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-with, initial-scale=1.0" />
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PopupStyle.css" rel="stylesheet" type="text/css"/>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ScriptPopupBox.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainVisiteur"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainUser"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                @Html.ActionLink("Accueil", "Index", "User", new { area = "" }, new { @class = "navbar-brand" })
 
             </div>
-            <div class="collapse navbar-collapse" id="mainVisiteur">
+            <div class="collapse navbar-collapse" id="mainUser">
                 <ul class="nav navbar-nav">
                     <!-- Nav Menu-->
                     <li><a>@u.PSEUDO</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-
+                    <li class="dropdown">
+                        <a data-toggle="dropdown"><span class="glyphicon glyphicon-inbox"></span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="divusers">
+                            <li class="dropdown-header">Utilisateur connecté</li>
+                            <li class="divider">
+                            <li><a href="javascript:register_popup('matt', 'Mathieu');">Mathieu</a></li>
+                            <li><a href="javascript:register_popup('zeer', 'Mattzeer');">Mattzeer</a></li>
+                            <li><a href="javascript:register_popup('alway', 'Yolo');">Yolo</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Bonjour @u.PSEUDO <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Créer un centre d'intéret", "Home", "User")</li>
-                            <li>@Html.ActionLink("La communauté", "Home", "User")</li>
-                            <li>@Html.ActionLink("Votre profil", "Home", "User")</li>
+                            <li>@Html.ActionLink("Créer un centre d'intéret", "Index", "User")</li>
+                            <li>@Html.ActionLink("La communauté", "Index", "User")</li>
+                            <li>@Html.ActionLink("Votre profil", "Index", "User")</li>
                             <li class="divider">
-                            <li>@Html.ActionLink("Nous contacter", "", "")</li>
-                            <li>@Html.ActionLink("Paramètres", "Home", "Home")</li>
+                            <li>@Html.ActionLink("Nous contacter", "Index", "User")</li>
+                            <li>@Html.ActionLink("Paramètres", "Index", "User")</li>
                             <li>@Html.ActionLink("Déconnexion", "Deconnexion", "Home")</li>
                         </ul>
                     </li>
@@ -45,51 +56,19 @@
             </div>
         </div>
     </nav>
-    <div id="modalConnexion" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title">Connexion</h3>
-                </div>
-                <div class="modal-body">
-                    <!--BODY-->
-                    <br />
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            @using (Html.BeginForm("Connexion", "Home"))
-                                {
-                                <div class="form-group">
-                                    @Html.Label("Email")
-                                    @Html.TextBox("email", "", new { @class = "form-control", placeholder = "Entrez votre Email" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.Label("Mot de passe")
-                                    @Html.Password("mdp", "", new { @class = "form-control", placeholder = "Entrez votre mot de passe" })
-                                </div>
-                                <center><button type="submit" class="btn btn-primary">Connexion</button></center>
-
-                                }
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <br />
     <br />
-    <div class="container-fluid">
+    <br />
+    <div class="container">
         @RenderBody()
         <hr />
         <footer class="col-lg-12"></footer>
     </div>
+    <script>
+
+    </script>
 
 
 </body>
+
 </html>
