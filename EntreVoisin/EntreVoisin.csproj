@@ -315,6 +315,7 @@
     <Content Include="Views\Home\Connexion.cshtml" />
     <Content Include="Views\Inscription\Index.cshtml" />
     <Content Include="Views\User\Message.cshtml" />
+    <Content Include="Views\Home\Inscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

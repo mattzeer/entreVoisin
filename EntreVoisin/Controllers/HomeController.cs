@@ -22,6 +22,14 @@ namespace EntreVoisin.Controllers
         {
             return View();
         }
+        public ActionResult Inscription()
+        {
+            return View();
+        }
+        public ActionResult Connexion()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Connexion(LoginModelView model)
