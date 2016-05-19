@@ -134,11 +134,5 @@ namespace EntreVoisin.Controllers
             }
         }
        
-
-        public ActionResult Lol()
-        {
-            ViewBag.TROLL = db.UTILISATEUR.ToList();
-            return View();
-        }
     }
 }
