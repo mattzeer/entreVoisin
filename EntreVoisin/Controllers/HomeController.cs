@@ -26,26 +26,6 @@ namespace EntreVoisin.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Inscription(InscriptionModelView model)
-        {
-            if (ModelState.IsValid)
-            {
-                using (db)
-                {
-                    UTILISATEUR u = new UTILISATEUR();
-                    u.NOM = model.nomInscription;
-                    u.PRENOM = model.prenomInscription;
-                    u.DATENAISSANCE = model.ageInscription;
-
-                    u.EMAIL = model.mailInscription;
-                    u.PASSWORD = model.motDePasseInscription;
-                    db.UTILISATEUR.Add(u);
-                    db.SaveChanges();
-                }
-            }
-            return View();
-        }
         public ActionResult Connexion()
         {
             return View();
