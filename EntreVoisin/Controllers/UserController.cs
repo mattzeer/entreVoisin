@@ -20,5 +20,11 @@ namespace EntreVoisin.Controllers
         {
             return View();
         }
+
+        public ActionResult  Lol()
+        {
+
+            return View();
+        }
     }
 }
