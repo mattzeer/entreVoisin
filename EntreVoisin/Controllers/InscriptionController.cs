@@ -16,5 +16,18 @@ namespace EntreVoisin.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Etape2(string lat, string lng)
+        {
+            ViewBag.lat = lat;
+            ViewBag.lng = lng;
+            return View();
+        }
+
+        public ActionResult Etape3()
+        {
+            return View();
+        }
+
     }
 }
