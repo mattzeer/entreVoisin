@@ -8,6 +8,10 @@ namespace EntreVoisin.Controllers
 {
     public class InscriptionController : Controller
     {
+
+        string tempLat;
+        string tempLng;
+        int tempIdCommun;
         //
         // GET: /Inscription/
 
@@ -19,6 +23,8 @@ namespace EntreVoisin.Controllers
         [HttpPost]
         public ActionResult Etape2(string lat, string lng)
         {
+            tempLat = lat;
+            tempLng = lng;
             ViewBag.lat = lat;
             ViewBag.lng = lng;
             return View();
@@ -26,6 +32,8 @@ namespace EntreVoisin.Controllers
 
         public ActionResult Etape3()
         {
+            ViewBag.Lng = tempLng;
+            ViewBag.Lat = tempLat;
             return View();
         }
 

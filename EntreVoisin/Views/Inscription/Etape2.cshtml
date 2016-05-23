@@ -2,9 +2,28 @@
     ViewBag.Title = "Etape2";
 }
 
-<h2>Etape2</h2>
+<h2>Etape 2 - Le choix de votre communauté</h2>
+<hr />
+<div class="row">
+    @using (Html.BeginForm("Etape3", "Inscription", FormMethod.Post))
+    {
+        <div class="col-lg-8">
+            <div id="googleMap" style="width:auto;height:380px;"></div>
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+                <h4>Choix de la communauté</h4>
+                <select class="form-control"></select>
+            </div>
+            <br />
+            <div class="row">
+                <button type="submit" class="btn btn-primary form-control">Valider</button>
+            </div>
 
-<div id="googleMap" style="width:500px;height:380px;"></div>
+        </div>
+    }
+    
+</div>
 
 
 <script src="http://maps.googleapis.com/maps/api/js">
@@ -46,6 +65,7 @@
         });
 
         infowindow.open(map,marker);
+
 
 
     }

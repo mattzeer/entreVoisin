@@ -184,6 +184,7 @@
       <DependentUpon>entrevoisinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GlobalModelView.cs" />
+    <Compile Include="Models\MessageDetail.cs" />
     <Compile Include="Models\MESSAGEPRIVE.cs">
       <DependentUpon>entrevoisinModel.tt</DependentUpon>
     </Compile>
@@ -220,6 +221,7 @@
     <Compile Include="Models\TYPESERVICE.cs">
       <DependentUpon>entrevoisinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserDetail.cs" />
     <Compile Include="Models\USEROBJET.cs">
       <DependentUpon>entrevoisinModel.tt</DependentUpon>
     </Compile>
@@ -317,6 +319,7 @@
     <Content Include="Views\User\Message.cshtml" />
     <Content Include="Views\Home\Inscription.cshtml" />
     <Content Include="Views\Inscription\Etape2.cshtml" />
+    <Content Include="Views\Inscription\Etape3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
