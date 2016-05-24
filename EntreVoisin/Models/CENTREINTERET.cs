@@ -24,8 +24,6 @@ namespace EntreVoisin.Models
         public short IDCOMMUNAUTE { get; set; }
         public short IDUSER_ADMIN { get; set; }
         public string NOM { get; set; }
-        public Nullable<System.DateTime> DATECREATION { get; set; }
-        public string DESCRIP { get; set; }
     
         public virtual COMMUNAUTE COMMUNAUTE { get; set; }
         public virtual UTILISATEUR UTILISATEUR { get; set; }

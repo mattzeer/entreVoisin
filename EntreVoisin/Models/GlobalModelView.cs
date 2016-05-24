@@ -16,8 +16,13 @@ namespace EntreVoisin.Models
         [Display(Name="Mot de passe")]
         public string mdp { get; set; }
     }
+
     public class InscriptionModelView
     {
+        [Required]
+        [Display(Name = "Pseudo")]
+        public String pseudo { get; set; }
+
         [Required]
         [Display(Name = "Nom")]
         public String nomInscription { get; set; }
@@ -33,10 +38,6 @@ namespace EntreVoisin.Models
         public String mailInscription { get; set; }
 
         [Required]
-        [Display(Name = "Addresse")]
-        public String addresseInscription { get; set; }
-
-        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Mot de passe")]
         public String motDePasseInscription { get; set; }
@@ -44,17 +45,28 @@ namespace EntreVoisin.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmation de Mot de passe")]
-        [Compare("motDePasseInscription", ErrorMessage = "Les mot de passe ne correspondent pas !")]
+        [Compare("motDePasseInscription", ErrorMessage = "Les mot de passe ne correspondent pas.")]
         public String confirmMotDePasseInscription { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "Date de naissance")]
         public DateTime ageInscription { get; set; }
 
-        [Required]
-        [Display(Name = "Enregistrer votre mail")]
-        public String engEmail { get; set; }
 
+    }
+
+    public class ActusActiviteModelView
+    {
+        [Required]
+        public string message { get; set; }
+
+      
+        public string cdTypeActus { get; set; }
+
+        [Required]
+        public short idUser { get; set; }
     }
 }

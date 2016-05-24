@@ -1,5 +1,7 @@
 ﻿@{
     ViewBag.Title = "Etape2";
+    string lat = (string)Session["lat"];
+    string lng = (string)Session["lng"];
 }
 
 <h2>Etape 2 - Le choix de votre communauté</h2>
@@ -30,7 +32,7 @@
 </script>
 
 <script>
-    var myCenter=new google.maps.LatLng(@ViewBag.lat,@ViewBag.lng);
+    var myCenter=new google.maps.LatLng(@lat,@lng);
 
     function initialize()
     {

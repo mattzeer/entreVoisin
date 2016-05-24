@@ -28,6 +28,10 @@
         </div>
         @Html.Hidden("lat")
         @Html.Hidden("lng")
+        @Html.Hidden("street_number")
+        @Html.Hidden("route")
+        @Html.Hidden("locality")
+        @Html.Hidden("postal_code")
     }
 </div>
 
@@ -35,7 +39,13 @@
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.
 
-    var autocomplete;
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        postal_code: 'short_name'
+    };
 
 
     function initAutocomplete() {
@@ -58,8 +68,23 @@
         document.getElementById('lat').value = place.geometry.location.lat();
         document.getElementById('lng').value = place.geometry.location.lng();
 
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+        }
 
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
 
+        for (var i = 0; i < place.address_components.length; i++) {
+
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
     }
+    // [END region_fillform]
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBffhZW6yoemiJGFZfT4joalGZQbR89kxs&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>

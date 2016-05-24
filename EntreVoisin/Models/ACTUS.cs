@@ -17,8 +17,6 @@ namespace EntreVoisin.Models
         public short IDACTIVITE { get; set; }
         public short IDCOMMUNAUTE { get; set; }
         public string CDTYPEACTUS { get; set; }
-        public string DESCRIP { get; set; }
-        public Nullable<System.DateTime> DATECREATION { get; set; }
     
         public virtual ACTIVITE ACTIVITE { get; set; }
         public virtual TYPEACTUS TYPEACTUS { get; set; }

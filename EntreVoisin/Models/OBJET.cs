@@ -20,8 +20,6 @@ namespace EntreVoisin.Models
         public string CDOBJET { get; set; }
         public string TITRE { get; set; }
         public Nullable<short> PRIX { get; set; }
-        public string DESCRIP { get; set; }
-        public Nullable<System.DateTime> DATECREATION { get; set; }
     
         public virtual ACTIVITE ACTIVITE { get; set; }
         public virtual TYPEOBJET TYPEOBJET { get; set; }

@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActiviteController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InscriptionController.cs" />
@@ -320,6 +321,8 @@
     <Content Include="Views\Home\Inscription.cshtml" />
     <Content Include="Views\Inscription\Etape2.cshtml" />
     <Content Include="Views\Inscription\Etape3.cshtml" />
+    <Content Include="Views\Inscription\Confirm.cshtml" />
+    <Content Include="Views\User\Actus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

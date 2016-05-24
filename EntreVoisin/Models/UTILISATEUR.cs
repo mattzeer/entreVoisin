@@ -40,9 +40,9 @@ namespace EntreVoisin.Models
         public string NOM { get; set; }
         public string PRENOM { get; set; }
         public Nullable<System.DateTime> DATENAISSANCE { get; set; }
-        public Nullable<float> ADDRESSLATITUDE { get; set; }
-        public Nullable<float> ADDRESSLONGITUDE { get; set; }
-        public Nullable<short> ADDRESSNO { get; set; }
+        public Nullable<decimal> ADDRESSLATITUDE { get; set; }
+        public Nullable<decimal> ADDRESSLONGITUDE { get; set; }
+        public string ADDRESSNO { get; set; }
         public string ADDRESSROUTE { get; set; }
         public string ADDRESSLOCALITY { get; set; }
         public string ADDRESSPOSTALCODE { get; set; }

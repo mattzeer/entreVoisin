@@ -22,8 +22,6 @@ namespace EntreVoisin.Models
         public Nullable<System.DateTime> DATEARRIVE { get; set; }
         public string VEHICULE { get; set; }
         public Nullable<short> PARTICIPATION { get; set; }
-        public string DESCRIP { get; set; }
-        public Nullable<System.DateTime> DATECREATION { get; set; }
     
         public virtual ACTIVITE ACTIVITE { get; set; }
     }

@@ -20,8 +20,6 @@ namespace EntreVoisin.Models
         public string CDSERVICE { get; set; }
         public string TITRE { get; set; }
         public Nullable<short> PRIX { get; set; }
-        public string DESCRIP { get; set; }
-        public Nullable<System.DateTime> DATECREATION { get; set; }
     
         public virtual ACTIVITE ACTIVITE { get; set; }
         public virtual TYPEPROPOSITIONSERVICE TYPEPROPOSITIONSERVICE { get; set; }

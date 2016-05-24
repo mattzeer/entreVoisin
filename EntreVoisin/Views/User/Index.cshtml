@@ -1,5 +1,8 @@
-﻿@{
+﻿@using EntreVoisin.Models;
+@{
+    UTILISATEUR u = (UTILISATEUR)Session["USER"];
     ViewBag.Title = "Accueil";
+    List<ACTIVITE> listActiv = ViewData.Model;
 }
 
 <style>
@@ -33,11 +36,14 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
+                                        @using (Html.BeginForm("AddActus", "Activite", FormMethod.Post))
+                                        {
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="form-group">
                                                     <label>Message de l'actualité</label>
-                                                    <textarea class="form-control" rows="4" placeholder="Description de l'actualité"></textarea>
+                                                    @Html.TextArea("message", "", new {  @class="form-control", @rows="4", placeholder="Description de l'actualité"})
+                                                    @Html.Hidden("idUser", u.IDUSER)
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -48,10 +54,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group">
-                                                    <button class="btn btn-primary form-control">Ajouter</button>
+                                                    <button type="submit" class="btn btn-primary form-control">Ajouter</button>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        }
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
@@ -414,163 +423,294 @@
         </div>
 
         <div class="col-lg-8 col-md-8" id="activite">
-            <div class="panel panel-primary" id="lel">
-                <div class="panel-heading">
-                    <div class="panel-title pull-left"><span class="glyphicon glyphicon-user"></span> Proposition d'objet</div>
-                    <div class="pull-right"><small>12 mai 2016 15:43</small></div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-lg-10">
-                                <div class="row">
-                                    <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
-                                </div>
-                                <div class="row">
-                                    <p><span class="glyphicon glyphicon-comment"></span> 34 commentaires</p>
-                                </div>
+            @foreach (ACTIVITE a in listActiv)
+            {
+                switch (a.TYPEACTIVITE)
+                {
+                    case "ACTUS":
+                        <div class="panel panel-primary" id="actus">
+                            <div class="panel-heading">
+                                <div class="panel-title pull-left"><span class="glyphicon glyphicon-info-sign"></span> Actualités</div>
+                                <div class="pull-right"><small>@a.DATECREATION</small></div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="panel-body">
                                 <div class="row">
-                                    <a href=#>Posté par Zeer</a>
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-10">
+                                            <div class="row">
+                                                <p>@a.DESCRIP</p>
+                                            </div>
+                                            <div class="row">
+                                                <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="row">
+                                                <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
 
+                                            </div>
+                                            <div class="row">
+                                                <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
-                                </div>
+                                <hr />
+                                <center>@Html.ActionLink("Voir plus d'information", "Actus", "User", new { id = a.IDACTIVITE }, new { idActus = a.IDACTIVITE })</center>
                             </div>
                         </div>
-                    </div>
-                    <hr />
-                    <center><a href="#">Voir plus d'information</a></center>
-                </div>
-            </div>
-            <div class="panel panel-default" id="2">
-                <div class="panel-heading">
-                    <div class="panel-title pull-left"><span class="glyphicon glyphicon-user"></span> Proposition d'objet</div>
-                    <div class="pull-right"><small>12 mai 2016 15:43</small></div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-lg-10">
-                                <div class="row">
-                                    <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
-                                </div>
-                                <div class="row">
-                                    <p><span class="glyphicon glyphicon-comment"></span> 34 commentaires</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="row">
-                                    <a href=#>Posté par Zeer</a>
-                                </div>
-                                <div class="row">
-                                    <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
-                                </div>
-                            </div>
+                        break;
+                        
+                    case "BONPLAN":
+                    <div class="panel panel-default" id="bonPlan">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left"><span class="glyphicon glyphicon-piggy-bank"></span> Bon plan</div>
+                            <div class="pull-right"><small>@a.DATECREATION</small></div>
+                            <div class="clearfix"></div>
                         </div>
-                    </div>
-                    <hr />
-                    <center><a href="#">Voir plus d'information</a></center>
-                </div>
-            </div>
-            <div class="panel panel-primary" id="1">
-                <div class="panel-heading">
-                    <div class="panel-title pull-left"><span class="glyphicon glyphicon-user"></span> Proposition d'objet</div>
-                    <div class="pull-right"><small>12 mai 2016 15:43</small></div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-lg-10">
-                                <div class="row">
-                                    <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
-                                </div>
-                                <div class="row">
-                                    <p><span class="glyphicon glyphicon-comment"></span> 34 commentaires</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="row">
-                                    <a href=#>Posté par Zeer</a>
-                                </div>
-                                <div class="row">
-                                    <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <center><a href="#">Voir plus d'information</a></center>
-                </div>
-            </div>
-            <div class="panel panel-primary" id="1">
-                <div class="panel-heading">
-                    <div class="panel-title pull-left"><span class="glyphicon glyphicon-user"></span> Proposition d'objet</div>
-                    <div class="pull-right"<small>12 mai 2016 15:43</small></div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-lg-10">
-                                <div class="row">
-                                    <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
-                                </div>
-                                <div class="row">
-                                    <p><span class="glyphicon glyphicon-comment"></span> 34 commentaires</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="row">
-                                    <a href=#>Posté par Zeer</a>
-                                </div>
-                                <div class="row">
-                                    <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <center><a href="#">Voir plus d'information</a></center>
-                </div>
-            </div>
-            <div class="panel panel-default" id="2">
-                <div class="panel-heading">
-                    <div class="panel-title pull-left"><span class="glyphicon glyphicon-user"></span> Proposition d'objet</div>
-                    <div class="pull-right"><small>12 mai 2016 15:43</small></div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-lg-10">
-                                <div class="row">
-                                    <p>Bonjour la communauté, je vous propose quelque objet auquel je tiens énormément mais étant donné que je vais bientôt déménager. Je décide donc je vendre ou bien donner certains objet afin de m'alleger pour mon voyage. Je vous remercie et bonne journée ! </p>
-                                </div>
-                                <div class="row">
-                                    <p><span class="glyphicon glyphicon-comment"></span> 34 commentaires</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="row">
-                                    <a href=#>Posté par Zeer</a>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <p>@a.DESCRIP</p>
+                                        </div>
+                                        <div class="row">
+                                            <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="row">
+                                            <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
 
-                                </div>
-                                <div class="row">
-                                    <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                        <div class="row">
+                                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <hr />
+                            <center><a href="#">Voir plus d'information</a></center>
                         </div>
                     </div>
-                    <hr />
-                    <center><a href="#">Voir plus d'information</a></center>
-                </div>
-            </div>
+                        break;
+                        
+                    case "COVOIT":
+                    <div class="panel panel-danger" id="covoit">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left"><span class="glyphicon glyphicon-road"></span> Covoiturage</div>
+                            <div class="pull-right"><small>@a.DATECREATION</small></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <p>@a.DESCRIP</p>
+                                        </div>
+                                        <div class="row">
+                                            <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="row">
+                                            <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
+
+                                        </div>
+                                        <div class="row">
+                                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <center><a href="#">Voir plus d'information</a></center>
+                        </div>
+                    </div>
+                        break;
+                        
+                    case "SERVICE":
+                    <div class="panel panel-success" id="service">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left"><span class="glyphicon glyphicon-wrench"></span> Proposition de service</div>
+                            <div class="pull-right"><small>@a.DATECREATION</small></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <p>@a.DESCRIP</p>
+                                        </div>
+                                        <div class="row">
+                                            <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="row">
+                                            <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
+
+                                        </div>
+                                        <div class="row">
+                                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <center><a href="#">Voir plus d'information</a></center>
+                        </div>
+                    </div>
+                        break;
+                        
+                    case "OBJET":
+                    <div class="panel panel-danger" id="objet">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left"><span class="glyphicon glyphicon-gift"></span> Proposition d'objet</div>
+                            <div class="pull-right"><small>@a.DATECREATION</small></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <p>@a.DESCRIP</p>
+                                        </div>
+                                        <div class="row">
+                                            <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="row">
+                                            <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
+
+                                        </div>
+                                        <div class="row">
+                                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <center><a href="#">Voir plus d'information</a></center>
+                        </div>
+                    </div>
+                        break;
+                        
+                    case "OBJETLOST":
+                    <div class="panel panel-primary" id="objetPerdu">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left"><span class="glyphicon glyphicon-flag"></span> Objet Perdu</div>
+                            <div class="pull-right"><small>@a.DATECREATION</small></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <p>@a.DESCRIP</p>
+                                        </div>
+                                        <div class="row">
+                                            <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="row">
+                                            <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
+
+                                        </div>
+                                        <div class="row">
+                                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <center><a href="#">Voir plus d'information</a></center>
+                        </div>
+                    </div>
+                        break;
+                        
+                    case "EVENT":
+                    <div class="panel panel-primary" id="event">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left"><span class="glyphicon glyphicon-glass"></span> Evenement</div>
+                            <div class="pull-right"><small>@a.DATECREATION</small></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <p>@a.DESCRIP</p>
+                                        </div>
+                                        <div class="row">
+                                            <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="row">
+                                            <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
+
+                                        </div>
+                                        <div class="row">
+                                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <center><a href="#">Voir plus d'information</a></center>
+                        </div>
+                    </div>
+                        break;
+                         
+                    case "SONDAGE":
+                    <div class="panel panel-default" id="sondage">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left"><span class="glyphicon glyphicon-question-sign"></span> Sondage</div>
+                            <div class="pull-right"><small>@a.DATECREATION</small></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-10">
+                                        <div class="row">
+                                            <p>@a.DESCRIP</p>
+                                        </div>
+                                        <div class="row">
+                                            <p><span class="glyphicon glyphicon-comment"></span> @a.COMMENTAIREACTIVITE.Count Commentaires</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="row">
+                                            <a href=#>Posté par @a.UTILISATEUR.PSEUDO</a>
+
+                                        </div>
+                                        <div class="row">
+                                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <center><a href="#">Voir plus d'information</a></center>
+                        </div>
+                    </div>
+                        break;
+                }
+
+
+
+            }
         </div>
 
         <div class="col-lg-2 col-md-2">

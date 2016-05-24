@@ -19,8 +19,6 @@ namespace EntreVoisin.Models
         public Nullable<short> NBOUI { get; set; }
         public Nullable<short> NBNON { get; set; }
         public Nullable<System.DateTime> DATEFIN { get; set; }
-        public string DESCRIP { get; set; }
-        public Nullable<System.DateTime> DATECREATION { get; set; }
     
         public virtual ACTIVITE ACTIVITE { get; set; }
     }

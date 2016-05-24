@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="entrevoisinModel.EVENEMENT" Width="1.5" PointX="12" PointY="44.375" IsExpanded="true" />
         <EntityTypeShape EntityType="entrevoisinModel.FICHIERCOMPLEMENTAIRE" Width="1.5" PointX="12" PointY="47.625" IsExpanded="true" />
         <EntityTypeShape EntityType="entrevoisinModel.MESSAGEPRIVE" Width="1.5" PointX="7.5" PointY="50.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="entrevoisinModel.OBJET" Width="1.5" PointX="15" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="entrevoisinModel.OBJET" Width="1.5" PointX="16" PointY="40.875" IsExpanded="true" />
         <EntityTypeShape EntityType="entrevoisinModel.OBJETPERDU" Width="1.5" PointX="12" PointY="51" IsExpanded="true" />
         <EntityTypeShape EntityType="entrevoisinModel.SERVICE" Width="1.5" PointX="18" PointY="35.625" IsExpanded="true" />
         <EntityTypeShape EntityType="entrevoisinModel.SONDAGE" Width="1.5" PointX="12" PointY="57.875" IsExpanded="true" />

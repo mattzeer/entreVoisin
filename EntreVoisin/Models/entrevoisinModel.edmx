@@ -14,6 +14,7 @@
           <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
           <Property Name="IDUSER" Type="smallint" Nullable="false" />
           <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
+          <Property Name="TYPEACTIVITE" Type="varchar" MaxLength="10" />
           <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="ACTUS">
@@ -24,8 +25,6 @@
           <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
           <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
           <Property Name="CDTYPEACTUS" Type="char" MaxLength="32" Nullable="false" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="BONPLAN">
           <Key>
@@ -35,8 +34,6 @@
           <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
           <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
           <Property Name="SITE" Type="varchar" MaxLength="128" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="CENTREINTERET">
           <Key>
@@ -105,8 +102,6 @@
           <Property Name="DATEARRIVE" Type="datetime" />
           <Property Name="VEHICULE" Type="varchar" MaxLength="128" />
           <Property Name="PARTICIPATION" Type="smallint" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="EVENEMENT">
           <Key>
@@ -118,8 +113,6 @@
           <Property Name="TITRE" Type="char" MaxLength="32" />
           <Property Name="DATEEVENT" Type="datetime" />
           <Property Name="LIEU" Type="char" MaxLength="32" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="FICHIERCOMPLEMENTAIRE">
           <Key>
@@ -155,8 +148,6 @@
           <Property Name="CDOBJET" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="TITRE" Type="char" MaxLength="32" />
           <Property Name="PRIX" Type="smallint" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="OBJETPERDU">
           <Key>
@@ -166,8 +157,6 @@
           <Property Name="IDACTIVITE" Type="smallint" Nullable="false" />
           <Property Name="IDCOMMUNAUTE" Type="smallint" Nullable="false" />
           <Property Name="LIEU" Type="char" MaxLength="32" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="SERVICE">
           <Key>
@@ -180,8 +169,6 @@
           <Property Name="CDSERVICE" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="TITRE" Type="char" MaxLength="32" />
           <Property Name="PRIX" Type="smallint" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="SONDAGE">
           <Key>
@@ -193,8 +180,6 @@
           <Property Name="NBOUI" Type="smallint" />
           <Property Name="NBNON" Type="smallint" />
           <Property Name="DATEFIN" Type="datetime" />
-          <Property Name="DESCRIP" Type="varchar" MaxLength="255" />
-          <Property Name="DATECREATION" Type="datetime" />
         </EntityType>
         <EntityType Name="TYPEACTUS">
           <Key>
@@ -305,9 +290,9 @@
           <Property Name="NOM" Type="varchar" MaxLength="128" />
           <Property Name="PRENOM" Type="varchar" MaxLength="128" />
           <Property Name="DATENAISSANCE" Type="datetime" />
-          <Property Name="ADDRESSLATITUDE" Type="real" />
-          <Property Name="ADDRESSLONGITUDE" Type="real" />
-          <Property Name="ADDRESSNO" Type="smallint" />
+          <Property Name="ADDRESSLATITUDE" Type="decimal" Precision="12" Scale="9" />
+          <Property Name="ADDRESSLONGITUDE" Type="decimal" Precision="12" Scale="9" />
+          <Property Name="ADDRESSNO" Type="varchar" MaxLength="32" />
           <Property Name="ADDRESSROUTE" Type="varchar" MaxLength="128" />
           <Property Name="ADDRESSLOCALITY" Type="varchar" MaxLength="128" />
           <Property Name="ADDRESSPOSTALCODE" Type="varchar" MaxLength="128" />
@@ -1021,6 +1006,7 @@
           <NavigationProperty Name="OBJETPERDU" Relationship="Self.FK_OBJETPERDU_ACTIVITE" FromRole="ACTIVITE" ToRole="OBJETPERDU" />
           <NavigationProperty Name="SERVICE" Relationship="Self.FK_SERVICE_ACTIVITE" FromRole="ACTIVITE" ToRole="SERVICE" />
           <NavigationProperty Name="SONDAGE" Relationship="Self.FK_SONDAGE_ACTIVITE" FromRole="ACTIVITE" ToRole="SONDAGE" />
+          <Property Name="TYPEACTIVITE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ACTUS">
           <Key>
@@ -1030,8 +1016,6 @@
           <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
           <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
           <Property Name="CDTYPEACTUS" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_ACTUS_ACTIVITE" FromRole="ACTUS" ToRole="ACTIVITE" />
           <NavigationProperty Name="TYPEACTUS" Relationship="Self.FK_ACTUS_TYPEACTUS" FromRole="ACTUS" ToRole="TYPEACTUS" />
         </EntityType>
@@ -1043,8 +1027,6 @@
           <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
           <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
           <Property Name="SITE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_BONPLAN_ACTIVITE" FromRole="BONPLAN" ToRole="ACTIVITE" />
         </EntityType>
         <EntityType Name="CENTREINTERET">
@@ -1056,8 +1038,6 @@
           <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
           <Property Name="IDUSER_ADMIN" Type="Int16" Nullable="false" />
           <Property Name="NOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMMUNAUTE" Relationship="Self.FK_CENTREINTERET_COMMUNAUTE" FromRole="CENTREINTERET" ToRole="COMMUNAUTE" />
           <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_CENTREINTERET_UTILISATEUR" FromRole="CENTREINTERET" ToRole="UTILISATEUR" />
           <NavigationProperty Name="TYPECENTREINTERET" Relationship="Self.CENTRETYPEINTERETS" FromRole="CENTREINTERET" ToRole="TYPECENTREINTERET" />
@@ -1117,8 +1097,6 @@
           <Property Name="DATEARRIVE" Type="DateTime" Precision="3" />
           <Property Name="VEHICULE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="PARTICIPATION" Type="Int16" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_COVOITURAGE_ACTIVITE" FromRole="COVOITURAGE" ToRole="ACTIVITE" />
         </EntityType>
         <EntityType Name="EVENEMENT">
@@ -1131,8 +1109,6 @@
           <Property Name="TITRE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Name="DATEEVENT" Type="DateTime" Precision="3" />
           <Property Name="LIEU" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_EVENEMENT_ACTIVITE" FromRole="EVENEMENT" ToRole="ACTIVITE" />
         </EntityType>
         <EntityType Name="FICHIERCOMPLEMENTAIRE">
@@ -1173,8 +1149,6 @@
           <Property Name="CDOBJET" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TITRE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Name="PRIX" Type="Int16" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_OBJET_ACTIVITE" FromRole="OBJET" ToRole="ACTIVITE" />
           <NavigationProperty Name="TYPEOBJET" Relationship="Self.FK_OBJET_TYPEOBJET" FromRole="OBJET" ToRole="TYPEOBJET" />
           <NavigationProperty Name="TYPEPROPOSITIONOBJET" Relationship="Self.FK_OBJET_TYPEPROPOSITIONOBJET" FromRole="OBJET" ToRole="TYPEPROPOSITIONOBJET" />
@@ -1187,8 +1161,6 @@
           <Property Name="IDACTIVITE" Type="Int16" Nullable="false" />
           <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" />
           <Property Name="LIEU" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_OBJETPERDU_ACTIVITE" FromRole="OBJETPERDU" ToRole="ACTIVITE" />
         </EntityType>
         <EntityType Name="SERVICE">
@@ -1202,8 +1174,6 @@
           <Property Name="CDSERVICE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TITRE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Name="PRIX" Type="Int16" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_SERVICE_ACTIVITE" FromRole="SERVICE" ToRole="ACTIVITE" />
           <NavigationProperty Name="TYPEPROPOSITIONSERVICE" Relationship="Self.FK_SERVICE_TYPEPROPOSITIONSERVICE" FromRole="SERVICE" ToRole="TYPEPROPOSITIONSERVICE" />
           <NavigationProperty Name="TYPESERVICE" Relationship="Self.FK_SERVICE_TYPESERVICE" FromRole="SERVICE" ToRole="TYPESERVICE" />
@@ -1218,8 +1188,6 @@
           <Property Name="NBOUI" Type="Int16" />
           <Property Name="NBNON" Type="Int16" />
           <Property Name="DATEFIN" Type="DateTime" Precision="3" />
-          <Property Name="DESCRIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="DATECREATION" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_SONDAGE_ACTIVITE" FromRole="SONDAGE" ToRole="ACTIVITE" />
         </EntityType>
         <EntityType Name="TYPEACTUS">
@@ -1318,9 +1286,9 @@
           <Property Name="NOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="PRENOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="DATENAISSANCE" Type="DateTime" Precision="3" />
-          <Property Name="ADDRESSLATITUDE" Type="Single" />
-          <Property Name="ADDRESSLONGITUDE" Type="Single" />
-          <Property Name="ADDRESSNO" Type="Int16" />
+          <Property Name="ADDRESSLATITUDE" Type="Decimal" Precision="12" Scale="9" />
+          <Property Name="ADDRESSLONGITUDE" Type="Decimal" Precision="12" Scale="9" />
+          <Property Name="ADDRESSNO" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
           <Property Name="ADDRESSROUTE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="ADDRESSLOCALITY" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="ADDRESSPOSTALCODE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
@@ -1928,6 +1896,7 @@
           <EntitySetMapping Name="ACTIVITE">
             <EntityTypeMapping TypeName="entrevoisinModel.ACTIVITE">
               <MappingFragment StoreEntitySet="ACTIVITE">
+                <ScalarProperty Name="TYPEACTIVITE" ColumnName="TYPEACTIVITE" />
                 <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
                 <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
                 <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
@@ -1942,9 +1911,7 @@
                 <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
                 <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
                 <ScalarProperty Name="CDTYPEACTUS" ColumnName="CDTYPEACTUS" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BONPLAN">
@@ -1953,9 +1920,7 @@
                 <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
                 <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
                 <ScalarProperty Name="SITE" ColumnName="SITE" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CENTREINTERET">
@@ -1965,8 +1930,6 @@
                 <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
                 <ScalarProperty Name="IDUSER_ADMIN" ColumnName="IDUSER_ADMIN" />
                 <ScalarProperty Name="NOM" ColumnName="NOM" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2014,9 +1977,7 @@
                 <ScalarProperty Name="DATEARRIVE" ColumnName="DATEARRIVE" />
                 <ScalarProperty Name="VEHICULE" ColumnName="VEHICULE" />
                 <ScalarProperty Name="PARTICIPATION" ColumnName="PARTICIPATION" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EVENEMENT">
@@ -2027,9 +1988,7 @@
                 <ScalarProperty Name="TITRE" ColumnName="TITRE" />
                 <ScalarProperty Name="DATEEVENT" ColumnName="DATEEVENT" />
                 <ScalarProperty Name="LIEU" ColumnName="LIEU" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FICHIERCOMPLEMENTAIRE">
@@ -2062,9 +2021,7 @@
                 <ScalarProperty Name="CDOBJET" ColumnName="CDOBJET" />
                 <ScalarProperty Name="TITRE" ColumnName="TITRE" />
                 <ScalarProperty Name="PRIX" ColumnName="PRIX" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OBJETPERDU">
@@ -2073,9 +2030,7 @@
                 <ScalarProperty Name="IDACTIVITE" ColumnName="IDACTIVITE" />
                 <ScalarProperty Name="IDCOMMUNAUTE" ColumnName="IDCOMMUNAUTE" />
                 <ScalarProperty Name="LIEU" ColumnName="LIEU" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SERVICE">
@@ -2087,9 +2042,7 @@
                 <ScalarProperty Name="CDSERVICE" ColumnName="CDSERVICE" />
                 <ScalarProperty Name="TITRE" ColumnName="TITRE" />
                 <ScalarProperty Name="PRIX" ColumnName="PRIX" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SONDAGE">
@@ -2100,9 +2053,7 @@
                 <ScalarProperty Name="NBOUI" ColumnName="NBOUI" />
                 <ScalarProperty Name="NBNON" ColumnName="NBNON" />
                 <ScalarProperty Name="DATEFIN" ColumnName="DATEFIN" />
-                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
-                <ScalarProperty Name="DATECREATION" ColumnName="DATECREATION" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TYPEACTUS">

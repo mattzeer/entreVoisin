@@ -1,0 +1,10 @@
+﻿@using EntreVoisin.Models;
+@{
+    ACTUS a = ViewData.Model;
+    ViewBag.Title = "Actus";
+}
+
+<h2>Actus</h2>
+
+@a.IDACTIVITE
+@a.ACTIVITE.COMMENTAIREACTIVITE.Count

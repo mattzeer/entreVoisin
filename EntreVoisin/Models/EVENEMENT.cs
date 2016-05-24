@@ -19,8 +19,6 @@ namespace EntreVoisin.Models
         public string TITRE { get; set; }
         public Nullable<System.DateTime> DATEEVENT { get; set; }
         public string LIEU { get; set; }
-        public string DESCRIP { get; set; }
-        public Nullable<System.DateTime> DATECREATION { get; set; }
     
         public virtual ACTIVITE ACTIVITE { get; set; }
     }
