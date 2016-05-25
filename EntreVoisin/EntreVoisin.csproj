@@ -244,6 +244,9 @@
     <Content Include="Content\PopupStyle.css" />
     <Content Include="Content\United_RED\bootstrap.min.css" />
     <Content Include="Content\privateMessage.css" />
+    <Content Include="Data\Carousel\Accueil\1.png" />
+    <Content Include="Data\Carousel\Accueil\2.png" />
+    <Content Include="Data\Carousel\Accueil\3.png" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -323,6 +326,7 @@
     <Content Include="Views\Inscription\Etape3.cshtml" />
     <Content Include="Views\Inscription\Confirm.cshtml" />
     <Content Include="Views\User\Actus.cshtml" />
+    <Content Include="Views\Home\NousContacter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

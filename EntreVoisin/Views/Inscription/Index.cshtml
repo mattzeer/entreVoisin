@@ -1,7 +1,7 @@
 ﻿@{
 
 }
-<h2>Inscription - Etape 1</h2>
+<h2>Etape 1 - Localisation</h2>
 
 <hr />
 
@@ -25,6 +25,10 @@
             <div class="col-lg-6 col-lg-offset-3">
                 <button type="submit" class="btn btn-primary form-control">Valider</button>
             </div>
+        </div>
+        <br />
+        <div class="row">
+            <center>@Html.ActionLink("Vous avez déjà un compte? Connectez vous ici", "Connexion", "Home")</center>
         </div>
         @Html.Hidden("lat")
         @Html.Hidden("lng")

@@ -718,8 +718,8 @@
                 <ul class="nav nav-pills nav-stacked well visible-md visible-lg" id="tabs">
                     <li class="visible-lg visible-md">Filtrer les activités</li>
                     <li class="nav-divider visible-lg visible-md"></li>
-                    <li class="active"><a href="#tabActus" data-toggle="tab">Toutes</a></li>
-                    <li><a href="#1" class="toggle" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> Actualité</a></li>
+                    <li class="active"><a href="#" data-toggle="tab" data-target="all">Toutes</a></li>
+                    <li><a class="btn-filter" data-toggle="tab" data-target="actus"><span class="glyphicon glyphicon-info-sign"></span> Actualité</a></li>
                     <li><a href="javascript:register_popup('narayan-prusty', 'Narayan Prusty');" data-toggle="tab"><span class="glyphicon glyphicon-piggy-bank"></span> Bon Plan</a></li>
                     <li><a href="#tabCovoiturage" data-toggle="tab"><span class="glyphicon glyphicon-road"></span> Covoiturage</a></li>
                     <li><a href="#tabEvenement" data-toggle="tab"><span class="glyphicon glyphicon-glass"></span> Evenement</a></li>
@@ -727,7 +727,7 @@
                     <li><a href="#tabService" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span> Service</a></li>
                     <li><a href="#tabObjet" data-toggle="tab"><span class="glyphicon glyphicon-gift"></span> Objet</a></li>
                     <li><a href="#tabSondage" data-toggle="tab"><span class="glyphicon glyphicon-question-sign"></span> Sondage</a></li>
-                    <li><button class="btn btn-primary"> CLIC</button></li>
+                    <li><button class="btn btn-primary btnlel" id="actus" > CLIC</button></li>
                 </ul>
             </div>
             <div class="row">
@@ -742,17 +742,18 @@
     </div>
 </div>
 
-
-
 <script>
-    $('.toggle').click(function (event) {
-        event.preventDefault();
-        var target = $(this).attr('href');
-        $('#activite').each(index)
+    var $btns = $('.btnlel').click(function () {
+        if (this.id == 'all')
         {
-            $(target).toggleClass('hidden show fade');
+            $('#activite > div').fadeIn('slow');
         }
-
-
-    });
+        else
+        {
+            var $el = $('.' + this.id).fadeIn('slow');
+            $('#activite > div').not($el).hide();
+        }
+        $btns.removeClass('active');
+        $(this).addClass('active');
+    })
 </script>
