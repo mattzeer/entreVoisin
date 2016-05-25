@@ -233,17 +233,20 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
+                                        @using (Html.BeginForm("AddObjetPerdu", "Activite", FormMethod.Post))
+                                        {
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="form-group">
                                                     <label>Description de l'objet perdu</label>
-                                                    <textarea class="form-control" rows="4" placeholder="Description de l'actualité"></textarea>
+                                                    @Html.TextArea("message", "", new { @class = "form-control", @rows = "4", placeholder = "Description de l'objet perdu" })
+                                                    @Html.Hidden("idUser", u.IDUSER)
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-6">
                                                     <label>Lieu de l'objet perdu</label>
-                                                    <input type="text" class="form-control" placeholder="Lieu" />
+                                                    @Html.TextBox("lieu", "", new { @class = "form-control", @rows = "4", placeholder = "Lieu" })
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -251,8 +254,8 @@
                                                     <button class="btn btn-primary form-control">Ajouter</button>
                                                 </div>
                                             </div>
-
                                         </div>
+                                        }
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>

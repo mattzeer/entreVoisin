@@ -80,4 +80,19 @@ namespace EntreVoisin.Models
         [Required]
         public short idUser { get; set; }
     }
+
+    public class ObjetPerduModelView
+    {
+        [Required]
+        public string message { get; set; }
+
+        [Required]
+        public string lieu { get; set; }
+
+
+        [Required]
+        public short idUser { get; set; }
+
+    }
+
 }
