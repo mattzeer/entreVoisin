@@ -95,4 +95,23 @@ namespace EntreVoisin.Models
 
     }
 
+    public class ServiceModelView
+    {
+        [Required]
+        public string message { get; set; }
+
+        [Required]
+        public short idUser { get; set; }
+
+        public string cdTypeService { get; set; }
+
+        public string cdTypePropositionService { get; set; }
+
+        [Required]
+        public string TitreService { get; set; }
+
+        [Required]
+        public short PrixService { get; set; }
+    }
+
 }
