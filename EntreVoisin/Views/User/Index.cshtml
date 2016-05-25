@@ -79,17 +79,20 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
+                                        @using (Html.BeginForm("AddBonPlan", "Activite", FormMethod.Post))
+                                        {
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="form-group col-lg-12">
                                                     <label>Description du bon plan</label>
-                                                    <textarea class="form-control" rows="4" placeholder="Description de l'actualité"></textarea>
+                                                    @Html.TextArea("message", "", new {  @class="form-control", @rows="4", placeholder="Description de l'actualité"})
+                                                    @Html.Hidden("idUser", u.IDUSER)
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-12">
                                                     <label>Site ou lieu du bon plan</label>
-                                                    <input type="text" class="form-control" placeholder="Nom du site ou le lieu du bon plan" />
+                                                    @Html.TextBox("site", "", new {  @class="form-control", @rows="4", placeholder="Nom du site ou le lieu du bon plan"})
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -100,6 +103,7 @@
                                             </div>
 
                                         </div>
+                                        }
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
