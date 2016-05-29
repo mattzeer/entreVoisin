@@ -122,29 +122,32 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
+                                        @using (Html.BeginForm("AddCovoiturage", "Activite", FormMethod.Post))
+                                        {
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class=" form-group">
                                                     <label>Description</label>
-                                                    <textarea class="form-control" rows="4" placeholder="Description de l'actualité"></textarea>
+                                                    @Html.TextArea("message", "", new { @class = "form-control", @rows = "4", placeholder = "Description du Cvoiturage" })
+                                                    @Html.Hidden("idUser", u.IDUSER)
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Date de départ</label>
-                                                        <input type="datetime-local" class="form-control" />
+                                                        @Html.TextBox("dateDep","", new { type = "date", @class = "form-control" })
                                                         <label>Lieu de départ</label>
-                                                        <input type="text" class="form-control" placeholder="Lieu de départ" />
+                                                        @Html.TextBox("lieuDep", "", new { @class = "form-control", @rows = "4", placeholder = "Lieu de départ" })
                                                     </div>
 
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Date d'arrivée</label>
-                                                        <input type="datetime-local" class="form-control" />
+                                                        @Html.TextBox("dateArriv", "", new { type = "date", @class = "form-control" })
                                                         <label>Lieu d'arrivé</label>
-                                                        <input type="text" class="form-control" placeholder="Lieu d'arrivé" />
+                                                        @Html.TextBox("lieuArriv", "", new { @class = "form-control", @rows = "4", placeholder = "Lieu d'arrivé" })
                                                     </div>
                                                 </div>
 
@@ -153,11 +156,12 @@
                                                 <div class="form-group">
                                                     <div class="col-lg-2">
                                                         <label>Participation</label>
-                                                        <input type="number" class="form-control" placeholder="€" />
+                                                        @Html.TextBox("participation", "", new { type = "number", @class = "form-control",placeholder="€" })
+                                                      
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <label>Véhicule utilisé</label>
-                                                        <input type="text" class="form-control" placeholder="Véhicule" />
+                                                        @Html.TextBox("vehicule", "", new { @class = "form-control", @rows = "4", placeholder = "Véhicule utilisé" })
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,6 +172,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        }
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
@@ -186,27 +191,32 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
+                                        @using (Html.BeginForm("AddEvenement", "Activite", FormMethod.Post))
+                                        {
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="form-group">
                                                     <label>Description de l'évènement</label>
-                                                    <textarea class="form-control" rows="4" placeholder="Description de l'actualité"></textarea>
+                                                    @Html.TextArea("message", "", new { @class = "form-control", @rows = "4", placeholder = "Description du l'évenement" })
+                                                    @Html.Hidden("idUser", u.IDUSER)
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-5">
                                                     <label>Titre de l'évènement</label>
-                                                    <input type="text" class="form-control" placeholder="Nom de l'évenement" />
+                                                    @Html.TextBox("titreEvenement", "", new { @class = "form-control", @rows = "4", placeholder = "Nom de l'évenement" })
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
                                                     <label>Date de l'évènement</label>
-                                                    <input type="datetime-local" class="form-control" />
+                                                    @Html.TextBox("dateEve", "", new { type = "date", @class = "form-control" }) 
                                                 </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="form-group col-lg-5">
                                                     <label>Lieu de l'évènement</label>
-                                                    <input type="text" class="form-control" placeholder="Lieu" />
+                                                    @Html.TextBox("lieuEvenement", "", new { @class = "form-control", @rows = "4", placeholder = "Lieu" })
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -215,6 +225,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        }                                            
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
@@ -332,11 +343,14 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
+                                        @using (Html.BeginForm("AddObjet", "Activite", FormMethod.Post))
+                                        {
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="form-group">
                                                     <label>Description de la proposition de l'objet</label>
-                                                    <textarea class="form-control" rows="4" placeholder="Description de l'actualité"></textarea>
+                                                    @Html.TextBox("message", "", new { @class = "form-control", @rows = "4", placeholder = "Description" })
+                                                    @Html.Hidden("idUser", u.IDUSER)
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -352,11 +366,11 @@
                                             <div class="row">
                                                 <div class="form-group col-lg-5">
                                                     <label>Titre de la proposition de l'objet</label>
-                                                    <input type="text" class="form-control" placeholder="Titre" />
+                                                    @Html.TextBox("titreObjet", "", new { @class = "form-control", @rows = "4", placeholder = "Titre" })
                                                 </div>
                                                 <div class="form-group col-lg-2">
                                                     <label>Prix</label>
-                                                    <input type="number" class="form-control" placeholder="€" />
+                                                    @Html.TextBox("prixObjet", "", new { @class = "number", @rows = "4", placeholder = "Lieu" })
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -367,6 +381,7 @@
                                             </div>
 
                                         </div>
+                                        }
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
@@ -436,6 +451,7 @@
         </div>
 
         <div class="col-lg-8 col-md-8" id="activite">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @foreach (ACTIVITE a in listActiv)
             {
                 switch (a.TYPEACTIVITE)
