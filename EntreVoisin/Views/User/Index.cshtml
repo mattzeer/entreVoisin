@@ -7,6 +7,23 @@
 
 <style>
 </style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#filtreActivite li a').click(function () {
+            var ourClass = $(this).attr('class');
+            if (ourClass == 'all') {
+                $('#filtreActivite li').addClass('active');
+                $(this).parent().removeClass('active');
+                $('#valActivite').children('div.item').show();
+            }
+            else {
+                $(this).parent().toggleClass('active');
+                $('#valActivite').children('div.' + ourClass).toggle();
+            }
+            return false;
+        });
+    });
+</script>
 <div class="col-lg-12">
     <div class="row">
         <div class="row col-lg-12">
@@ -450,14 +467,14 @@
             </div>
         </div>
 
-        <div class="col-lg-8 col-md-8" id="activite">
+        <div class="col-lg-8 col-md-8" id="valActivite">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @foreach (ACTIVITE a in listActiv)
             {
                 switch (a.TYPEACTIVITE)
                 {
                     case "ACTUS":
-                        <div class="panel panel-primary" id="actus">
+                        <div class="panel panel-primary item actus" id="actus">
                             <div class="panel-heading">
                                 <div class="panel-title pull-left"><span class="glyphicon glyphicon-info-sign"></span> Actualités</div>
                                 <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -490,9 +507,9 @@
                             </div>
                         </div>
                         break;
-                        
+
                     case "BONPLAN":
-                    <div class="panel panel-default" id="bonPlan">
+                    <div class="panel panel-default item bonPlan" id="bonPlan">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-piggy-bank"></span> Bon plan</div>
                             <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -525,9 +542,9 @@
                         </div>
                     </div>
                         break;
-                        
+
                     case "COVOIT":
-                    <div class="panel panel-danger" id="covoit">
+                    <div class="panel panel-danger item covoit" id="covoit">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-road"></span> Covoiturage</div>
                             <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -560,9 +577,9 @@
                         </div>
                     </div>
                         break;
-                        
+
                     case "SERVICE":
-                    <div class="panel panel-success" id="service">
+                    <div class="panel panel-success item service" id="service">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-wrench"></span> Proposition de service</div>
                             <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -595,9 +612,9 @@
                         </div>
                     </div>
                         break;
-                        
+
                     case "OBJET":
-                    <div class="panel panel-danger" id="objet">
+                    <div class="panel panel-danger item objet" id="objet">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-gift"></span> Proposition d'objet</div>
                             <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -630,9 +647,9 @@
                         </div>
                     </div>
                         break;
-                        
+
                     case "OBJETLOST":
-                    <div class="panel panel-primary" id="objetPerdu">
+                    <div class="panel panel-primary item objetPerdu" id="objetPerdu">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-flag"></span> Objet Perdu</div>
                             <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -665,9 +682,9 @@
                         </div>
                     </div>
                         break;
-                        
+
                     case "EVENT":
-                    <div class="panel panel-primary" id="event">
+                    <div class="panel panel-primary item event" id="event">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-glass"></span> Evenement</div>
                             <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -700,9 +717,9 @@
                         </div>
                     </div>
                         break;
-                         
+
                     case "SONDAGE":
-                    <div class="panel panel-default" id="sondage">
+                    <div class="panel panel-default item sondage" id="sondage">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-question-sign"></span> Sondage</div>
                             <div class="pull-right"><small>@a.DATECREATION</small></div>
@@ -736,27 +753,26 @@
                     </div>
                         break;
                 }
-
-
-
             }
         </div>
 
+
+
         <div class="col-lg-2 col-md-2">
             <div class="row">
-                <ul class="nav nav-pills nav-stacked well visible-md visible-lg" id="tabs">
+                <ul class="nav nav-pills nav-stacked well visible-md visible-lg" id="filtreActivite">
                     <li class="visible-lg visible-md">Filtrer les activités</li>
                     <li class="nav-divider visible-lg visible-md"></li>
-                    <li class="active"><a href="#" data-toggle="tab" data-target="all">Toutes</a></li>
-                    <li><a class="btn-filter" data-toggle="tab" data-target="actus"><span class="glyphicon glyphicon-info-sign"></span> Actualité</a></li>
-                    <li><a href="javascript:register_popup('narayan-prusty', 'Narayan Prusty');" data-toggle="tab"><span class="glyphicon glyphicon-piggy-bank"></span> Bon Plan</a></li>
-                    <li><a href="#tabCovoiturage" data-toggle="tab"><span class="glyphicon glyphicon-road"></span> Covoiturage</a></li>
-                    <li><a href="#tabEvenement" data-toggle="tab"><span class="glyphicon glyphicon-glass"></span> Evenement</a></li>
-                    <li><a href="#tabObjetPerdu" data-toggle="tab"><span class="glyphicon glyphicon-flag"></span> Objet Perdu</a></li>
-                    <li><a href="#tabService" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span> Service</a></li>
-                    <li><a href="#tabObjet" data-toggle="tab"><span class="glyphicon glyphicon-gift"></span> Objet</a></li>
-                    <li><a href="#tabSondage" data-toggle="tab"><span class="glyphicon glyphicon-question-sign"></span> Sondage</a></li>
-                    <li><button class="btn btn-primary btnlel" id="actus" > CLIC</button></li>
+                    <li class="active"><a href="#" data-toggle="tab" class="all" data-target="all">Toutes</a></li>
+                    <li><a href="#" class="actus" data-toggle="tab" data-target="actus"><span class="glyphicon glyphicon-info-sign"></span> Actualité</a></li>
+                    <li><a href="#" class="bonPlan" data-toggle="tab"><span class="glyphicon glyphicon-piggy-bank"></span> Bon Plan</a></li>
+                    <li><a href="#" class="covoit" data-toggle="tab"><span class="glyphicon glyphicon-road"></span> Covoiturage</a></li>
+                    <li><a href="#" class="event" data-toggle="tab"><span class="glyphicon glyphicon-glass"></span> Evenement</a></li>
+                    <li><a href="#" class="objetPerdu" data-toggle="tab"><span class="glyphicon glyphicon-flag"></span> Objet Perdu</a></li>
+                    <li><a href="#" class="service" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span> Service</a></li>
+                    <li><a href="#" class="objet" data-toggle="tab"><span class="glyphicon glyphicon-gift"></span> Objet</a></li>
+                    <li><a href="#" class="sondage" data-toggle="tab"><span class="glyphicon glyphicon-question-sign"></span> Sondage</a></li>
+                    <li><button class="btn btn-primary btnlel" id="actus"> CLIC</button></li>
                 </ul>
             </div>
             <div class="row">
