@@ -114,4 +114,19 @@ namespace EntreVoisin.Models
         public short PrixService { get; set; }
     }
 
+    public class SondageModelView
+    {
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime DateSondage { get; set; }
+
+
+        [Required]
+        public short idUser { get; set; }
+
+        [Required]
+        public string message { get; set; }
+
+    }
+
 }

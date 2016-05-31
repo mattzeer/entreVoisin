@@ -274,9 +274,10 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
-                                        <div class="col-lg-12">
                                             @using (Html.BeginForm("AddService", "Activite", FormMethod.Post))
                                             {
+                                        <div class="col-lg-12">
+                                            
                                             <div class="row">
                                                 <div class=" form-group">
                                                     <label>Description de la proposition du service</label>
@@ -310,10 +311,9 @@
                                                 <div class="form-group">
                                                     <button class="btn btn-primary form-control">Ajouter</button>
                                                 </div>
-
                                             </div>
-                                            }
                                         </div>
+                                            }
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
@@ -385,16 +385,18 @@
                                     </div>
                                     <hr />
                                     <div class="modal-body">
+                                            @using (Html.BeginForm("AddSondage", "Activite", FormMethod.Post))
+                                            {
                                         <div class="col-lg-12">
                                             <div class="row">
                                                 <div class="form-group">
                                                     <label>Description du sondage</label>
-                                                    <textarea class="form-control" rows="4" placeholder="Description de l'actualité"></textarea>
-
+                                                    @Html.TextArea("message", "", new { @class = "form-control", @rows = "4", placeholder = "Description du sondage" })
+                                                    @Html.Hidden("idUser", u.IDUSER)
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label>Date de la fin du sondage</label>
-                                                    <input type="datetime-local" class="form-control" />
+                                                    @Html.TextArea("DateSondage", "", new { @class = "form-control", @rows = "1", placeholder = "JJ/MM/AAAA" })
                                                 </div>
                                             </div>
                                             <br />
@@ -402,10 +404,9 @@
                                                 <div class="form-group">
                                                     <button class="btn btn-primary form-control">Ajouter</button>
                                                 </div>
-
                                             </div>
-
                                         </div>
+                                            }
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
