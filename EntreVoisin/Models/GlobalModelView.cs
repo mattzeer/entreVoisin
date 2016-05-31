@@ -57,6 +57,81 @@ namespace EntreVoisin.Models
 
 
     }
+    public class CovoiturageActiviteModelView
+    {
+        [Required]
+        public short idUser { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "date")]
+        public DateTime dateDep { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "date")]
+        public DateTime dateArriv { get; set; }
+
+        [Required]
+        public short participation { get; set; }
+
+        [Required]
+        public string lieuDep { get; set; }
+
+        [Required]
+        public string lieuArriv { get; set; }
+
+        [Required]
+        public string vehicule { get; set; }
+
+        [Required]
+        public string message { get; set; }
+
+
+    }
+    public class EvenementActiviteModelView
+    {
+        [Required]
+        public short idUser { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "date")]
+        public DateTime dateEve { get; set; }
+
+        [Required]
+        public string titreEvenement { get; set; }
+
+        [Required]
+        public string lieuEvenement { get; set; }
+
+        [Required]
+        public string message { get; set; }
+
+
+    }
+    public class ObjetActiviteModelView
+    {
+        [Required]
+        public short idUser { get; set; }
+
+        [Required]
+        public string titreObjet { get; set; }
+
+        [Required]
+        public short prixObjet { get; set; }
+
+        [Required]
+        public string message { get; set; }
+        public string cdObjet { get; set; }
+
+        public string cdPropositionObjet { get; set; }
+
+
+    }
 
     public class ActusActiviteModelView
     {
