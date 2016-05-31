@@ -193,5 +193,28 @@ namespace EntreVoisin.Controllers
                 return RedirectToAction("Index", "User", model);
             }
         }
+
+         [HttpPost]
+        public ActionResult AddSondage(SondageModelView model)
+        {
+            UTILISATEUR u = db.UTILISATEUR.Where(m => m.IDUSER.Equals(model.idUser)).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                ACTIVITE a = new ACTIVITE();
+                a.IDUSER = u.IDUSER;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.DESCRIP = model.message;
+                a.TYPEACTIVITE = "SONDAGE";
+                a.DATECREATION = DateTime.Now;
+                a.SONDAGE = new SONDAGE();
+                a.SONDAGE.DATEFIN = model.DateSondage;
+                db.ACTIVITE.Add(a);
+                db.SaveChanges();
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                return View();
+            }
     }
 }
