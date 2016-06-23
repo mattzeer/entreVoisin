@@ -7,7 +7,7 @@ using EntreVoisin.Models;
 
 namespace EntreVoisin.Controllers
 {
-    
+
     public class ActiviteController : Controller
     {
         entrevoisinEntities db;
@@ -21,7 +21,7 @@ namespace EntreVoisin.Controllers
         public ActionResult AddActus(ActusActiviteModelView model)
         {
             UTILISATEUR u = db.UTILISATEUR.Where(m => m.IDUSER.Equals(model.idUser)).FirstOrDefault();
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
@@ -165,7 +165,7 @@ namespace EntreVoisin.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "User",model);
+                return RedirectToAction("Index", "User", model);
             }
         }
         public ActionResult AddEvenement(EvenementActiviteModelView model)
@@ -194,7 +194,7 @@ namespace EntreVoisin.Controllers
             }
         }
 
-         [HttpPost]
+        [HttpPost]
         public ActionResult AddSondage(SondageModelView model)
         {
             UTILISATEUR u = db.UTILISATEUR.Where(m => m.IDUSER.Equals(model.idUser)).FirstOrDefault();
@@ -216,5 +216,6 @@ namespace EntreVoisin.Controllers
             {
                 return View();
             }
+        }
     }
 }
