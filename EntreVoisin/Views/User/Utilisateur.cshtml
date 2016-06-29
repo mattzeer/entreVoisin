@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "User";
+}
+
+<style>
+    .panel.with-nav-tabs .panel-heading {
+        padding: 5px 5px 0 5px;
+    }
+
+    .panel.with-nav-tabs .nav-tabs {
+        border-bottom: none;
+    }
+
+    .panel.with-nav-tabs .nav-justified {
+        margin-bottom: -1px;
+    }
+    /********************************************************************/
+    /*** PANEL PRIMARY ***/
+    .with-nav-tabs.panel-primary .nav-tabs > li > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+        color: #fff;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            color: #fff;
+            background-color: #3071a9;
+            border-color: transparent;
+        }
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+        color: #428bca;
+        background-color: #fff;
+        border-color: #428bca;
+        border-bottom-color: transparent;
+    }
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+        background-color: #428bca;
+        border-color: #3071a9;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+            color: #fff;
+        }
+
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+                background-color: #3071a9;
+            }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+            background-color: #4a9fe9;
+        }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <center><img class="img-responsive" src="https://account.socialbakers.com/default_user.png" alt="Generic placeholder image"></center>
+                <br />
+            </div>
+            <div class="col-md-8 well">
+                <div class="header">
+                    <h1>Mattzeer</h1>
+                    <h4>Mathieu LENGLET</h4>
+                    <span>De son vrai nom Bob, Mathieu aime les pains au chocolatine mais ne comprend pas les personnes disant pains au chocolat biz</span>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <button class="btn btn-primary form-control">Demande de voisinage</button>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default form-control">Message privé</button>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-danger form-control">Signaler le voisin</button>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success form-control hide">Modifier</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel with-nav-tabs panel-primary">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tabMain" data-toggle="tab">Informations Générales</a></li>
+                        <li><a href="#tabAddress" data-toggle="tab">Adresse</a></li>
+                        <li><a href="#tabObjet" data-toggle="tab">Objet partagé</a></li>
+                        <li><a href="#tabService" data-toggle="tab">Service partagé</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tabMain">
+                            <div class="col-lg-4">
+                                <div class="row form-group"><label>Pseudo : </label>Mattzeer</div>
+                                <div class="row form-group"><label>Nom : </label>LENGLET</div>
+                                <div class="row form-group"><label>Prenom : </label>Mathieu</div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="row form-group"><label>Email : </label>Mathieulenglet@me.com</div>
+                                <div class="row form-group"><label>Téléphone : </label>0606060606</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabAddress">
+                            <div class="row">
+                                <center><h4><label>Adresse : </label> 34 avenue de la marnezer 92600 Asnieres</h4> </center>
+                            </div>
+                            <div id="googleMap" style="width:auto;height:350px;"></div>
+                        </div>
+                        <div class="tab-pane fade" id="tabObjet">Primary 4</div>
+                        <div class="tab-pane fade" id="tabService">Primary 5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-toolbar" data-role="editor-toolbar"
+             data-target="#editor">
+            ...
+        </div>
+    </div>
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+    var myCenter=new google.maps.LatLng(48.9061104,2.2812367);
+
+    function initialize()
+    {
+        var mapProp = {
+            center:myCenter,
+            zoom:16,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+        var marker=new google.maps.Marker({
+            position:myCenter,
+        });
+
+        marker.setMap(map);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>

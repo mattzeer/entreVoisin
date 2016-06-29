@@ -25,7 +25,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "ACTUS";
                 a.DATECREATION = DateTime.Now;
@@ -48,7 +48,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "BONPLAN";
                 a.DATECREATION = DateTime.Now;
@@ -72,7 +72,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "OBJETLOST";
                 a.DATECREATION = DateTime.Now;
@@ -96,7 +96,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "SERVICE";
                 a.DATECREATION = DateTime.Now;
@@ -122,7 +122,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "OBJET";
                 a.DATECREATION = DateTime.Now;
@@ -148,7 +148,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "COVOIT";
                 a.DATECREATION = DateTime.Now;
@@ -175,7 +175,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "EVENT";
                 a.DATECREATION = DateTime.Now;
@@ -202,7 +202,7 @@ namespace EntreVoisin.Controllers
             {
                 ACTIVITE a = new ACTIVITE();
                 a.IDUSER = u.IDUSER;
-                a.IDCOMMUNAUTE = u.COMMUNAUTE.FirstOrDefault().IDCOMMUNAUTE;
+                a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
                 a.TYPEACTIVITE = "SONDAGE";
                 a.DATECREATION = DateTime.Now;

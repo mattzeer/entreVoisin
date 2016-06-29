@@ -18,7 +18,9 @@
                 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainVisiteur"><span style="background-color:#b2dbfb;" class="icon-bar"></span><span style="background-color:#b2dbfb;" class="icon-bar"></span><span style="background-color:#b2dbfb;" class="icon-bar"></span></button>
                 
-                @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href='@Url.Action("Index", "Home")' class="navbar-brand">
+                    <img  src="~/Content/logo.svg" />
+                </a>
                 <a class="visible-xs" href="#" data-toggle="modal" data-target="#modalConnexion"><span class="glyphicon glyphicon-log-in navbar-brand pull-right"></span></a>
             </div>
             <div class="collapse navbar-collapse" id="mainVisiteur">
