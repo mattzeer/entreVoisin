@@ -17,9 +17,19 @@ namespace EntreVoisin.Controllers
         //
         // GET: /User/
 
-        public ActionResult Index()
+        public ActionResult Index(string type)
         {
-            ViewData.Model = db.ACTIVITE.ToList();
+            UTILISATEUR u = (UTILISATEUR)Session["USER"];
+            short s = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
+            if(type == null || type == "")
+            {
+                ViewData.Model = db.ACTIVITE.Where(a => a.IDCOMMUNAUTE.Equals(s)).ToList();
+            }
+            else
+            {
+                ViewData.Model = db.ACTIVITE.Where(a => a.TYPEACTIVITE.Equals(type) && a.IDCOMMUNAUTE.Equals(s)).ToList();
+                
+            }
             return View();
             
         }

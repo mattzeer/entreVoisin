@@ -74,7 +74,7 @@ namespace EntreVoisin.Controllers
                 a.IDUSER = u.IDUSER;
                 a.IDCOMMUNAUTE = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
                 a.DESCRIP = model.message;
-                a.TYPEACTIVITE = "OBJETLOST";
+                a.TYPEACTIVITE = "OBJETPERDU";
                 a.DATECREATION = DateTime.Now;
                 a.OBJETPERDU = new OBJETPERDU();
                 a.OBJETPERDU.LIEU = model.lieu;
