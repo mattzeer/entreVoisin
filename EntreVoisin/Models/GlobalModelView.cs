@@ -126,8 +126,9 @@ namespace EntreVoisin.Models
 
         [Required]
         public string message { get; set; }
+        [Required]
         public string cdObjet { get; set; }
-
+        [Required]
         public string cdPropositionObjet { get; set; }
 
 
@@ -138,7 +139,7 @@ namespace EntreVoisin.Models
         [Required]
         public string message { get; set; }
 
-      
+        [Required]
         public string cdTypeActus { get; set; }
 
         [Required]
@@ -178,8 +179,10 @@ namespace EntreVoisin.Models
         [Required]
         public short idUser { get; set; }
 
+        [Required]
         public string cdTypeService { get; set; }
 
+        [Required]
         public string cdTypePropositionService { get; set; }
 
         [Required]

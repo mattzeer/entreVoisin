@@ -30,10 +30,11 @@ namespace EntreVoisin.Controllers
                 ViewData.Model = db.ACTIVITE.Where(a => a.TYPEACTIVITE.Equals(type) && a.IDCOMMUNAUTE.Equals(s)).ToList();
                 
             }
-            ViewBag.listTypeService = db.TYPESERVICE.Select(m=>m.LIBELLESERVICE).ToList();
-            ViewBag.listTypeObjet = db.TYPEOBJET.Select(m => m.LIBELLEOBJET).ToList();
-            ViewBag.listTypePropositionService = db.TYPEPROPOSITIONSERVICE.Select(m => m.LIBELLE).ToList();
-            ViewBag.listTypePropositionObjet = db.TYPEPROPOSITIONOBJET.Select(m => m.LIBELLE).ToList();
+            ViewBag.TypeServices = db.TYPESERVICE.ToList();
+            ViewBag.TypeObjets = db.TYPEOBJET.ToList();
+            ViewBag.TypePropoServices = db.TYPEPROPOSITIONSERVICE.ToList();
+            ViewBag.TypePropoObjets = db.TYPEPROPOSITIONOBJET.ToList();
+            ViewBag.TypeActus = db.TYPEACTUS.ToList();
             return View();
             
         }
