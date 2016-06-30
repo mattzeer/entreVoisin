@@ -151,7 +151,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h3 class="modal-title"><span class="glyphicon glyphicon-road"></span> Ajout d'un Bon Plan</h3>
+                                        <h3 class="modal-title"><span class="glyphicon glyphicon-road"></span> Ajout d'un Covoiturage</h3>
                                     </div>
                                     <hr />
                                     <div class="modal-body">
@@ -444,7 +444,7 @@
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label>Date de la fin du sondage</label>
-                                                    @Html.TextArea("DateSondage", "", new { @class = "form-control", @rows = "1", placeholder = "JJ/MM/AAAA" })
+                                                    @Html.TextBox("DateSondage", "", new { type = "date", @class = "form-control" })
                                                 </div>
                                             </div>
                                             <br />
