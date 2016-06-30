@@ -1,6 +1,6 @@
 ﻿@using EntreVoisin.Models;
 @{
-    BONPLAN a = ViewData.Model;
+    COVOITURAGE a = ViewData.Model;
     ViewBag.Title = "Covoiturage";
 }
 
@@ -19,6 +19,11 @@
                 <div class="col-lg-10">
                     <div class="row">
                         <p>@a.ACTIVITE.DESCRIP</p>
+                        <p>Date de depart : @a.ACTIVITE.COVOITURAGE.DATEDEPART</p>
+                        <p>Date d'arrivé : @a.ACTIVITE.COVOITURAGE.DATEARRIVE</p>
+                        <p>Lieu de départ : @a.ACTIVITE.COVOITURAGE.LIEUDEPART</p>
+                        <p>Lieu d'arrivé : @a.ACTIVITE.COVOITURAGE.LIEUARRIVE</p>
+                        <p>Participation : @a.ACTIVITE.COVOITURAGE.PARTICIPATION</p>
                     </div>
                     <div class="row">
                         <p><span class="glyphicon glyphicon-comment"></span> @a.ACTIVITE.COMMENTAIREACTIVITE.Count Commentaires</p>
