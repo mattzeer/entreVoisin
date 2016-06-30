@@ -1,10 +1,9 @@
 ﻿@using EntreVoisin.Models;
 @{
-    ACTUS a = ViewData.Model;
-    ViewBag.Title = "Actus";
+    BONPLAN a = ViewData.Model;
+    ViewBag.Title = "BonPlan";
 }
-
-<h2>Actus</h2>
+<h2>BonPlan</h2>
 
 @a.IDACTIVITE
 @a.ACTIVITE.COMMENTAIREACTIVITE.Count

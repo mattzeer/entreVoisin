@@ -35,5 +35,41 @@ namespace EntreVoisin.Controllers
             ViewData.Model = a;
             return View();
         }
+
+        public ActionResult BonPlan(short id)
+        {
+            BONPLAN a = db.BONPLAN.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
+        public ActionResult Covoiturage(short id)
+        {
+            COVOITURAGE a = db.COVOITURAGE.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
+        public ActionResult Service(short id)
+        {
+            SERVICE a = db.SERVICE.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
+        public ActionResult Objet(short id)
+        {
+            OBJET a = db.OBJET.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
+        public ActionResult ObjetPerdu(short id)
+        {
+            OBJETPERDU a = db.OBJETPERDU.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
     }
 }

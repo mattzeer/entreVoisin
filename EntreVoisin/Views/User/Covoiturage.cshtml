@@ -1,0 +1,12 @@
+﻿@using EntreVoisin.Models;
+@{
+    BONPLAN a = ViewData.Model;
+    ViewBag.Title = "Covoiturage";
+}
+
+<h2>Covoiturage</h2>
+
+
+@a.IDACTIVITE
+@a.ACTIVITE.COMMENTAIREACTIVITE.Count
+@a.ACTIVITE.COVOITURAGE.ACTIVITE.DESCRIP

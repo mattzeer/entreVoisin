@@ -1,0 +1,11 @@
+﻿@using EntreVoisin.Models;
+@{
+    OBJET a = ViewData.Model;
+    ViewBag.Title = "Objet";
+}
+
+<h2>Objet</h2>
+
+@a.IDACTIVITE
+@a.ACTIVITE.COMMENTAIREACTIVITE.Count
+@a.ACTIVITE.DESCRIP

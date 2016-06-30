@@ -1,0 +1,11 @@
+﻿@using EntreVoisin.Models;
+@{
+    BONPLAN a = ViewData.Model;
+    ViewBag.Title = "Service";
+}
+
+<h2>Service</h2>
+
+@a.IDACTIVITE
+@a.ACTIVITE.COMMENTAIREACTIVITE.Count
+@a.ACTIVITE.DESCRIP

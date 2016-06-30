@@ -1,0 +1,12 @@
+﻿@using EntreVoisin.Models;
+@{
+    OBJETPERDU a = ViewData.Model;
+    ViewBag.Title = "ObjetPerdu";
+}
+
+<h2>ObjetPerdu</h2>
+
+@a.IDACTIVITE
+@a.ACTIVITE.COMMENTAIREACTIVITE.Count
+@a.ACTIVITE.OBJETPERDU.LIEU
+@a.ACTIVITE.DESCRIP
