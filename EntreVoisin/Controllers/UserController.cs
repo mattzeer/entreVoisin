@@ -57,49 +57,63 @@ namespace EntreVoisin.Controllers
         public ActionResult BonPlan(short id)
         {
             BONPLAN a = db.BONPLAN.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ACTIVITE ac = a.ACTIVITE;
             ViewData.Model = a;
+            ViewBag.Activity = ac;
             return View();
         }
 
         public ActionResult Covoiturage(short id)
         {
             COVOITURAGE a = db.COVOITURAGE.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ACTIVITE ac = a.ACTIVITE;
             ViewData.Model = a;
+            ViewBag.Activity = ac;
             return View();
         }
 
         public ActionResult Service(short id)
         {
             SERVICE a = db.SERVICE.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ACTIVITE ac = a.ACTIVITE;
             ViewData.Model = a;
+            ViewBag.Activity = ac;
             return View();
         }
 
         public ActionResult Objet(short id)
         {
             OBJET a = db.OBJET.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ACTIVITE ac = a.ACTIVITE;
             ViewData.Model = a;
+            ViewBag.Activity = ac;
             return View();
         }
 
         public ActionResult ObjetPerdu(short id)
         {
             OBJETPERDU a = db.OBJETPERDU.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ACTIVITE ac = a.ACTIVITE;
             ViewData.Model = a;
+            ViewBag.Activity = ac;
             return View();
         }
 
         public ActionResult Event(short id)
         {
             EVENEMENT a = db.EVENEMENT.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ACTIVITE ac = a.ACTIVITE;
             ViewData.Model = a;
+            ViewBag.Activity = ac;
             return View();
         }
 
         public ActionResult Sondage(short id)
         {
             SONDAGE a = db.SONDAGE.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ACTIVITE ac = a.ACTIVITE;
             ViewData.Model = a;
+            ViewBag.Activity = ac;
             return View();
         }
 

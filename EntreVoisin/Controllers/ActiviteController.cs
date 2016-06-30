@@ -237,6 +237,8 @@ namespace EntreVoisin.Controllers
             {
                 case "SERVICE" :
                     return RedirectToAction("Service", "User", new { id = idActivite });
+                case "SONDAGE":
+                    return RedirectToAction("Sondage", "User", new { id = idActivite });
                     
                 case "BONPLAN":
                     return RedirectToAction("BonPlan", "User", new { id = idActivite });
@@ -249,6 +251,8 @@ namespace EntreVoisin.Controllers
                     
                 case "ACTUS":
                     return RedirectToAction("Actus", "User", new { id = idActivite });
+                case "EVENT":
+                    return RedirectToAction("event", "User", new { id = idActivite });
                     
                 case "COVOIT":
                     return RedirectToAction("Covoiturage", "User", new { id = idActivite });

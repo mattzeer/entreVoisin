@@ -1,45 +1,151 @@
 ﻿@using EntreVoisin.Models;
 @{
     COVOITURAGE a = ViewData.Model;
+    ACTIVITE ac = ViewBag.Activity;
     ViewBag.Title = "Covoiturage";
+    int noCom = 0;
+    UTILISATEUR u = (UTILISATEUR)Session["USER"];
 }
+<style>
+    .thumbnail {
+        padding: 0px;
+    }
 
-<h2>Covoiturage</h2>
+    .panel2 {
+        position: relative;
+    }
 
+        .panel2 > .panel-heading2:after, .panel2 > .panel-heading2:before {
+            position: absolute;
+            top: 11px;
+            left: -16px;
+            right: 100%;
+            width: 0;
+            height: 0;
+            display: block;
+            content: " ";
+            border-color: transparent;
+            border-style: solid solid outset;
+            pointer-events: none;
+        }
 
-<div class="panel panel-danger item covoit" id="covoit">
-    <div class="panel-heading">
-        <div class="panel-title pull-left"><span class="glyphicon glyphicon-road"></span> Covoiturage</div>
+        .panel2 > .panel-heading2:after {
+            border-width: 7px;
+            border-right-color: #f7f7f7;
+            margin-top: 1px;
+            margin-left: 2px;
+        }
+
+        .panel2 > .panel-heading2:before {
+            border-right-color: #ddd;
+            border-width: 8px;
+        }
+</style>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Covoiturage</div>
         <div class="pull-right"><small>@a.ACTIVITE.DATECREATION</small></div>
         <div class="clearfix"></div>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-10">
-                    <div class="row">
-                        <p>@a.ACTIVITE.DESCRIP</p>
-                        <p>Date de depart : @a.ACTIVITE.COVOITURAGE.DATEDEPART</p>
-                        <p>Date d'arrivé : @a.ACTIVITE.COVOITURAGE.DATEARRIVE</p>
-                        <p>Lieu de départ : @a.ACTIVITE.COVOITURAGE.LIEUDEPART</p>
-                        <p>Lieu d'arrivé : @a.ACTIVITE.COVOITURAGE.LIEUARRIVE</p>
-                        <p>Participation : @a.ACTIVITE.COVOITURAGE.PARTICIPATION</p>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <p>@a.ACTIVITE.DESCRIP</p>
+                            <p>Date de depart : @a.ACTIVITE.COVOITURAGE.DATEDEPART</p>
+                            <p>Date d'arrivé : @a.ACTIVITE.COVOITURAGE.DATEARRIVE</p>
+                            <p>Lieu de départ : @a.ACTIVITE.COVOITURAGE.LIEUDEPART</p>
+                            <p>Lieu d'arrivé : @a.ACTIVITE.COVOITURAGE.LIEUARRIVE</p>
+                            <p>Participation : @a.ACTIVITE.COVOITURAGE.PARTICIPATION</p>
+                        </div>
+                        <div class="row">
+                            <p><span class="glyphicon glyphicon-comment"></span> @a.ACTIVITE.COMMENTAIREACTIVITE.Count Commentaires</p>
+                        </div>
                     </div>
-                    <div class="row">
-                        <p><span class="glyphicon glyphicon-comment"></span> @a.ACTIVITE.COMMENTAIREACTIVITE.Count Commentaires</p>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="row">
-                        <a href=#>Posté par @a.ACTIVITE.UTILISATEUR.PSEUDO</a>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <a href=#>Posté par @a.ACTIVITE.UTILISATEUR.PSEUDO</a>
 
-                    </div>
-                    <div class="row">
-                        <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                        </div>
+                        <div class="row">
+                            <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                        </div>
                     </div>
                 </div>
             </div>
+            <hr />
         </div>
-        <hr />
+    </div>
+    <!-- COMMENTAIRE -->
+    @foreach (COMMENTAIREACTIVITE c in ac.COMMENTAIREACTIVITE)
+    {
+        <div class="row">
+            <div class="col-xs-1">
+                <div class="thumbnail">
+                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="75px" height="75px">
+                </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
+
+            <div class="col-xs-11">
+                <div class="panel panel2 panel-default">
+                    <div class="panel-heading panel-heading2">
+                        <strong>@c.UTILISATEUR.PSEUDO</strong> <span class="text-muted">Commenté il y a @c.DATEENVOIE.ToString()</span>
+                    </div>
+                    <div class="panel-body">
+                        @c.CONTENU
+                    </div><!-- /panel-body -->
+                </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
+        </div>
+    }
+</div>
+<!-- A VOIR PLUS TARD
+     <div class="row">
+    PAGINATION
+    <div class="text-center">
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
+-->
+
+
+<div class="row">
+    @using (Html.BeginForm("AddComment", "Activite", FormMethod.Post))
+    {
+        <!-- BOITE COMMENTAIRE -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <button class="btn btn-default">1</button>
+                <button class="btn btn-default">2</button>
+                <button class="btn btn-default">3</button>
+            </div>
+
+            @Html.TextArea("message", new { @class = "form-control", style = "resize:none", rows = "5" })
+            <div class="panel-footer">
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+            </div>
+
+        </div>
+        @Html.Hidden("type", ac.TYPEACTIVITE)
+        @Html.Hidden("idActivite", ac.IDACTIVITE)
+        @Html.Hidden("idUser", u.IDUSER)
+
+    }
+</div><!-- /container -->
