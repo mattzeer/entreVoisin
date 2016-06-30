@@ -1,0 +1,11 @@
+﻿@using EntreVoisin.Models;
+@{
+    SONDAGE a = ViewData.Model;
+    ViewBag.Title = "Sondage";
+}
+
+<h2>Sondage</h2>
+
+@a.IDACTIVITE
+@a.ACTIVITE.COMMENTAIREACTIVITE.Count
+@a.ACTIVITE.DESCRIP

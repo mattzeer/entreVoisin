@@ -81,5 +81,19 @@ namespace EntreVoisin.Controllers
             return View();
         }
 
+        public ActionResult Event(short id)
+        {
+            EVENEMENT a = db.EVENEMENT.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
+        public ActionResult Sondage(short id)
+        {
+            SONDAGE a = db.SONDAGE.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
     }
 }

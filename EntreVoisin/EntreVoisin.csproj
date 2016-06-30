@@ -335,6 +335,8 @@
     <Content Include="Views\User\Service.cshtml" />
     <Content Include="Views\User\Objet.cshtml" />
     <Content Include="Views\User\ObjetPerdu.cshtml" />
+    <Content Include="Views\User\Event.cshtml" />
+    <Content Include="Views\User\Sondage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
