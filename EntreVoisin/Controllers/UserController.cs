@@ -42,7 +42,11 @@ namespace EntreVoisin.Controllers
         public ActionResult Actus(short id)
         {
             ACTUS a = db.ACTUS.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
-            ViewData.Model = a;
+            ACTIVITE ac = a.ACTIVITE;
+
+            ViewBag.Actus = a;
+            ViewBag.Activity = ac;
+
             return View();
         }
 

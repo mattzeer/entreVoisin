@@ -217,5 +217,41 @@ namespace EntreVoisin.Controllers
                 return View();
             }
         }
+        
+        [HttpPost]
+        public ActionResult AddComment(string type, short idActivite, string message, short idUser)
+        {
+            COMMENTAIREACTIVITE comment = new COMMENTAIREACTIVITE();
+            comment.UTILISATEUR = db.UTILISATEUR.Where(m => m.IDUSER.Equals(idUser)).FirstOrDefault();
+            comment.ACTIVITE = db.ACTIVITE.Where(m => m.IDACTIVITE.Equals(idActivite)).FirstOrDefault();
+            comment.DATEENVOIE = DateTime.Now;
+            comment.CONTENU = message;
+            db.COMMENTAIREACTIVITE.Add(comment);
+            db.SaveChanges();
+
+            switch (type)
+            {
+                case "SERVICE" :
+                    return RedirectToAction("Service", "User", new { id = idActivite });
+                    
+                case "BONPLAN":
+                    return RedirectToAction("BonPlan", "User", new { id = idActivite });
+                    
+                case "OBJET":
+                    return RedirectToAction("Objet", "User", new { id = idActivite });
+                    
+                case "OBJETPERDU":
+                    return RedirectToAction("ObjetPerdu", "User", new { id = idActivite });
+                    
+                case "ACTUS":
+                    return RedirectToAction("Actus", "User", new { id = idActivite });
+                    
+                case "COVOIT":
+                    return RedirectToAction("Covoiturage", "User", new { id = idActivite });
+
+                default: return View();//TODO ERROR;     
+                   
+            }
+        }
     }
 }
