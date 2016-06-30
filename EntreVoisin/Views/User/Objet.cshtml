@@ -1,14 +1,14 @@
 ﻿@using EntreVoisin.Models;
 @{
-    ACTUS a = ViewData.Model;
-    ViewBag.Title = "Actus";
+    OBJET a = ViewData.Model;
+    ViewBag.Title = "Objet";
 }
 
-<h2>Actus</h2>
+<h2>Objet</h2>
 
-<div class="panel panel-primary item actus" id="actus">
+<div class="panel panel-danger item objet" id="objet">
     <div class="panel-heading">
-        <div class="panel-title pull-left"><span class="glyphicon glyphicon-info-sign"></span> Actualités</div>
+        <div class="panel-title pull-left"><span class="glyphicon glyphicon-gift"></span> Proposition d'objet</div>
         <div class="pull-right"><small>@a.ACTIVITE.DATECREATION</small></div>
         <div class="clearfix"></div>
     </div>
@@ -18,6 +18,8 @@
                 <div class="col-lg-10">
                     <div class="row">
                         <p>@a.ACTIVITE.DESCRIP</p>
+                        <p>@a.ACTIVITE.OBJET.CDOBJET</p>
+                        <p>@a.ACTIVITE.OBJET.CDPROPOSITIONOBJET</p>
                     </div>
                     <div class="row">
                         <p><span class="glyphicon glyphicon-comment"></span> @a.ACTIVITE.COMMENTAIREACTIVITE.Count Commentaires</p>
@@ -35,7 +37,5 @@
             </div>
         </div>
         <hr />
-        
     </div>
 </div>
-

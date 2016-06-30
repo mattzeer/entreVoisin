@@ -1,14 +1,14 @@
 ﻿@using EntreVoisin.Models;
 @{
-    ACTUS a = ViewData.Model;
-    ViewBag.Title = "Actus";
+    SONDAGE a = ViewData.Model;
+    ViewBag.Title = "Sondage";
 }
 
-<h2>Actus</h2>
+<h2>Sondage</h2>
 
-<div class="panel panel-primary item actus" id="actus">
+<div class="panel panel-default item sondage" id="sondage">
     <div class="panel-heading">
-        <div class="panel-title pull-left"><span class="glyphicon glyphicon-info-sign"></span> Actualités</div>
+        <div class="panel-title pull-left"><span class="glyphicon glyphicon-question-sign"></span> Sondage</div>
         <div class="pull-right"><small>@a.ACTIVITE.DATECREATION</small></div>
         <div class="clearfix"></div>
     </div>
@@ -34,8 +34,7 @@
                 </div>
             </div>
         </div>
-        <hr />
+        
         
     </div>
 </div>
-

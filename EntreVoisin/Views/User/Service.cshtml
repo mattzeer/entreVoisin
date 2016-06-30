@@ -1,14 +1,14 @@
 ﻿@using EntreVoisin.Models;
 @{
-    ACTUS a = ViewData.Model;
-    ViewBag.Title = "Actus";
+    SERVICE a = ViewData.Model;
+    ViewBag.Title = "Service";
 }
 
-<h2>Actus</h2>
+<h2>Service</h2>
 
-<div class="panel panel-primary item actus" id="actus">
+<div class="panel panel-success item service" id="service">
     <div class="panel-heading">
-        <div class="panel-title pull-left"><span class="glyphicon glyphicon-info-sign"></span> Actualités</div>
+        <div class="panel-title pull-left"><span class="glyphicon glyphicon-wrench"></span> Proposition de service</div>
         <div class="pull-right"><small>@a.ACTIVITE.DATECREATION</small></div>
         <div class="clearfix"></div>
     </div>
@@ -35,7 +35,5 @@
             </div>
         </div>
         <hr />
-        
     </div>
 </div>
-
