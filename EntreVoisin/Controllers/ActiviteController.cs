@@ -253,12 +253,6 @@ namespace EntreVoisin.Controllers
                 case "COVOIT":
                     return RedirectToAction("Covoiturage", "User", new { id = idActivite });
 
-                case "EVENT":
-                    return RedirectToAction("Event", "User", new { id = idActivite });
-
-                case "SONDAGE":
-                    return RedirectToAction("Sondage", "User", new { id = idActivite });
-
                 default: return View();//TODO ERROR;     
                    
             }
