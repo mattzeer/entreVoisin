@@ -30,7 +30,7 @@ namespace EntreVoisin.Controllers
                 a.TYPEACTIVITE = "ACTUS";
                 a.DATECREATION = DateTime.Now;
                 a.ACTUS = new ACTUS();
-                a.ACTUS.CDTYPEACTUS = "BAS";
+                a.ACTUS.CDTYPEACTUS = model.cdTypeActus;
                 db.ACTIVITE.Add(a);
                 db.SaveChanges();
                 return RedirectToAction("Index", "User");
@@ -92,8 +92,6 @@ namespace EntreVoisin.Controllers
         public ActionResult AddService(ServiceModelView model)
         {
             UTILISATEUR u = db.UTILISATEUR.Where(m => m.IDUSER.Equals(model.idUser)).FirstOrDefault();
-            TYPESERVICE ts = db.TYPESERVICE.Where(m => m.LIBELLESERVICE.Equals("type")).FirstOrDefault();
-            TYPEPROPOSITIONSERVICE tps = db.TYPEPROPOSITIONSERVICE.Where(m => m.LIBELLE.Equals("type")).FirstOrDefault();
             if (ModelState.IsValid)
             {
                 ACTIVITE a = new ACTIVITE();
@@ -103,8 +101,8 @@ namespace EntreVoisin.Controllers
                 a.TYPEACTIVITE = "SERVICE";
                 a.DATECREATION = DateTime.Now;
                 a.SERVICE = new SERVICE();
-                a.SERVICE.CDPROPOSITIONSERVICE = ts.CDSERVICE;
-                a.SERVICE.CDSERVICE = tps.CDPROPOSITIONSERVICE;
+                a.SERVICE.CDPROPOSITIONSERVICE = model.cdTypePropositionService;
+                a.SERVICE.CDSERVICE = model.cdTypeService;
                 a.SERVICE.TITRE = model.TitreService;
                 a.SERVICE.PRIX = model.PrixService;
                 db.ACTIVITE.Add(a);
@@ -120,8 +118,6 @@ namespace EntreVoisin.Controllers
         public ActionResult AddObjet(ObjetActiviteModelView model)
         {
             UTILISATEUR u = db.UTILISATEUR.Where(m => m.IDUSER.Equals(model.idUser)).FirstOrDefault();
-            TYPEOBJET to = db.TYPEOBJET.Where(m => m.LIBELLEOBJET.Equals("meuble")).FirstOrDefault(); // à revoir
-            TYPEPROPOSITIONOBJET tpo = db.TYPEPROPOSITIONOBJET.Where(m => m.LIBELLE.Equals("jesaispas")).FirstOrDefault(); // à revoir
             if (ModelState.IsValid)
             {
                 ACTIVITE a = new ACTIVITE();
@@ -131,8 +127,8 @@ namespace EntreVoisin.Controllers
                 a.TYPEACTIVITE = "OBJET";
                 a.DATECREATION = DateTime.Now;
                 a.OBJET = new OBJET();
-                a.OBJET.CDOBJET = to.CDOBJET;
-                a.OBJET.CDPROPOSITIONOBJET = tpo.CDPROPOSITIONOBJET;
+                a.OBJET.CDOBJET = model.cdObjet;
+                a.OBJET.CDPROPOSITIONOBJET = model.cdPropositionObjet;
                 a.OBJET.TITRE = model.titreObjet;
                 a.OBJET.PRIX = model.prixObjet;
                 db.ACTIVITE.Add(a);
