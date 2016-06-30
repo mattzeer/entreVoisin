@@ -7,7 +7,7 @@
 
 <style>
 </style>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function () {
         $('#valActivite').children().hide();
         $('#filtreActivite li a').click(function () {
@@ -18,13 +18,13 @@
             else {
 
                 $(this).parent().toggleClass('active');
-                $('#valActivite').children('div.' + ourClass).toggle('slow');
+                $('#valActivite').children('div.' + ourClass).toggle('fast');
 
             }
             return false;
         });
     });
-</script>
+</script> -->
 <script>
     var $btns = $('.btnlel').click(function () {
         if (this.id == 'all')
@@ -465,6 +465,22 @@
                     </ul>
                 </div>
             </div>
+            <div class="row visible-xs">
+                <div class="well collapse navbar-collapse" id="tes2">
+                    <ul class="nav nav-pills nav-stacked" id="tabs">
+                        <li><a href='@Url.Action("index", "USER", new { type = "" })'>Toutes</a></li>
+                        <li><a href='@Url.Action("index", "USER", new { type = "ACTUS" })'><span class="glyphicon glyphicon-info-sign"></span> Actualité</a></li>
+                        <li><a href='@Url.Action("index", "USER", new { type = "COVOIT" })'><span class="glyphicon glyphicon-road"></span> Convoiturage</a></li>
+                        <li><a href='@Url.Action("index", "USER", new { type = "EVENT" })'><span class="glyphicon glyphicon-glass"></span> Evenement</a></li>
+                        <li><a href='@Url.Action("index", "USER", new { type = "OBJETPERDU" })'><span class="glyphicon glyphicon-flag"></span> Objet Perdu</a></li>
+                        <li><a href='@Url.Action("index", "USER", new { type = "SERVICE" })'><span class="glyphicon glyphicon-wrench"></span> Service</a></li>
+                        <li><a href='@Url.Action("index", "USER", new { type = "OBJET" })'><span class="glyphicon glyphicon-gift"></span> Objet</a></li>
+                        <li><a href='@Url.Action("index", "USER", new { type = "SONDAGE" })'><span class="glyphicon glyphicon-question-sign"></span> Sondage</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -505,7 +521,6 @@
                                 </div>
                                 <hr />
                                 <center>@Html.ActionLink("Voir plus d'information", "Actus", "User", new { id = a.IDACTIVITE }, new { idActus = a.IDACTIVITE })</center>
-
                             </div>
                         </div>
                         break;
@@ -540,7 +555,7 @@
                                 </div>
                             </div>
                             <hr />
-                            <center>@Html.ActionLink("Voir plus d'information", "BonPlan", "User", new { id = a.IDACTIVITE }, new { idBonPlan = a.IDACTIVITE })</center>
+                            <center><a href="#">Voir plus d'information</a></center>
                         </div>
                     </div>
                         break;
@@ -575,7 +590,7 @@
                                 </div>
                             </div>
                             <hr />
-                            <center>@Html.ActionLink("Voir plus d'information", "Covoiturage", "User", new { id = a.IDACTIVITE }, new { idCovoiturage = a.IDACTIVITE })</center>
+                            <center><a href="#">Voir plus d'information</a></center>
                         </div>
                     </div>
                         break;
@@ -610,7 +625,7 @@
                                 </div>
                             </div>
                             <hr />
-                            <center>@Html.ActionLink("Voir plus d'information", "Service", "User", new { id = a.IDACTIVITE }, new { idService = a.IDACTIVITE })</center>
+                            <center><a href="#">Voir plus d'information</a></center>
                         </div>
                     </div>
                         break;
@@ -645,12 +660,12 @@
                                 </div>
                             </div>
                             <hr />
-                            <center>@Html.ActionLink("Voir plus d'information", "Objet", "User", new { id = a.IDACTIVITE }, new { idObjet = a.IDACTIVITE })</center>
+                            <center><a href="#">Voir plus d'information</a></center>
                         </div>
                     </div>
                         break;
 
-                    case "OBJETLOST":
+                    case "OBJETPERDU":
                     <div class="panel panel-primary item objetPerdu" id="objetPerdu">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><span class="glyphicon glyphicon-flag"></span> Objet Perdu</div>
@@ -680,8 +695,7 @@
                                 </div>
                             </div>
                             <hr />
-                            <center>@Html.ActionLink("Voir plus d'information", "ObjetPerdu", "User", new { id = a.IDACTIVITE }, new { idObjetPerdu = a.IDACTIVITE })</center>
-                            
+                            <center><a href="#">Voir plus d'information</a></center>
                         </div>
                     </div>
                         break;
@@ -759,22 +773,22 @@
             }
         </div>
         <div class="col-lg-2 col-md-2">
-            <div class="row visible-xs visible-lg visible-md">
-                <div class="well collapse navbar-collapse" id="tes2">
-                    <ul class="nav nav-pills nav-stacked well visible-md visible-lg" id="filtreActivite">
-                        <li class="visible-lg visible-md">Filtrer les activités</li>
-                        <li class="nav-divider visible-lg visible-md"></li>
-                        <li><a href="#" class="actus" data-toggle="tab" data-target="actus"><span class="glyphicon glyphicon-info-sign"></span> Actualité</a></liclass>
-                        <li><a href="#" class="bonPlan" data-toggle="tab"><span class="glyphicon glyphicon-piggy-bank"></span> Bon Plan</a></li>
-                        <li><a href="#" class="covoit" data-toggle="tab"><span class="glyphicon glyphicon-road"></span> Covoiturage</a></li>
-                        <li><a href="#" class="event" data-toggle="tab"><span class="glyphicon glyphicon-glass"></span> Evenement</a></li>
-                        <li><a href="#" class="objetPerdu" data-toggle="tab"><span class="glyphicon glyphicon-flag"></span> Objet Perdu</a></li>
-                        <li><a href="#" class="service" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span> Service</a></li>
-                        <li><a href="#" class="objet" data-toggle="tab"><span class="glyphicon glyphicon-gift"></span> Objet</a></li>
-                        <li><a href="#" class="sondage" data-toggle="tab"><span class="glyphicon glyphicon-question-sign"></span> Sondage</a></li>
-                    </ul>
-                </div>
-            </div>
+            <div class="row">
+                <ul class="nav nav-pills nav-stacked well visible-md visible-lg" id="tabs">
+                    <li class="visible-lg visible-md">Filtrer les activités</li>
+                    <li class="nav-divider visible-lg visible-md"></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "" })'>Toutes</a></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "ACTUS" })'><span class="glyphicon glyphicon-info-sign"></span> Actualité</a></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "COVOIT" })'><span class="glyphicon glyphicon-road"></span> Convoiturage</a></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "EVENT" })'><span class="glyphicon glyphicon-glass"></span> Evenement</a></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "OBJETPERDU" })'><span class="glyphicon glyphicon-flag"></span> Objet Perdu</a></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "SERVICE" })'><span class="glyphicon glyphicon-wrench"></span> Service</a></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "OBJET" })'><span class="glyphicon glyphicon-gift"></span> Objet</a></li>
+                    <li><a href='@Url.Action("index", "USER", new { type = "SONDAGE" })'><span class="glyphicon glyphicon-question-sign"></span> Sondage</a></li>
+                </ul>
+            </div>
+
+            
             <div class="row">
                 <ul class="well nav navbar-inverse">
                     <li>Evenement à venir</li>
