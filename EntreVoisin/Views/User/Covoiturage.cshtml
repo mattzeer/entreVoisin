@@ -1,12 +1,45 @@
 ﻿@using EntreVoisin.Models;
 @{
-    BONPLAN a = ViewData.Model;
+    COVOITURAGE a = ViewData.Model;
     ViewBag.Title = "Covoiturage";
 }
 
 <h2>Covoiturage</h2>
 
 
-@a.IDACTIVITE
-@a.ACTIVITE.COMMENTAIREACTIVITE.Count
-@a.ACTIVITE.COVOITURAGE.ACTIVITE.DESCRIP
+<div class="panel panel-danger item covoit" id="covoit">
+    <div class="panel-heading">
+        <div class="panel-title pull-left"><span class="glyphicon glyphicon-road"></span> Covoiturage</div>
+        <div class="pull-right"><small>@a.ACTIVITE.DATECREATION</small></div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-10">
+                    <div class="row">
+                        <p>@a.ACTIVITE.DESCRIP</p>
+                        <p>Date de depart : @a.ACTIVITE.COVOITURAGE.DATEDEPART</p>
+                        <p>Date d'arrivé : @a.ACTIVITE.COVOITURAGE.DATEARRIVE</p>
+                        <p>Lieu de départ : @a.ACTIVITE.COVOITURAGE.LIEUDEPART</p>
+                        <p>Lieu d'arrivé : @a.ACTIVITE.COVOITURAGE.LIEUARRIVE</p>
+                        <p>Participation : @a.ACTIVITE.COVOITURAGE.PARTICIPATION</p>
+                    </div>
+                    <div class="row">
+                        <p><span class="glyphicon glyphicon-comment"></span> @a.ACTIVITE.COMMENTAIREACTIVITE.Count Commentaires</p>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="row">
+                        <a href=#>Posté par @a.ACTIVITE.UTILISATEUR.PSEUDO</a>
+
+                    </div>
+                    <div class="row">
+                        <img src="https://account.socialbakers.com/default_user.png" width="50px" height="50px" class="img-rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+</div>

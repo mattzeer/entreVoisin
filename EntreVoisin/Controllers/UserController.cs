@@ -30,6 +30,10 @@ namespace EntreVoisin.Controllers
                 ViewData.Model = db.ACTIVITE.Where(a => a.TYPEACTIVITE.Equals(type) && a.IDCOMMUNAUTE.Equals(s)).ToList();
                 
             }
+            ViewBag.listTypeService = db.TYPESERVICE.Select(m=>m.LIBELLESERVICE).ToList();
+            ViewBag.listTypeObjet = db.TYPEOBJET.Select(m => m.LIBELLEOBJET).ToList();
+            ViewBag.listTypePropositionService = db.TYPEPROPOSITIONSERVICE.Select(m => m.LIBELLE).ToList();
+            ViewBag.listTypePropositionObjet = db.TYPEPROPOSITIONOBJET.Select(m => m.LIBELLE).ToList();
             return View();
             
         }
@@ -81,6 +85,20 @@ namespace EntreVoisin.Controllers
         public ActionResult ObjetPerdu(short id)
         {
             OBJETPERDU a = db.OBJETPERDU.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
+        public ActionResult Event(short id)
+        {
+            EVENEMENT a = db.EVENEMENT.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
+            ViewData.Model = a;
+            return View();
+        }
+
+        public ActionResult Sondage(short id)
+        {
+            SONDAGE a = db.SONDAGE.Where(m => m.IDACTIVITE.Equals(id)).FirstOrDefault();
             ViewData.Model = a;
             return View();
         }
