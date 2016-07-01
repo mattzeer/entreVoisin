@@ -217,6 +217,42 @@ namespace EntreVoisin.Controllers
                 return View();
             }
         }
+        public ActionResult DeleteComent(string type, short idActivite, short idUser, short idUser2)
+        {
+            COMMENTAIREACTIVITE com = db.COMMENTAIREACTIVITE.Where(m => m.IDACTIVITE.Equals(idActivite)).FirstOrDefault();
+            if (idUser == idUser2)
+            {
+                db.COMMENTAIREACTIVITE.Remove(com);
+                db.SaveChanges();
+            }
+            switch (type)
+            {
+                case "SERVICE":
+                    return RedirectToAction("Service", "User", new { id = idActivite });
+                case "SONDAGE":
+                    return RedirectToAction("Sondage", "User", new { id = idActivite });
+
+                case "BONPLAN":
+                    return RedirectToAction("BonPlan", "User", new { id = idActivite });
+
+                case "OBJET":
+                    return RedirectToAction("Objet", "User", new { id = idActivite });
+
+                case "OBJETPERDU":
+                    return RedirectToAction("ObjetPerdu", "User", new { id = idActivite });
+
+                case "ACTUS":
+                    return RedirectToAction("Actus", "User", new { id = idActivite });
+                case "EVENT":
+                    return RedirectToAction("event", "User", new { id = idActivite });
+
+                case "COVOIT":
+                    return RedirectToAction("Covoiturage", "User", new { id = idActivite });
+
+                default: return View();//TODO ERROR;     
+
+            }
+        }
         
         [HttpPost]
         public ActionResult AddComment(string type, short idActivite, string message, short idUser)

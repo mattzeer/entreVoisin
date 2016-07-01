@@ -87,7 +87,7 @@
             <div class="col-xs-11">
                 <div class="panel panel2 panel-default">
                     <div class="panel-heading panel-heading2">
-                        <strong>@c.UTILISATEUR.PSEUDO</strong> <span class="text-muted">Commenté il y a @c.DATEENVOIE.ToString()</span>
+                        <strong>@c.UTILISATEUR.PSEUDO</strong> <span class="text-muted">Commenté il y a @c.DATEENVOIE.ToString()</span> <a href='@Url.Action("DeleteComent", "Activite", new { idUser = @c.UTILISATEUR.IDUSER, idUser2 = u.IDUSER, idActivite = @c.IDACTIVITE, type = @ac.TYPEACTIVITE })' class="col-md-offset-8">x</a>
                     </div>
                     <div class="panel-body">
                         @c.CONTENU
