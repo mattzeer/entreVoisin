@@ -23,11 +23,11 @@ namespace EntreVoisin.Controllers
             short s = u.COMMUNAUTE1.FirstOrDefault().IDCOMMUNAUTE;
             if(type == null || type == "")
             {
-                ViewData.Model = db.ACTIVITE.Where(a => a.IDCOMMUNAUTE.Equals(s)).ToList();
+                ViewData.Model = db.ACTIVITE.Where(a => a.IDCOMMUNAUTE.Equals(s)).OrderByDescending(a=> a.DATECREATION).ToList();
             }
             else
             {
-                ViewData.Model = db.ACTIVITE.Where(a => a.TYPEACTIVITE.Equals(type) && a.IDCOMMUNAUTE.Equals(s)).ToList();
+                ViewData.Model = db.ACTIVITE.Where(a => a.TYPEACTIVITE.Equals(type) && a.IDCOMMUNAUTE.Equals(s)).OrderByDescending(a=> a.DATECREATION).ToList();
                 
             }
             ViewBag.TypeServices = db.TYPESERVICE.ToList();
