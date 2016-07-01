@@ -77,8 +77,8 @@
           <Property Name="IDCOMMUNAUTE" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDUSER_ADMIN" Type="smallint" Nullable="false" />
           <Property Name="NOM" Type="varchar" MaxLength="128" />
-          <Property Name="ADDRESSLATITUDE" Type="real" />
-          <Property Name="ADDRESSLONGITUDE" Type="real" />
+          <Property Name="ADDRESSLATITUDE" Type="decimal" Precision="12" Scale="9" />
+          <Property Name="ADDRESSLONGITUDE" Type="decimal" Precision="12" Scale="9" />
         </EntityType>
         <EntityType Name="CONFIRMATION">
           <Key>
@@ -1066,8 +1066,8 @@
           <Property Name="IDCOMMUNAUTE" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDUSER_ADMIN" Type="Int16" Nullable="false" />
           <Property Name="NOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="ADDRESSLATITUDE" Type="Single" />
-          <Property Name="ADDRESSLONGITUDE" Type="Single" />
+          <Property Name="ADDRESSLATITUDE" Type="Decimal" />
+          <Property Name="ADDRESSLONGITUDE" Type="Decimal" />
           <NavigationProperty Name="ACTIVITE" Relationship="Self.FK_ACTIVITE_COMMUNAUTE" FromRole="COMMUNAUTE" ToRole="ACTIVITE" />
           <NavigationProperty Name="CENTREINTERET" Relationship="Self.FK_CENTREINTERET_COMMUNAUTE" FromRole="COMMUNAUTE" ToRole="CENTREINTERET" />
           <NavigationProperty Name="UTILISATEUR" Relationship="Self.FK_COMMUNAUTE_UTILISATEUR" FromRole="COMMUNAUTE" ToRole="UTILISATEUR" />

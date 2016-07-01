@@ -24,8 +24,8 @@ namespace EntreVoisin.Models
         public short IDCOMMUNAUTE { get; set; }
         public short IDUSER_ADMIN { get; set; }
         public string NOM { get; set; }
-        public Nullable<float> ADDRESSLATITUDE { get; set; }
-        public Nullable<float> ADDRESSLONGITUDE { get; set; }
+        public Nullable<decimal> ADDRESSLATITUDE { get; set; }
+        public Nullable<decimal> ADDRESSLONGITUDE { get; set; }
     
         public virtual ICollection<ACTIVITE> ACTIVITE { get; set; }
         public virtual ICollection<CENTREINTERET> CENTREINTERET { get; set; }
