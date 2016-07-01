@@ -118,5 +118,19 @@ namespace EntreVoisin.Controllers
             return View();
         }
 
+        public ActionResult Utilisateur(string pseudo)
+        {
+            UTILISATEUR u = db.UTILISATEUR.Where(m => m.PSEUDO.Equals(pseudo)).FirstOrDefault();
+            if( u !=null)
+            {
+                ViewBag.User = u;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("ErrorUser", "Error");
+            }
+        }
+
     }
 }
