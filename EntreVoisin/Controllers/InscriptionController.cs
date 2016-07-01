@@ -27,10 +27,19 @@ namespace EntreVoisin.Controllers
         {
             Session["lat"] = lat;
             Session["lng"] = lng;
+            string latRange = "0.009043";
+            string lngRange = "";
+
+            Decimal dLngRange = Decimal.Parse(lngRange, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
+            Decimal dLatRange = Decimal.Parse(latRange, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
+            Decimal dLat = Decimal.Parse(lat, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
+            Decimal dLng = Decimal.Parse(lng, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
             Session["street_number"] = street_number;
             Session["route"] = route;
             Session["locality"] = locality;
             Session["postal_code"] = postal_code;
+
+            List<COMMUNAUTE> proxiCommunaute = db.COMMUNAUTE.Where(().ToList();
             return View();
 
         }

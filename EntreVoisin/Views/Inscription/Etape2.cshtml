@@ -1,7 +1,9 @@
-﻿@{
+﻿@using EntreVoisin.Models;
+@{
     ViewBag.Title = "Etape2";
     string lat = (string)Session["lat"];
     string lng = (string)Session["lng"];
+    List<COMMUNAUTE> communauteProximite = new List<COMMUNAUTE>();
 }
 
 <h2>Etape 2 - Le choix de votre communauté</h2>
@@ -13,14 +15,28 @@
             <div id="googleMap" style="width:auto;height:380px;"></div>
         </div>
         <div class="col-lg-4">
-            <div class="row">
-                <h4>Choix de la communauté</h4>
-                <select class="form-control"></select>
-            </div>
-            <br />
-            <div class="row">
-                <button type="submit" class="btn btn-primary form-control">Valider</button>
-            </div>
+            @if (communauteProximite.Count==0)
+            {
+                <div class="row">
+                    <h4>Choix de la communauté</h4>
+                    <select class="form-control"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <button type="submit" class="btn btn-primary form-control">Valider</button>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <h4>Choix de la communauté</h4>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary form-control">Créer</button>
+                </div>
+            }
+            
 
         </div>
     }
