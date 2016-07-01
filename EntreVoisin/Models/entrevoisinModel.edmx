@@ -284,7 +284,7 @@
           </Key>
           <Property Name="IDUSER" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDCONFIRMATION" Type="smallint" Nullable="false" />
-          <Property Name="PSEUDO" Type="char" MaxLength="32" />
+          <Property Name="PSEUDO" Type="varchar" MaxLength="32" />
           <Property Name="EMAIL" Type="varchar" MaxLength="128" />
           <Property Name="PASSWORD" Type="varchar" MaxLength="128" />
           <Property Name="NOM" Type="varchar" MaxLength="128" />
@@ -300,6 +300,7 @@
           <Property Name="PHOTO" Type="char" MaxLength="32" />
           <Property Name="CONFIDENTIEL" Type="bit" />
           <Property Name="CONNECTE" Type="bit" />
+          <Property Name="TEL" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_ACTIVITE_COMMUNAUTE">
           <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="1" />
@@ -1280,7 +1281,7 @@
           </Key>
           <Property Name="IDUSER" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDCONFIRMATION" Type="Int16" Nullable="false" />
-          <Property Name="PSEUDO" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="PSEUDO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="NOM" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
@@ -1311,6 +1312,7 @@
           <NavigationProperty Name="COMMUNAUTE1" Relationship="Self.USERCOMMUNAUTE" FromRole="UTILISATEUR" ToRole="COMMUNAUTE" />
           <NavigationProperty Name="UTILISATEUR1" Relationship="Self.USERCONFIANCE" FromRole="UTILISATEUR" ToRole="UTILISATEUR1" />
           <NavigationProperty Name="UTILISATEUR2" Relationship="Self.USERCONFIANCE" FromRole="UTILISATEUR1" ToRole="UTILISATEUR" />
+          <Property Name="TEL" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_ACTIVITE_COMMUNAUTE">
           <End Role="COMMUNAUTE" Type="Self.COMMUNAUTE" Multiplicity="1" />
@@ -2137,6 +2139,7 @@
           <EntitySetMapping Name="UTILISATEUR">
             <EntityTypeMapping TypeName="entrevoisinModel.UTILISATEUR">
               <MappingFragment StoreEntitySet="UTILISATEUR">
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
                 <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
                 <ScalarProperty Name="IDCONFIRMATION" ColumnName="IDCONFIRMATION" />
                 <ScalarProperty Name="PSEUDO" ColumnName="PSEUDO" />

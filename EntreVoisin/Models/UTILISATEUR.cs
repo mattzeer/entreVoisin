@@ -50,6 +50,7 @@ namespace EntreVoisin.Models
         public string PHOTO { get; set; }
         public Nullable<bool> CONFIDENTIEL { get; set; }
         public Nullable<bool> CONNECTE { get; set; }
+        public Nullable<decimal> TEL { get; set; }
     
         public virtual ICollection<ACTIVITE> ACTIVITE { get; set; }
         public virtual ICollection<CENTREINTERET> CENTREINTERET { get; set; }

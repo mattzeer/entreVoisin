@@ -16,6 +16,13 @@ namespace EntreVoisin.Controllers
             db = new entrevoisinEntities();
         }
 
+        public ActionResult UtilisateurProfil(short idUser)
+        {
+            UTILISATEUR u = db.UTILISATEUR.Where(m => m.IDUSER.Equals(idUser)).FirstOrDefault();
+            ViewData["user"] = u;
+            string pseudo = u.PSEUDO;
+            return RedirectToAction(pseudo, "Utilisateur");
+        }
 
         [HttpPost]
         public ActionResult AddActus(ActusActiviteModelView model)

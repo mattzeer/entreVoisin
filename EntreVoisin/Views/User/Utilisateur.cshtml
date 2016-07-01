@@ -1,5 +1,7 @@
-﻿@{
+﻿@using EntreVoisin.Models;
+@{
     ViewBag.Title = "User";
+    UTILISATEUR utilisateur = (UTILISATEUR)ViewData["user"];
 }
 
 <style>
@@ -71,9 +73,9 @@
         </div>
         <div class="col-md-8 well">
             <div class="header">
-                <h1>Mattzeer</h1>
-                <h4>Mathieu LENGLET</h4>
-                <span>De son vrai nom Bob, Mathieu aime les pains au chocolatine mais ne comprend pas les personnes disant pains au chocolat biz</span>
+                <h1>@utilisateur.PSEUDO</h1>
+                <h4>@utilisateur.NOM</h4>
+                <span>@utilisateur.DATENAISSANCE ||+</span>
 
             </div>
         </div>
@@ -107,23 +109,23 @@
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="tabMain">
                         <div class="col-lg-4">
-                            <div class="row form-group"><label>Pseudo : </label>Mattzeer</div>
-                            <div class="row form-group"><label>Nom : </label>LENGLET</div>
-                            <div class="row form-group"><label>Prenom : </label>Mathieu</div>
+                            <div class="row form-group"><label>Pseudo : </label>@utilisateur.PSEUDO</div>
+                            <div class="row form-group"><label>Nom : </label>@utilisateur.NOM</div>
+                            <div class="row form-group"><label>Prenom : </label>@utilisateur.PRENOM</div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="row form-group"><label>Email : </label>Mathieulenglet@me.com</div>
-                            <div class="row form-group"><label>Téléphone : </label>0606060606</div>
+                            <div class="row form-group"><label>Email : </label>@utilisateur.EMAIL</div>
+                            <div class="row form-group"><label>Téléphone : </label>(+33)@utilisateur.TEL</div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tabAddress">
                         <div class="row">
-                            <center><h4><label>Adresse : </label> 34 avenue de la marnezer 92600 Asnieres</h4> </center>
+                            <center><h4><label>Adresse : </label>@utilisateur.ADDRESSCOMPLEMENT</h4> </center>
                         </div>
                         <div id="googleMap" style="width:auto;height:350px;"></div>
                     </div>
-                    <div class="tab-pane fade" id="tabObjet">Primary 4</div>
-                    <div class="tab-pane fade" id="tabService">Primary 5</div>
+                    <div class="tab-pane fade" id="tabObjet">@utilisateur.USEROBJET</div>
+                    <div class="tab-pane fade" id="tabService">@utilisateur.USERSERVICE</div>
                 </div>
             </div>
         </div>
@@ -136,7 +138,7 @@
 
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
-    var myCenter = new google.maps.LatLng(48.9061104, 2.2812367);
+    var myCenter = new google.maps.LatLng(@utilisateur.ADDRESSLATITUDE, @utilisateur.ADDRESSLONGITUDE);
 
     function initialize() {
         var mapProp = {
